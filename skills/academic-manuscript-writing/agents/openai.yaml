@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Manuscript Writing"
+  short_description: "English-first academic drafting and revision"
+  default_prompt: "Use $academic-manuscript-writing to align experiments, figures, and claims, then rewrite this manuscript section in journal-quality English."
