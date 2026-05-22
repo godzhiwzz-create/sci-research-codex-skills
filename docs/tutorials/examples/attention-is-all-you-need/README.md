@@ -31,11 +31,13 @@ assets/
 - 英文标题 + 中文副标题。
 - 论文身份和来源验证。
 - 首页摘要区原文截图 + 摘要解读，但不在正文转载完整长摘要。
+- 新手预备知识：任务、token、encoder/decoder、baseline、BLEU、parallelization。
 - 关键原文图表截图：Figure 1、Figure 2、Table 1、Table 2、Table 3。
 - 自绘 Transformer 架构图。
 - 自绘 scaled dot-product / multi-head attention 机制图。
-- 图表 proof cards：每张关键图表说明“看哪里、证明什么、不能证明什么”。
+- 图表 proof cards：每张关键图表说明“第一眼看到什么、怎么看、证明什么、不能证明什么”。
 - 证据线：problem -> cause -> method principle -> proof object -> limitation。
+- 新手 FAQ：解释 Attention/Transformer、RNN/CNN、multi-head、BLEU 的常见误解。
 - 项目挂接模块只作为公开教程演示，不绑定任何私有项目。
 
 ## 如何查看 HTML

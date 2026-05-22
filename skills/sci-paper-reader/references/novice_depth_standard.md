@@ -153,6 +153,24 @@ replace a first serious reading session:
 If the output becomes too long, split into sections or pages instead of deleting
 the reasoning.
 
+For expanded-teaching mode, use these practical lower bounds unless the user
+asks for a brief preview:
+
+- abstract interpretation: explain problem, method promise, evidence promise,
+  and non-claims in at least several paragraphs;
+- prerequisite ladder: define every domain term needed to read the method and
+  metrics, with one concrete toy example;
+- method walkthrough: explain every core module with input, output, role,
+  intuition, and failure mode if removed;
+- formula explanation: unpack symbols, operation, intuition, and the reason for
+  each normalization or weighting term;
+- each important figure/table: write enough explanation that the reader knows
+  where to look, how to compare, what the evidence supports, and what it does
+  not prove.
+
+The user should not feel they are reading slide captions.  They should feel
+they are being taught the paper.
+
 ## Bad Output Signs
 
 Rework the packet if:

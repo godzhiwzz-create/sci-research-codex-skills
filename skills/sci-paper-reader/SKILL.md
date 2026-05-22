@@ -53,6 +53,13 @@ must explain prerequisite concepts, unpack method steps, interpret figures and
 tables, and connect evidence to claims so the user does not need to reopen the
 paper just to understand the main route.
 
+Default depth: when the user says "精读", "看懂", "详细", "像读完一样",
+or critiques the packet as too thin, switch to expanded-teaching mode.  In that
+mode, every major section should teach the idea rather than merely name it:
+give concrete examples, unpack formulas line by line, explain why each result
+comparison matters, and add common misunderstandings.  Do not shorten the
+artifact to fit a template; split it into more sections/cards instead.
+
 Optional output formats:
 
 - `paper_understanding.md`: default, fastest, easiest to edit.
@@ -413,7 +420,10 @@ Write as if the reader is smart but has not read the paper.
 Do:
 
 - explain prerequisite terms before using them heavily;
+- give one concrete toy example when a task or formula is abstract;
 - say why a figure/table matters before interpreting details;
+- describe what the reader is physically seeing in a figure before explaining
+  what it proves;
 - distinguish "paper claims" from "paper proves";
 - narrate the logic, not just the section order;
 - show what is new, what is inherited, and what is only engineering.
@@ -423,6 +433,7 @@ Do not:
 - paste abstract-level paraphrases as the whole answer;
 - list modules without explaining why they exist;
 - cite results without explaining what comparison makes them meaningful;
+- show screenshots as decoration without teaching how to read them;
 - say "improves performance" without saying against what and why;
 - bury the relation to other papers at the end as a vague paragraph.
 

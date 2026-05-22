@@ -265,8 +265,25 @@
       <div class="warning"><b>摘要没有证明什么：</b>它没有证明 attention-only 对所有任务都最优，也没有解决长序列二次复杂度，更没有直接解释后来大模型涌现出的全部能力。它证明的是：在当时机器翻译任务上，attention 可以从辅助机制变成主干范式。</div>
     </section>
 
+    <section id="before">
+      <h2>3. 读这篇论文前需要知道什么</h2>
+      <p class="lead">如果你之前不了解 NLP 或 Transformer，先把下面这些概念放进脑子里。它们不是背景装饰，而是读懂论文主张所必需的最低词汇表。</p>
+      <div class="meta-grid">
+        <div class="meta"><b>Sequence transduction</b>把一个序列变成另一个序列。例如把英文句子翻译成德文句子，输入和输出长度可以不同。</div>
+        <div class="meta"><b>Token</b>模型处理的基本单位，可以是词、子词或符号。论文里的序列不是一次处理整句话的“意思”，而是处理 token 列表。</div>
+        <div class="meta"><b>Encoder / Decoder</b>Encoder 读输入句子并形成表示；decoder 根据已生成的目标 token 和 encoder 表示继续生成下一个 token。</div>
+        <div class="meta"><b>Baseline</b>用来比较的新旧方法。Table 2 里那些 RNN/CNN/ensemble 模型就是 Transformer 需要超过的参照物。</div>
+        <div class="meta"><b>BLEU</b>机器翻译常用指标，大体衡量机器译文和参考译文的 n-gram 重合程度。这里越高越好，但它不是人类理解质量的完整替代。</div>
+        <div class="meta"><b>Parallelization</b>能否把很多位置同时计算。RNN 必须按时间步递推；attention 更容易用矩阵乘法一次计算很多 token 关系。</div>
+      </div>
+      <div class="note">
+        <p><b>一个具体例子：</b>假设输入是 “I love apples”，输出是 “Ich liebe Äpfel”。RNN 会按顺序读 I -> love -> apples；Transformer 会让每个 token 直接和其他 token 计算关系。生成德文词时，decoder 可以通过 cross-attention 去看英文中最相关的位置。</p>
+        <p><b>读论文时要盯住的问题：</b>作者不是只想提高 BLEU，而是要证明“去掉递推和卷积之后，模型仍能学习序列关系，并且更容易并行训练”。</p>
+      </div>
+    </section>
+
     <section id="route">
-      <h2>3. 一分钟路线图</h2>
+      <h2>4. 一分钟路线图</h2>
       <div class="route">
         <div><b>旧问题</b>RNN 递推难并行，CNN 依赖局部堆叠。</div>
         <div><b>新原则</b>让每个 token 直接看所有 token。</div>
@@ -278,7 +295,7 @@
     </section>
 
     <section id="method">
-      <h2>4. 方法结构：Transformer 为什么不是普通注意力模块？</h2>
+      <h2>5. 方法结构：Transformer 为什么不是普通注意力模块？</h2>
       <img class="diagram" src="assets/transformer_flow.svg" alt="Transformer encoder decoder flow">
       <p>Encoder 负责把输入序列中的每个 token 编成含上下文的信息表示。每层 encoder 有 multi-head self-attention 和 position-wise feed-forward network，外层配 residual connection 和 layer normalization。</p>
       <p>Decoder 在生成目标序列时不能看到未来 token，所以先用 masked self-attention 处理已生成目标词，再用 encoder-decoder attention 读取源句子表示，最后用 feed-forward network 和 softmax 预测下一个 token。</p>
@@ -286,7 +303,7 @@
     </section>
 
     <section id="attention">
-      <h2>5. 注意力机制：Q / K / V 到底在干什么？</h2>
+      <h2>6. 注意力机制：Q / K / V 到底在干什么？</h2>
       <img class="diagram" src="assets/attention_mechanism.svg" alt="Scaled dot-product and multi-head attention">
       <p>Query 可以理解为“当前位置想找什么信息”，Key 是“每个位置提供的匹配索引”，Value 是“真正要被取走的信息”。QKᵀ 计算匹配程度，softmax 把匹配程度转成权重，然后用这些权重对 V 做加权汇总。</p>
       <pre>Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V</pre>
@@ -294,7 +311,7 @@
     </section>
 
     <section id="figures">
-      <h2>6. 原文图表精读：每张图到底在证明什么？</h2>
+      <h2>7. 原文图表精读：每张图到底在证明什么？</h2>
       <p class="lead">下面不是把论文图表当装饰，而是把它们当证据对象来读：先看原文截图，再解释“该看哪里、它支持什么、不支持什么”。</p>
 
       <article class="figure-card">
@@ -364,7 +381,7 @@
     </section>
 
     <section id="spine">
-      <h2>7. 证据线：从问题到结论</h2>
+      <h2>8. 证据线：从问题到结论</h2>
       <img class="diagram" src="assets/evidence_spine.svg" alt="Evidence spine">
       <div class="proof">
         <p><b>问题：</b>RNN/CNN 主干在长程依赖和并行训练上有结构瓶颈。</p>
@@ -376,7 +393,7 @@
     </section>
 
     <section id="limits">
-      <h2>8. 局限和隐藏假设</h2>
+      <h2>9. 局限和隐藏假设</h2>
       <div class="takeaways">
         <ul>
           <li>论文的主战场是机器翻译，不能把结论不加验证地扩展到所有任务。</li>
@@ -391,14 +408,36 @@
       </div>
     </section>
 
+    <section id="faq">
+      <h2>10. 新手最容易误解的点</h2>
+      <div class="cards">
+        <div class="proof-card">
+          <h3>误解 1：Attention 就是 Transformer</h3>
+          <p>不是。Attention 是核心运算，但 Transformer 是一套完整架构：self-attention、cross-attention、position encoding、feed-forward、residual、normalization、masking 和训练 recipe 合在一起才形成可用系统。</p>
+        </div>
+        <div class="proof-card">
+          <h3>误解 2：论文证明 RNN/CNN 永远没用了</h3>
+          <p>不是。论文证明的是在当时机器翻译任务和设定下，attention-only 主干更有质量和效率优势。它没有证明所有序列、视觉、音频或小数据任务里 RNN/CNN 都应该被替代。</p>
+        </div>
+        <div class="proof-card">
+          <h3>误解 3：Multi-head 的每个 head 都一定有明确语义</h3>
+          <p>不一定。多头机制让模型有机会在不同子空间学习不同关系，但论文图示和后续可视化不能保证每个 head 都稳定对应一个人类可命名功能。</p>
+        </div>
+        <div class="proof-card">
+          <h3>误解 4：BLEU 高就等于翻译完全好</h3>
+          <p>不是。BLEU 是自动评价指标，适合快速比较系统，但它不能完整代表忠实性、流畅性和语义质量。读 Table 2 时应把 BLEU 当作当时主流 benchmark 证据，而不是全部质量真相。</p>
+        </div>
+      </div>
+    </section>
+
     <section id="relation">
-      <h2>9. 和其他论文的关系</h2>
+      <h2>11. 和其他论文的关系</h2>
       <p>这篇论文继承 encoder-decoder 和 attention，但改变了 attention 的地位。相对 RNN seq2seq，它去掉递推；相对 CNN seq2seq，它不靠局部卷积堆叠扩大感受野；相对早期 attention，它把 attention 从 encoder-decoder 桥梁扩展为 encoder 和 decoder 内部的主运算。</p>
       <p>后续 Transformer 家族在预训练目标、位置编码、长序列建模、稀疏 attention、归一化、尺度规律和多模态迁移上继续扩展。读这篇论文时，最好把它看作“架构范式起点”，而不是后来所有大模型能力的完整解释。</p>
     </section>
 
     <section id="project">
-      <h2>10. Project Attachment：公开教程演示</h2>
+      <h2>12. Project Attachment：公开教程演示</h2>
       <p><b>Date:</b> 2026-05-22</p>
       <p><b>Current use:</b> repository tutorial demonstration.</p>
       <p><b>Why this paper matters here:</b> 它适合作为 `sci-paper-reader` 的公开演示：论文熟悉、结构清楚、图表证据链完整，可以展示中文摘要解读、方法路线图、proof cards 和 visual HTML 的效果。</p>
