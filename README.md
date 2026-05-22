@@ -26,6 +26,57 @@ flowchart LR
   D --> G["学术写作<br/>academic-manuscript-writing"]
 ```
 
+## 教程入口
+
+如果你第一次打开这个仓库，建议不要从每个 `SKILL.md` 逐个读起。先看教程入口：
+
+| 入口 | 适合谁 | 你会看到什么 |
+|---|---|---|
+| [教程导航](docs/tutorials/README.md) | 想快速知道这套 skills 怎么连起来用 | 项目管理、论文精读、实验卡、写作审计的路线图 |
+| [项目管理教程](docs/tutorials/project-management.md) | 项目已经乱了，想让 Codex 帮你接管长期研究记忆 | `PROJECT_HANDOFF`、实验索引、方向决策、失败原因复盘的完整示例 |
+| [论文精读教程](docs/tutorials/paper-deepread.md) | 想把一篇论文读成“我真的懂了”的 MD/HTML/PPT/Obsidian 包 | 中文摘要解读、图表 proof card、证据线、项目挂接模块示例 |
+
+### 两个最推荐的展示场景
+
+**1. 项目管理：让长期研究不再变成文件迷宫**
+
+```text
+用户：这个方向跑了十几个实验，现在我看不懂了，帮我整理。
+
+Codex 输出：
+1. 当前阶段：result_analysis / direction_review
+2. 中心问题：某信号是否真的解释了目标失败
+3. 已支持证据：E003, E009
+4. 负向边界：F017, F023, F039
+5. 不要继续做：加 epoch、调 loss、换 head
+6. 下一步：先做 no-training cause diagnostic，再决定是否 minimal_probe
+```
+
+**2. 论文精读：不是摘要，而是一份可复用的理解包**
+
+```text
+用户：读这篇 CVPR 论文，中文讲清楚，做成 HTML。
+
+Codex 输出：
+paper_title/
+  paper.pdf
+  paper_understanding_YYYYMMDD.md
+  paper_visual_YYYYMMDD.html
+  assets/
+    abstract_crop.png
+    figure_2_method_flow.png
+    assistant_drawn_mechanism.png
+
+内容包含：
+- 英文标题 + 中文副标题
+- 摘要截图 + 摘要逐段解读
+- 方法路线图
+- 关键图表 proof cards
+- 证据链和局限
+- 和其他论文的关系
+- 日期校准的项目启发模块
+```
+
 ## 每个 skill 集成了哪些功能
 
 ### `sci-research-manager`：研究路线与方向探索中枢
