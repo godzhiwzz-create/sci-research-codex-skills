@@ -8,6 +8,7 @@
 |---|---|---|
 | 项目文件乱，实验太多，看不懂主线 | `sci-research-manager` + `sci-experiment-manager` | [项目管理教程](project-management.md) |
 | 想快速读懂一篇论文，还要有图表和证据线 | `sci-literature-manager` + `sci-paper-reader` | [论文精读教程](paper-deepread.md) |
+| 想直接看论文精读成品 | `sci-paper-reader` | [Attention Is All You Need 精读演示](examples/attention-is-all-you-need/README.md) |
 | 实验结果和论文 claim 对不上 | `sci-paper-manager` + `sci-result-auditor` | 先读 README 的“论文主张必须有证据边界” |
 | 想清理 checkpoint、日志和旧版本 | `sci-asset-manager` | 先生成 delete review，不直接删 |
 | 要写英文论文段落 | `academic-manuscript-writing` | 先确认 claim-evidence map 已经稳定 |
@@ -42,6 +43,8 @@ flowchart TD
 
 看 [论文精读教程](paper-deepread.md)。
 
+也可以直接看成品：[Attention Is All You Need 精读演示](examples/attention-is-all-you-need/README.md)。
+
 你会学到：
 
 - 如何给一篇 PDF 生成中文精读包；
@@ -60,4 +63,3 @@ flowchart TD
 它支持什么，不支持什么？
 下一步是继续、重定向，还是停止？
 ```
-

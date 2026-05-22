@@ -2,6 +2,8 @@
 
 这个教程展示 `sci-paper-reader` 的 deep reader 工作流。目标不是生成一份“摘要翻译”，而是生成一份让没读过论文的人也能快速理解论文问题、方法、证据、图表、局限和文献关系的阅读包。
 
+成品示例可以先看：[Attention Is All You Need 精读演示包](examples/attention-is-all-you-need/README.md)。
+
 ## 1. 一句话使用方式
 
 把 PDF 或论文链接给 Codex：
@@ -145,7 +147,7 @@ problem
 生成 HTML 后检查本地图像：
 
 ```bash
-python ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visual_20260522.html
+python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visual_20260522.html
 ```
 
 这个脚本会检查 HTML 引用的本地图像是否缺失或为空。

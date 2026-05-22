@@ -74,8 +74,8 @@ result_analysis / route_review
 | Evidence | What it supports | What it does not support |
 |---|---|---|
 | E003 | 主方法在目标设置中有稳定收益 | 不证明所有域都优于 RGB |
-| F017 | 当前 feature consistency 目标不成立 | 不否定该物理因素本身 |
-| F039 | 当前 auxiliary head 有正则化效应 | 不证明 localization quality 机制成立 |
+| F012-D01 | 当前一致性目标不成立 | 不否定该研究信号本身 |
+| F018-D02 | 当前辅助头有正则化效应 | 不证明目标机制已经成立 |
 
 ## Failure Cause
 
@@ -134,7 +134,7 @@ research_workspace/paper/CLAIM_EVIDENCE_MAP.md
 | Claim ID | Claim | Evidence | Strength | Status |
 |---|---|---|---|---|
 | C001 | 方法解决了某类 shortcut | E001, E006 | strong | supported |
-| C002 | 该信号能作为通用 detector prior | F017, F039 | weak | unsupported |
+| C002 | 该信号能作为通用任务先验 | F012-D01, F018-D02 | weak | unsupported |
 ```
 
 写论文前先让 Codex 做：

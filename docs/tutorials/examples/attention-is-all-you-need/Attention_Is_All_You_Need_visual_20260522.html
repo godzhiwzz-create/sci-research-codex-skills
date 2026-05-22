@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attention Is All You Need｜中文精读演示</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --soft: #f8fafc;
+      --line: #dbe3ef;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --amber: #f59e0b;
+      --green: #16a34a;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--ink);
+      background: #eef3f8;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .hero {
+      padding: 72px 24px 48px;
+      background: radial-gradient(circle at 85% 15%, rgba(125, 211, 252, .22), transparent 30%),
+                  linear-gradient(135deg, #101827 0%, #243b59 56%, #62748f 100%);
+      color: white;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      color: #dbeafe;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 850px;
+      font-size: 24px;
+      color: #dbeafe;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 34px;
+    }
+    .source-card {
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      box-shadow: 0 22px 50px rgba(2, 6, 23, .28);
+      background: white;
+    }
+    main { padding: 34px 24px 70px; }
+    section {
+      max-width: 1120px;
+      margin: 0 auto 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 24px 0 10px;
+      font-size: 22px;
+    }
+    p { margin: 10px 0; }
+    .lead { font-size: 19px; color: #1f2937; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .meta {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .meta b { display: block; font-size: 14px; color: #64748b; margin-bottom: 4px; }
+    .route {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .route div {
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      border: 1px solid #bfdbfe;
+      min-height: 96px;
+    }
+    .route b { display: block; margin-bottom: 4px; }
+    .diagram {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      margin: 14px 0 6px;
+    }
+    .note, .warning, .proof {
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 18px 0;
+    }
+    .note { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .warning { background: #fff7ed; border: 1px solid #fed7aa; }
+    .proof { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .proof-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      background: #fbfdff;
+    }
+    .proof-card h3 { margin-top: 0; color: #1d4ed8; }
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #075985;
+      font-size: 13px;
+      margin-right: 6px;
+    }
+    code, pre {
+      font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 14px;
+    }
+    pre { padding: 18px; overflow-x: auto; }
+    .takeaways {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .takeaways li { margin-bottom: 8px; }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      color: #64748b;
+      font-size: 14px;
+    }
+    @media (max-width: 820px) {
+      .meta-grid, .route, .cards, .takeaways { grid-template-columns: 1fr; }
+      section { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">sci-paper-reader demo · 中文精读 HTML</div>
+      <h1>Attention Is All You Need</h1>
+      <p class="subtitle">只用注意力机制构建序列建模架构：从“按时间递推”到“token 之间直接通信”。</p>
+      <div class="hero-grid">
+        <img class="source-card" src="assets/source_card.svg" alt="Attention Is All You Need source card">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="identity">
+      <h2>1. 论文身份和阅读目标</h2>
+      <p class="lead">这是一篇架构范式论文。它不是把 attention 当成 RNN 外挂模块，而是把 attention 升级成整个序列模型的主干。</p>
+      <div class="meta-grid">
+        <div class="meta"><b>Authors</b>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin</div>
+        <div class="meta"><b>Venue / Year</b>NeurIPS 2017 / Advances in Neural Information Processing Systems 30</div>
+        <div class="meta"><b>Verified Sources</b><a href="https://arxiv.org/abs/1706.03762">arXiv:1706.03762v7</a> · <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need">NeurIPS proceedings</a></div>
+        <div class="meta"><b>Public Demo Note</b>为避免公开演示页转载长段原文，本页面使用中文释义和自绘图，不复制完整摘要。</div>
+      </div>
+    </section>
+
+    <section id="abstract">
+      <h2>2. 摘要解读：它到底承诺了什么？</h2>
+      <p>摘要首先描述当时的主流背景：序列转导模型主要依赖复杂的 recurrent 或 convolutional encoder-decoder，attention 通常只是连接 encoder 和 decoder 的机制。论文的转折点是：如果 attention 已经负责关键的信息选择，那么能不能让它直接成为主干？</p>
+      <p>作者的回答是 Transformer：一个只依赖 attention 的网络架构。它去掉 recurrence 和 convolution，让序列中的任意两个 token 可以通过 self-attention 直接建立联系。这个决定同时影响表示能力和训练效率，因为矩阵化 attention 比逐步 RNN 更容易并行。</p>
+      <p>摘要中的主证据来自 WMT 2014 机器翻译：论文报告 En-De 28.4 BLEU，En-Fr 41.8 BLEU，并强调训练成本明显降低。这里的重点不是单个分数，而是“质量、并行性、训练时间”三件事一起构成了 Transformer 的初始说服力。</p>
+      <div class="warning"><b>摘要没有证明什么：</b>它没有证明 attention-only 对所有任务都最优，也没有解决长序列二次复杂度，更没有直接解释后来大模型涌现出的全部能力。它证明的是：在当时机器翻译任务上，attention 可以从辅助机制变成主干范式。</div>
+    </section>
+
+    <section id="route">
+      <h2>3. 一分钟路线图</h2>
+      <div class="route">
+        <div><b>旧问题</b>RNN 递推难并行，CNN 依赖局部堆叠。</div>
+        <div><b>新原则</b>让每个 token 直接看所有 token。</div>
+        <div><b>核心机制</b>Scaled dot-product attention + multi-head attention。</div>
+        <div><b>补充机制</b>位置编码、残差、LayerNorm、FFN。</div>
+        <div><b>证据</b>翻译主结果、复杂度表、消融和解析任务。</div>
+      </div>
+      <p>如果只记一句话：Transformer 把“上下文如何传播”这个问题从时间递推改写为全局信息路由。</p>
+    </section>
+
+    <section id="method">
+      <h2>4. 方法结构：Transformer 为什么不是普通注意力模块？</h2>
+      <img class="diagram" src="assets/transformer_flow.svg" alt="Transformer encoder decoder flow">
+      <p>Encoder 负责把输入序列中的每个 token 编成含上下文的信息表示。每层 encoder 有 multi-head self-attention 和 position-wise feed-forward network，外层配 residual connection 和 layer normalization。</p>
+      <p>Decoder 在生成目标序列时不能看到未来 token，所以先用 masked self-attention 处理已生成目标词，再用 encoder-decoder attention 读取源句子表示，最后用 feed-forward network 和 softmax 预测下一个 token。</p>
+      <p>这个结构的关键不是层数，而是所有主要上下文交换都由 attention 完成；位置顺序不再由递推或卷积隐含提供，而是由 positional encoding 显式注入。</p>
+    </section>
+
+    <section id="attention">
+      <h2>5. 注意力机制：Q / K / V 到底在干什么？</h2>
+      <img class="diagram" src="assets/attention_mechanism.svg" alt="Scaled dot-product and multi-head attention">
+      <p>Query 可以理解为“当前位置想找什么信息”，Key 是“每个位置提供的匹配索引”，Value 是“真正要被取走的信息”。QKᵀ 计算匹配程度，softmax 把匹配程度转成权重，然后用这些权重对 V 做加权汇总。</p>
+      <pre>Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V</pre>
+      <p>Multi-head attention 的意义是并行学习多种关系。一个 head 可能偏向局部短语，另一个可能偏向长距离依赖，还有一个可能学习源词与目标词之间的对齐关系。多头不是装饰，而是让模型在多个子空间中分解复杂依赖。</p>
+    </section>
+
+    <section id="figures">
+      <h2>6. 图表 proof cards：应该怎么看证据？</h2>
+      <div class="cards">
+        <div class="proof-card">
+          <h3>Figure 1 · 架构图</h3>
+          <p><span class="tag">mechanism</span>看 encoder 和 decoder 如何都围绕 attention 构建。</p>
+          <p><b>证明什么：</b>论文确实把 attention 作为主干，而不是在 RNN/CNN 旁边添加一个模块。</p>
+          <p><b>不证明什么：</b>结构图本身不证明性能提升，性能要看主结果和消融。</p>
+        </div>
+        <div class="proof-card">
+          <h3>Figure 2 · 注意力计算</h3>
+          <p><span class="tag">mechanism</span>看 Q/K/V、缩放点积和多头拼接。</p>
+          <p><b>证明什么：</b>核心计算可以矩阵化并行，且多头能学习多种关系。</p>
+          <p><b>不证明什么：</b>它不保证每个 head 都有可解释语义。</p>
+        </div>
+        <div class="proof-card">
+          <h3>Table 1 · 复杂度与路径长度</h3>
+          <p><span class="tag">architecture reason</span>看 sequential operations 和 maximum path length。</p>
+          <p><b>证明什么：</b>self-attention 在并行性和长程信息路径上有结构优势。</p>
+          <p><b>不证明什么：</b>复杂度表不等于最终任务性能。</p>
+        </div>
+        <div class="proof-card">
+          <h3>Table 2 · 翻译结果</h3>
+          <p><span class="tag">main evidence</span>看 BLEU 与训练成本一起变化。</p>
+          <p><b>证明什么：</b>在 WMT 2014 翻译任务上，Transformer 同时给出质量和效率证据。</p>
+          <p><b>不证明什么：</b>不能直接外推为所有任务、所有长度、所有数据规模下都优。</p>
+        </div>
+        <div class="proof-card">
+          <h3>Table 3 · 消融</h3>
+          <p><span class="tag">ablation</span>看 head 数、维度、dropout、label smoothing 等变化。</p>
+          <p><b>证明什么：</b>Transformer 不是一个单公式奇迹，容量配置和训练 recipe 很重要。</p>
+          <p><b>不证明什么：</b>消融不能替代更广泛任务验证。</p>
+        </div>
+        <div class="proof-card">
+          <h3>Parsing 结果</h3>
+          <p><span class="tag">generalization</span>看模型被应用到 English constituency parsing。</p>
+          <p><b>证明什么：</b>Transformer 有跨任务潜力。</p>
+          <p><b>不证明什么：</b>这不是论文的主证据，也不代表所有 NLP 任务都已被验证。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="spine">
+      <h2>7. 证据线：从问题到结论</h2>
+      <img class="diagram" src="assets/evidence_spine.svg" alt="Evidence spine">
+      <div class="proof">
+        <p><b>问题：</b>RNN/CNN 主干在长程依赖和并行训练上有结构瓶颈。</p>
+        <p><b>原因假设：</b>序列建模不一定必须通过递推或局部卷积传播上下文。</p>
+        <p><b>方法原则：</b>让 token 之间通过 self-attention 直接通信。</p>
+        <p><b>证明方式：</b>机器翻译主结果 + 复杂度分析 + 消融 + parsing 泛化。</p>
+        <p><b>边界：</b>任务主要是翻译；训练细节重要；长序列 attention 成本随长度平方增长。</p>
+      </div>
+    </section>
+
+    <section id="limits">
+      <h2>8. 局限和隐藏假设</h2>
+      <div class="takeaways">
+        <ul>
+          <li>论文的主战场是机器翻译，不能把结论不加验证地扩展到所有任务。</li>
+          <li>Self-attention 对序列长度有二次复杂度，这成为后续长序列 Transformer 的重要问题。</li>
+          <li>位置编码是显式补丁，因为去掉 recurrence/convolution 后模型不天然知道顺序。</li>
+        </ul>
+        <ul>
+          <li>性能收益不仅来自 architecture，也来自 optimizer、warmup、label smoothing、dropout 等训练 recipe。</li>
+          <li>论文的 head 可视化有启发性，但不能把所有 head 都解释成稳定的人类语义结构。</li>
+          <li>后续大模型能力不能完全回写为这篇论文本身已证明的 claim。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="relation">
+      <h2>9. 和其他论文的关系</h2>
+      <p>这篇论文继承 encoder-decoder 和 attention，但改变了 attention 的地位。相对 RNN seq2seq，它去掉递推；相对 CNN seq2seq，它不靠局部卷积堆叠扩大感受野；相对早期 attention，它把 attention 从 encoder-decoder 桥梁扩展为 encoder 和 decoder 内部的主运算。</p>
+      <p>后续 Transformer 家族在预训练目标、位置编码、长序列建模、稀疏 attention、归一化、尺度规律和多模态迁移上继续扩展。读这篇论文时，最好把它看作“架构范式起点”，而不是后来所有大模型能力的完整解释。</p>
+    </section>
+
+    <section id="project">
+      <h2>10. Project Attachment：公开教程演示</h2>
+      <p><b>Date:</b> 2026-05-22</p>
+      <p><b>Current use:</b> repository tutorial demonstration.</p>
+      <p><b>Why this paper matters here:</b> 它适合作为 `sci-paper-reader` 的公开演示：论文熟悉、结构清楚、图表证据链完整，可以展示中文摘要解读、方法路线图、proof cards 和 visual HTML 的效果。</p>
+      <p><b>Evidence boundary:</b> literature demonstration only. This page is not evidence for any private research project.</p>
+    </section>
+  </main>
+
+  <footer>
+    Sources verified on 2026-05-22: arXiv:1706.03762v7 and NeurIPS proceedings. This demo is a paraphrased educational reading packet with assistant-drawn diagrams.
+  </footer>
+</body>
+</html>

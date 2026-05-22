@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="430" viewBox="0 0 1180 430" role="img" aria-labelledby="title desc">
+  <title id="title">Evidence spine for Attention Is All You Need</title>
+  <desc id="desc">A proof-route diagram for the Attention Is All You Need paper.</desc>
+  <defs>
+    <style>
+      .title{font:700 30px Arial, sans-serif;fill:#0f172a}
+      .txt{font:18px Arial, sans-serif;fill:#1e293b}
+      .small{font:15px Arial, sans-serif;fill:#475569}
+      .card{fill:#fff;stroke:#cbd5e1;stroke-width:2}
+      .arrow{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="430" rx="28" fill="#f8fafc"/>
+  <text x="60" y="58" class="title">证据线：论文不是只提出结构，还要证明结构为什么值得替代旧路线</text>
+  <g>
+    <rect x="60" y="115" width="180" height="150" rx="18" class="card"/>
+    <text x="90" y="155" class="txt">问题</text>
+    <text x="84" y="190" class="small">RNN/CNN 序列建模</text>
+    <text x="84" y="215" class="small">训练依赖和长程路径</text>
+    <text x="84" y="240" class="small">限制效率与表达</text>
+  </g>
+  <path d="M240 190 L295 190" class="arrow"/>
+  <g>
+    <rect x="300" y="115" width="180" height="150" rx="18" class="card"/>
+    <text x="330" y="155" class="txt">原因假设</text>
+    <text x="324" y="190" class="small">递推或局部卷积</text>
+    <text x="324" y="215" class="small">不是序列建模的</text>
+    <text x="324" y="240" class="small">必要条件</text>
+  </g>
+  <path d="M480 190 L535 190" class="arrow"/>
+  <g>
+    <rect x="540" y="115" width="180" height="150" rx="18" class="card"/>
+    <text x="570" y="155" class="txt">方法原则</text>
+    <text x="564" y="190" class="small">全部 token 直接</text>
+    <text x="564" y="215" class="small">通过注意力通信</text>
+    <text x="564" y="240" class="small">再用位置编码补顺序</text>
+  </g>
+  <path d="M720 190 L775 190" class="arrow"/>
+  <g>
+    <rect x="780" y="115" width="180" height="150" rx="18" class="card"/>
+    <text x="810" y="155" class="txt">证据对象</text>
+    <text x="804" y="190" class="small">机器翻译 BLEU</text>
+    <text x="804" y="215" class="small">训练成本</text>
+    <text x="804" y="240" class="small">消融和复杂度表</text>
+  </g>
+  <path d="M960 190 L1015 190" class="arrow"/>
+  <g>
+    <rect x="1020" y="115" width="110" height="150" rx="18" class="card"/>
+    <text x="1045" y="155" class="txt">边界</text>
+    <text x="1040" y="190" class="small">长度二次复杂度</text>
+    <text x="1040" y="215" class="small">任务主要是翻译</text>
+    <text x="1040" y="240" class="small">训练细节重要</text>
+  </g>
+  <text x="70" y="336" class="txt">读法：先看它为什么要摆脱 RNN/CNN，再看注意力如何承担全局信息路由，最后看主表与消融是否支撑这个替代关系。</text>
+</svg>

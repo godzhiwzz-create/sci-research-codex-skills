@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-labelledby="title desc">
+  <title id="title">Transformer encoder decoder flow</title>
+  <desc id="desc">A simplified assistant-drawn Transformer flow diagram.</desc>
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#CBD5E1;stroke-width:2}
+      .head{font:700 25px Arial, sans-serif;fill:#0f172a}
+      .txt{font:18px Arial, sans-serif;fill:#334155}
+      .small{font:15px Arial, sans-serif;fill:#475569}
+      .arrow{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .soft{fill:#eff6ff;stroke:#bfdbfe}
+      .accent{fill:#fef3c7;stroke:#fde68a}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1180" height="760" rx="28" fill="#f8fafc"/>
+  <text x="60" y="56" class="head">Transformer 的主路线：并行编码，逐步解码</text>
+  <text x="60" y="88" class="txt">核心不是“多一个注意力模块”，而是把序列建模从按时间递推改成全局 token-to-token 信息路由。</text>
+  <rect x="70" y="140" width="420" height="545" rx="24" class="box"/>
+  <text x="105" y="184" class="head">Encoder stack</text>
+  <text x="105" y="214" class="txt">读完整输入句子，形成上下文表示</text>
+  <rect x="120" y="260" width="320" height="78" rx="16" class="accent"/>
+  <text x="153" y="292" class="txt">Token embedding</text>
+  <text x="153" y="318" class="small">词向量 + 位置编码</text>
+  <rect x="120" y="382" width="320" height="78" rx="16" class="soft"/>
+  <text x="153" y="414" class="txt">Multi-head self-attention</text>
+  <text x="153" y="440" class="small">每个 token 看所有输入 token</text>
+  <rect x="120" y="504" width="320" height="78" rx="16" class="soft"/>
+  <text x="153" y="536" class="txt">Feed-forward network</text>
+  <text x="153" y="562" class="small">每个位置独立变换</text>
+  <text x="118" y="628" class="small">每层都有 residual + layer normalization</text>
+  <rect x="690" y="140" width="420" height="545" rx="24" class="box"/>
+  <text x="725" y="184" class="head">Decoder stack</text>
+  <text x="725" y="214" class="txt">根据已生成词预测下一个词</text>
+  <rect x="740" y="260" width="320" height="78" rx="16" class="accent"/>
+  <text x="773" y="292" class="txt">Shifted target embedding</text>
+  <text x="773" y="318" class="small">训练时只能看当前位置之前</text>
+  <rect x="740" y="366" width="320" height="78" rx="16" class="soft"/>
+  <text x="773" y="398" class="txt">Masked self-attention</text>
+  <text x="773" y="424" class="small">防止提前看到未来 token</text>
+  <rect x="740" y="472" width="320" height="78" rx="16" class="soft"/>
+  <text x="773" y="504" class="txt">Encoder-decoder attention</text>
+  <text x="773" y="530" class="small">用 decoder query 读取 source 表示</text>
+  <rect x="740" y="578" width="320" height="78" rx="16" class="soft"/>
+  <text x="773" y="610" class="txt">Feed-forward + softmax</text>
+  <text x="773" y="636" class="small">输出下一个 token 概率</text>
+  <path d="M280 338 L280 382" class="arrow"/>
+  <path d="M280 460 L280 504" class="arrow"/>
+  <path d="M900 338 L900 366" class="arrow"/>
+  <path d="M900 444 L900 472" class="arrow"/>
+  <path d="M900 550 L900 578" class="arrow"/>
+  <path d="M440 421 C540 421 620 510 740 510" class="arrow"/>
+  <text x="496" y="402" class="small">encoder memory</text>
+</svg>
