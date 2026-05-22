@@ -127,6 +127,24 @@ evidence route; it does **not** mean making the artifact so short that the user
 must return to the original paper to understand the main claim, method, figures,
 limitations, and project implications.
 
+## Deep Reader Support Files
+
+For a serious visual deep-read packet, keep this `SKILL.md` as the coordinator
+and load only the needed support file:
+
+- Read `references/packet_schema.md` when building a full Markdown-first paper
+  understanding packet.
+- Read `references/evidence_spine.md` when the paper's proof route, figure
+  logic, or relation to other papers is unclear.
+- Read `references/html_visual_guidelines.md` before creating a visual HTML
+  artifact with screenshots, assistant-drawn diagrams, and figure proof cards.
+- After creating HTML, run
+  `python scripts/check_html_assets.py <paper_understanding.html>` to catch
+  missing local images and zero-byte visual assets.
+
+The deep reader workflow is embedded here.  Do not create a separate standalone
+paper-reading skill unless the user explicitly asks for a portable export.
+
 ## Relationship To Other Skills
 
 Use this skill as the coordinator for serious paper reading.

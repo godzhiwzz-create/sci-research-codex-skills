@@ -26,18 +26,180 @@ flowchart LR
   D --> G["学术写作<br/>academic-manuscript-writing"]
 ```
 
-## 包含哪些技能
+## 每个 skill 集成了哪些功能
 
-| Skill | 主要用途 | 不负责什么 |
-|---|---|---|
-| `sci-research-manager` | 研究方向、阶段判断、路线纠偏、失败原因复盘、go/stop 决策 | 具体实验索引细节 |
-| `sci-literature-manager` | 论文库、阅读路线、文献索引、验证队列、论文到实验的交接 | 实验结果管理 |
-| `sci-paper-reader` | 中文论文精读包：问题、方法、图表、证据链、局限、项目启发 | 把论文直接当实验证据 |
-| `sci-experiment-manager` | 实验 ID、实验卡、family card、索引、路径、keep/archive 决策 | 论文主张扩写 |
-| `sci-paper-manager` | claim-evidence map、paper status、figure/table plan、投稿准备 | 无证据写作 |
-| `sci-result-auditor` | 检查实验、主张、表格、草稿和复现信息是否一致 | 发明新方向 |
-| `sci-asset-manager` | 清理候选、冷归档、提交保留清单、删除风险审查 | 研究路线决策 |
-| `academic-manuscript-writing` | 英文学术段落、图表叙述、摘要/引言/讨论等论文写作 | 证据边界判断 |
+### `sci-research-manager`：研究路线与方向探索中枢
+
+用于“现在该往哪走、为什么失败、要不要停”的研究决策层。
+
+集成功能：
+
+- 项目启动 / 恢复：读取 `PROJECT_HANDOFF.md`、计划、阶段和决策日志。
+- 阶段判断：区分 `idea_exploration`、`minimal_probe`、`formal_experiment`、`result_analysis`、`paper_writing`、`submission_prepare`、`maintenance`。
+- 方向探索闭环：按 `problem -> cause -> method hypothesis -> tool role -> validation requirement -> result interpretation -> next problem` 推进。
+- CVPR 级问题流程：先问问题和根因，再谈机制、工具、验证和 stop gate。
+- 失败原因分类：signal mismatch、task mismatch、interface mismatch、supervision mismatch、carrier mismatch、real-domain support mismatch、control/confound failure。
+- 防调参护栏：明确禁止失败后直接加 epoch、seed、loss、head、gate、verifier、query residual、box delta。
+- reference track / main track 分离：防止把强成熟框架的小优化误当原创主线。
+- go / redirect / reference_only / stop / needs_literature 决策输出。
+- 模板：`PROJECT_HANDOFF.md`、`PROJECT_PLAN.md`、`STAGE_PLAN.md`、`DECISION_LOG.md`、`RISK_REGISTER.md`。
+
+不负责：
+
+- 不直接管理具体实验索引细节。
+- 不替代论文库检索和实验卡维护。
+
+### `sci-literature-manager`：独立论文库与阅读路线管理
+
+用于“先从论文建立地基”，把文献从实验文件夹中独立出来。
+
+集成功能：
+
+- 论文库目录标准：按论文分类 / 论文题目组织 PDF、MD、HTML、素材包和 README。
+- 文献发现与整理：建立 seed manifest、paper card、reading route、source verification queue。
+- 文献索引：维护 `LITERATURE_QUERY_MAP.md`、`LITERATURE_INDEX.md`、阅读队列和分类入口。
+- 问题导向阅读路线：把论文映射到 problem、cause、variables、controls、failure modes。
+- 文献到实验交接：生成 experiment-facing literature brief，但不创建实验结果。
+- 查重 / 验证队列：标记 title、venue、DOI、arXiv、PDF、代码链接等需要核验的字段。
+- 与 `sci-paper-reader` 协作：负责找和管论文，精读交给 paper reader。
+
+不负责：
+
+- 不把论文结论当项目实验证据。
+- 不维护实验结果、checkpoint 或 claim-evidence map。
+
+### `sci-paper-reader`：中文论文精读 / Deep Reader
+
+用于“给一篇论文，做出像认真读完一样的理解包”。这就是刚打磨的 deepreader 工作流，现在已并入 `sci-paper-reader`，不再作为单独 skill 混用。
+
+集成功能：
+
+- Markdown-first 精读包：先写完整 `paper_understanding.md`，再派生 HTML / PPT / Word / Obsidian。
+- 中文深度讲解：不是摘要式 bullet，而是讲清 problem、gap、method principle、mechanism、evidence、limitations、paper relation。
+- 论文身份页：英文标题 + 中文副标题，作者、venue/year、paper type、source status、期刊/会议说明。
+- 摘要截图与摘要解读：要求有 abstract/front-page crop，并解释摘要承诺、核心假设、输出和未证明内容。
+- 证据线重建：`problem -> claimed cause -> method principle -> proof object -> ablation -> limitation -> project implication`。
+- 图表精读卡：每张关键图/表说明“看哪里、证明什么、用什么 control、不能证明什么”。
+- 视觉 HTML 规范：支持截图、原文图表 crop、assistant-drawn 架构图/机制图、导航、proof cards、项目 attachment。
+- 截图排版规则：保留图像长宽比，页面适应截图，不拉伸图表。
+- Obsidian / Word / PPT 协调：可输出 Obsidian 结构、Word 文档，PPT 可交给 `deckforge-paper2ppt`。
+- 项目挂接模块：正文讲论文本身，最后单独写带日期的 project attachment，避免被当前项目视角污染。
+- 内置参考文件：
+  - `references/packet_schema.md`：完整精读包结构。
+  - `references/evidence_spine.md`：证据链和图表 proof-card 规则。
+  - `references/html_visual_guidelines.md`：视觉 HTML 排版与图表解释规范。
+- 内置脚本：
+  - `scripts/check_html_assets.py`：检查 HTML 引用的本地图像是否缺失或为空。
+
+不负责：
+
+- 不把论文直接升级为项目 claim。
+- 不创建实验 ID 或训练计划，除非先输出 literature-to-experiment brief。
+
+### `sci-experiment-manager`：实验卡、索引和证据检索
+
+用于“实验怎么记录才不会乱”，重点是低 token 检索和证据链。
+
+集成功能：
+
+- 实验 ID 规则：正式实验用 `E001`，方向族和多 probe 用 `F012-D01` 这类 family/sub-study。
+- 实验卡模板：记录 hypothesis、setup、config path、run path、result path、summary、status、paper role、tags、related experiments、keep/archive。
+- Family card：把多个小实验合并为一个方向族，避免 active 文件夹被几十个子实验淹没。
+- Query map 检索：先用 `QUERY_MAP.md` 找相关 family，再读 index 和卡片。
+- 实验索引：维护 `EXPERIMENT_INDEX.md` 和 `EXPERIMENT_INDEX.csv`。
+- 结果收集脚本：
+  - `scripts/generate_experiment_card.py`
+  - `scripts/update_experiment_index.py`
+  - `scripts/collect_results.py`
+- 合并 / 归档逻辑：多个实验合一时保留 canonical family card，子卡归档或并入 synthesis block。
+- Paper role 管理：区分 main_result、diagnostic_only、negative_evidence、internal_exploration 等。
+
+不负责：
+
+- 不设计研究方向本身。
+- 不写论文主张，不替代 claim-evidence map。
+
+### `sci-paper-manager`：论文主张、草稿和投稿包管理
+
+用于“论文怎么写才不虚”，把实验结果变成可审计的论文结构。
+
+集成功能：
+
+- `draft_core` / `submission_targets` 两阶段：先写通用论文核心，再做目标期刊/会议格式。
+- Claim-evidence map：维护 `CLAIM_EVIDENCE_MAP.md`，每个主张必须对应证据。
+- Paper status：记录论文当前状态、中心故事、已支持/未支持 claims。
+- Figure/table plan：维护 `FIGURE_PLAN.md`、`TABLE_PLAN.md`。
+- Claim 强度分级：main_claim、trend_only、diagnostic_only、negative_boundary、internal_exploration、unsupported。
+- 投稿要求缓存：目标期刊/会议确定后，把官方 author guideline、template、word/page limits、figure/table/supplementary、ethics/funding/data/code availability 写进 `guideline_notes.md`。
+- 投稿包模板：submission checklist、format compliance report、revision log、section template。
+
+不负责：
+
+- 不凭空补结果。
+- 不在没有官方 guideline 时猜投稿格式。
+
+### `sci-result-auditor`：结果、主张和项目一致性审计
+
+用于“我现在写的东西到底有没有证据支撑”。
+
+集成功能：
+
+- 项目一致性检查：实验卡、索引、claim map、paper status、草稿之间是否一致。
+- 脚本审计：
+  - `scripts/check_project_consistency.py`
+- Claim audit：检查 unsupported claim、旧路线残留、探索结果被误写成正式贡献。
+- 实验审计：检查 dataset split、seed、config、metric、baseline、公平性和 raw path。
+- 复现审计：检查 config/result/log 路径是否可追溯。
+- go/no-go 决策：对 minimal probe 给出 go、pause、blocked、stop。
+- 审稿人视角：指出最容易被质疑的证据漏洞。
+
+不负责：
+
+- 不发明新方向。
+- 不修改结果，除非用户明确要求修复记录。
+
+### `sci-asset-manager`：资产清理、冷归档和删除审查
+
+用于“项目文件太乱，但不能误删证据”。
+
+集成功能：
+
+- 删除前审查：生成 `delete_review.md`，列路径、原因、实验 ID、证据风险和建议动作。
+- 冷归档清单：`cold_archive_manifest.md`。
+- 投稿保留清单：`submission_keep_list.md`。
+- Archive review：阶段结束、draft_core 完成、投稿前做归档审查。
+- 保留规则：永远保留 experiment card、config、result summary、run command、archive note、claim relation。
+- 可清理对象：大 checkpoint、cache、重复日志、临时输出、失败中间权重。
+
+不负责：
+
+- 不直接删除文件，除非用户明确下令。
+- 不决定研究路线是否继续。
+
+### `academic-manuscript-writing`：证据驱动的英文学术写作
+
+用于“研究路线和证据边界已经清楚后，把论文段落写好”。
+
+集成功能：
+
+- 英文 manuscript drafting / rewriting：摘要、引言、related work、methods、results、discussion、conclusion。
+- Section playbooks：不同论文部分的组织方式。
+- Evidence-chain writing：把实验角色变成论文章节逻辑。
+- Figure/table narration：写清楚图表测什么、模式是什么、为什么支持结论。
+- Journal-style English：更克制、更证据化的学术表达。
+- Claim calibration：避免 robust / significant / superior 等过度表述。
+- 参考文件：
+  - `references/workflow.md`
+  - `references/section-playbooks.md`
+  - `references/evidence-chain.md`
+  - `references/figure-table-writing.md`
+  - `references/style-rules.md`
+  - `references/examples.md`
+
+不负责：
+
+- 不替代研究路线决策。
+- 不判断实验是否足够支撑 claim；这个先交给 `sci-paper-manager` / `sci-result-auditor`。
 
 ## 核心工作流
 
