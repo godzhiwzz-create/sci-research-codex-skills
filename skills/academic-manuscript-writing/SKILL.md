@@ -1,12 +1,16 @@
 ---
 name: academic-manuscript-writing
-description: Academic paper and LaTeX manuscript drafting/revision focused on evidence-aware writing, section restructuring, figure/table narration, experiment-to-claim alignment, and journal-style English. Use when drafting or rewriting abstracts, introductions, related work, observation/results, mechanism analysis, discussion, conclusion, or when turning experiment folders into a manuscript evidence chain. Do not use for marketing/blog writing, bibliography lookup alone, or pure LaTeX build/debug tasks without writing intent.
+description: Academic paper and LaTeX manuscript drafting/revision focused on evidence-aware prose, section restructuring, figure/table narration, experiment-to-claim alignment, and journal-style English. Use when drafting or rewriting abstracts, introductions, related work, observation/results, mechanism analysis, discussion, or conclusion after the research route and claim boundaries are known. For project route decisions use sci-research-manager; for claim/evidence bookkeeping use sci-paper-manager; for pure audit use sci-result-auditor. Do not use for marketing/blog writing, bibliography lookup alone, or pure LaTeX build/debug tasks without writing intent.
 ---
 
 # Academic Manuscript Writing
 
 ## What this skill is for
 Use this skill to draft or revise academic manuscripts in English-first journal style. Use it to reshape sections around evidence, turn experiment folders into a claim-backed paper outline, and tighten figures and tables into argumentative prose.
+
+Use this as the prose and section-writing layer, not as the research route
+owner. When the claim map or evidence status is unclear, resolve that first with
+`sci-paper-manager` or `sci-result-auditor`.
 
 ## What this skill is not for
 Do not use this skill for:

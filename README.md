@@ -2,13 +2,15 @@
 
 Codex skills for long-term, experiment-driven SCI paper projects.
 
-This package helps Codex act less like a one-off writing assistant and more like a research workflow partner: it keeps project direction stable, retrieves experiment evidence with low context cost, prevents unsupported paper claims, and preserves enough metadata to make results auditable later.
+This package helps Codex act less like a one-off writing assistant and more like a research workflow partner: it keeps project direction stable, grounds new ideas in literature, retrieves experiment evidence with low context cost, prevents unsupported paper claims, and preserves enough metadata to make results auditable later.
 
 ## Skills Included
 
 | Skill | Use it for |
 |---|---|
 | `sci-research-manager` | Project handoff memory, stage planning, decisions, risks, and direction control |
+| `sci-literature-manager` | Paper discovery, library organization, reading-route maps, verification queues, and literature-to-experiment handoff |
+| `sci-paper-reader` | Deep Chinese paper-understanding packets with problem route, method route, figure/table explanations, evidence spine, and project attachment |
 | `sci-experiment-manager` | Experiment IDs, experiment cards, lightweight indexes, result paths, and keep levels |
 | `sci-paper-manager` | Evidence-driven manuscript drafting, claim maps, paper status, figure/table plans, and target-journal preparation |
 | `sci-result-auditor` | Consistency checks across experiments, claims, paper drafts, and reproducibility metadata |
@@ -30,6 +32,8 @@ Install only selected skills:
 ```bash
 mkdir -p ~/.codex/skills
 cp -R sci-research-codex-skills/skills/sci-research-manager ~/.codex/skills/
+cp -R sci-research-codex-skills/skills/sci-literature-manager ~/.codex/skills/
+cp -R sci-research-codex-skills/skills/sci-paper-reader ~/.codex/skills/
 cp -R sci-research-codex-skills/skills/sci-experiment-manager ~/.codex/skills/
 cp -R sci-research-codex-skills/skills/sci-paper-manager ~/.codex/skills/
 ```
@@ -48,6 +52,10 @@ research_workspace/
     EXPERIMENT_INDEX.md
     EXPERIMENT_INDEX.csv
     cards/
+  literature/
+    indexes/
+    paper_packets/
+    reading_routes/
   paper/
     PAPER_STATUS.md
     CLAIM_EVIDENCE_MAP.md
@@ -115,7 +123,23 @@ Use sci-research-manager. Initialize the project memory files for my new SCI pap
 
 Codex should fill `PROJECT_HANDOFF.md`, `STAGE_PLAN.md`, and `DECISION_LOG.md` with a compact, reusable project state.
 
-### 4. Add An Experiment
+### 4. Build The Literature Layer Before Experiments
+
+When a new idea is not yet mechanically clear, ask Codex:
+
+```text
+Use sci-literature-manager and sci-paper-reader. Build a paper-first reading route for this research problem. Do not design experiments until the papers produce a hypothesis, variables, controls, success criteria, failure criteria, and do-not-do-next list.
+```
+
+For a single important paper, ask:
+
+```text
+Use sci-paper-reader. Create a Chinese paper-understanding packet with abstract interpretation, method route, figure/table explanations, evidence spine, limitations, relation to other papers, and a dated project attachment at the end.
+```
+
+The paper packet explains the paper itself first. Project-specific implications belong at the end and must not become experiment evidence unless your own experiments verify them.
+
+### 5. Add An Experiment
 
 Create a card:
 
@@ -129,7 +153,7 @@ Then ask Codex:
 Use sci-experiment-manager. Update E001 with the real config path, run path, result path, status, paper role, tags, and one-line summary. Do not invent missing metrics.
 ```
 
-### 5. Map Claims To Evidence
+### 6. Map Claims To Evidence
 
 After results exist, ask:
 
@@ -139,7 +163,7 @@ Use sci-paper-manager. Add the supported claims to CLAIM_EVIDENCE_MAP.md and mar
 
 This keeps draft text from drifting beyond the experiment evidence.
 
-### 6. Audit Before Writing Or Submission
+### 7. Audit Before Writing Or Submission
 
 Run the consistency checker from your project root:
 
@@ -156,11 +180,43 @@ Use sci-result-auditor. Review the generated consistency report and tell me whic
 ## Typical Workflow
 
 1. Capture the research direction in `PROJECT_HANDOFF.md`.
-2. Use `QUERY_MAP.md` to retrieve only the experiments relevant to the current task.
-3. Record each experiment in a card and in both experiment indexes.
-4. Link paper claims to experiment IDs in `CLAIM_EVIDENCE_MAP.md`.
-5. Keep unsupported ideas marked as `uncertain`, `preliminary`, or `needs verification`.
-6. Use result auditing before major paper writing, rebuttal work, or submission formatting.
+2. Use the literature layer when the mechanism is unclear or the user wants paper-grounded exploration.
+3. Use `QUERY_MAP.md` to retrieve only the experiments relevant to the current task.
+4. Record each experiment in a card and in both experiment indexes.
+5. Link paper claims to experiment IDs in `CLAIM_EVIDENCE_MAP.md`.
+6. Keep unsupported ideas marked as `uncertain`, `preliminary`, or `needs verification`.
+7. Use result auditing before major paper writing, rebuttal work, or submission formatting.
+
+## Direction Exploration Loop
+
+The research manager now treats direction exploration as a closed loop:
+
+```text
+problem -> cause -> method hypothesis -> mechanism/tool
+-> validation requirements -> result interpretation -> next problem
+```
+
+Use this loop when the user asks for a new architecture direction, root-cause
+review, or why a line of experiments failed.  The expected answer is not a list
+of local tweaks.  It should identify the failed assumption, compare supportive
+and negative evidence, state what must not be tried next, and decide whether
+the route should continue, redirect, become reference-only, stop, or go back to
+literature.
+
+## Paper Foundation Layer
+
+The literature skills are independent from experiment records:
+
+- `sci-literature-manager` owns paper discovery, source verification, library
+  folders, reading queues, and problem-driven reading routes.
+- `sci-paper-reader` owns serious paper-understanding artifacts: Markdown
+  first, with optional HTML/PPT/Word derivatives built from the same argument
+  route.
+- Experiment IDs are created only after literature produces a concrete
+  validation requirement.
+
+This prevents the common failure mode where a paper, metric, or physical cue is
+turned directly into a detector plug-in before its role has been established.
 
 ## Privacy Checklist Before Publishing Your Own Project
 

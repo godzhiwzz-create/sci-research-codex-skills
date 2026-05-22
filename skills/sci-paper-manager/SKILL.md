@@ -1,6 +1,6 @@
 ---
 name: sci-paper-manager
-description: Manage evidence-driven SCI paper writing, including draft-core workflow, claim-evidence mapping, paper status tracking, figure/table plans, target journal preparation, and unsupported-claim control. Use when writing, revising, auditing, or preparing a research manuscript.
+description: Manage evidence-driven SCI paper writing, including draft-core workflow, claim-evidence mapping, paper status tracking, figure/table plans, target journal preparation, and unsupported-claim control. Use when creating or revising manuscript structure, sections, figures/tables, claim-evidence maps, or submission packages. For pure result/claim consistency audits without manuscript writing, prefer sci-result-auditor.
 ---
 
 # sci-paper-manager
@@ -8,6 +8,11 @@ description: Manage evidence-driven SCI paper writing, including draft-core work
 ## Purpose
 
 Manage evidence-driven SCI paper writing without losing the project's central story or mixing old unsupported content into the current manuscript.
+
+This skill owns manuscript artifacts and claim-to-paper organization. It does
+not replace `sci-result-auditor` for pure evidence audits or
+`academic-manuscript-writing` for prose-level drafting once the claim structure
+is already fixed.
 
 ## Startup rule
 
@@ -103,6 +108,31 @@ Before writing any section:
 Every paper claim must have a claim ID and evidence in `CLAIM_EVIDENCE_MAP.md`.
 
 If no evidence exists, mark it as unsupported and propose the missing experiment. Do not phrase it as a confirmed conclusion.
+
+## Claim-strength rule
+
+When updating a manuscript or `CLAIM_EVIDENCE_MAP.md`, classify each important claim:
+
+- `main_claim`: central conclusion supported by formal or strongest available evidence.
+- `trend_only`: average direction or limited signal; avoid words like significant, robust, or superior unless tested.
+- `diagnostic_only`: mechanism or behavior evidence, not a performance claim.
+- `negative_boundary`: failed or boundary result that narrows the method scope.
+- `internal_exploration`: useful for decisions but not paper-facing unless moved into discussion/appendix.
+- `unsupported`: no confirmed evidence; do not write as fact.
+
+Manuscript wording must match the claim strength. A `trend_only` or
+`diagnostic_only` result should not be written as a final method contribution.
+
+## Evidence-to-writing rule
+
+For each section, first decide the claim role:
+
+1. what the evidence proves;
+2. what it only suggests;
+3. what it explicitly does not prove;
+4. whether it belongs in main text, appendix, discussion boundary, or internal notes only.
+
+This prevents result tables from becoming a stitched experiment log.
 
 ## Old-content rule
 

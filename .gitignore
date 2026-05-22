@@ -7,3 +7,4 @@ __pycache__/
 *.pem
 *.key
 id_rsa*
+github-project-homepage*.png
