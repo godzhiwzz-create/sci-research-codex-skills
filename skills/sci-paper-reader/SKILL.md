@@ -24,6 +24,12 @@ paper into a **Paper Understanding Packet**:
 - how it relates to other papers;
 - what it means for the current project.
 
+Default audience assumption: the reader is intelligent but may be new to the
+topic.  Do not write only for someone who already knows the field.  Before using
+a term, formula, module, benchmark, or figure as evidence, teach the minimum
+background needed to understand it.  "精炼" means removing repetition, not
+removing the reasoning ladder.
+
 Literature is the ground, but it is not experiment evidence.  A paper can
 inspire a hypothesis; only project experiments can support project claims.
 
@@ -42,7 +48,10 @@ briefly in the original language when they help precision, but the explanation,
 route, figure guide, and project implication should be written in Chinese.
 
 It should be readable by someone who has not read the paper.  The default is
-not a short abstract summary.  It is a compact, complete understanding artifact.
+not a short abstract summary.  It is a complete guided reading artifact.  It
+must explain prerequisite concepts, unpack method steps, interpret figures and
+tables, and connect evidence to claims so the user does not need to reopen the
+paper just to understand the main route.
 
 Optional output formats:
 
@@ -132,6 +141,8 @@ limitations, and project implications.
 For a serious visual deep-read packet, keep this `SKILL.md` as the coordinator
 and load only the needed support file:
 
+- Read `references/novice_depth_standard.md` for every full paper
+  understanding packet unless the user explicitly asks for a brief preview.
 - Read `references/packet_schema.md` when building a full Markdown-first paper
   understanding packet.
 - Read `references/evidence_spine.md` when the paper's proof route, figure
@@ -203,11 +214,12 @@ Required output structure:
 ```markdown
 # Paper Understanding Packet
 
-## 0. 一分钟讲明白
-- 这篇论文在解决什么问题
-- 它为什么需要一个新想法
-- 核心想法是什么
-- 主要证据是什么
+## 0. 给完全没读过的人先讲明白
+- 这篇论文在解决什么现实/学术问题
+- 不懂这个领域的人需要先知道哪些概念
+- 旧方法为什么不够
+- 新方法的核心直觉是什么
+- 论文拿什么证据说服读者
 - 最重要的局限是什么
 
 ## 1. 论文身份
@@ -227,15 +239,17 @@ Required output structure:
 
 ## 4. 方法路线图
 - 输入是什么
+- 每个关键概念先用生活化类比/直观解释说明
 - 主要步骤 / 模块是什么
+- 每个模块为什么存在，不存在会怎样
 - 训练 / 监督 / 目标是什么
 - 输出是什么
 - 哪些是真创新，哪些是借用已有工具
 
 ## 5. 图表阅读指南
-- Figure 1：看什么，证明什么
-- Figure 2：看什么，证明什么
-- 关键表格：哪些数字重要，为什么重要
+- Figure 1：先描述画面，再解释怎么读，再说明证明什么
+- Figure 2：逐个视觉元素解释，不假设读者懂符号
+- 关键表格：解释行、列、baseline、数字方向、结论边界
 
 ## 6. 证据链
 - 主结果
@@ -254,7 +268,12 @@ Required output structure:
 - 不能过度声称什么
 - 什么时候该用这篇论文
 
-## 9. 对当前项目的启发
+## 9. 新手 FAQ / 容易误解的点
+- 读者可能卡在哪里
+- 论文名字或模块名容易造成什么误解
+- 哪些常见说法其实不是本文证明的
+
+## 10. 对当前项目的启发
 - 它提示我们的问题是什么
 - 它提供哪些变量 / 控制 / 诊断思路
 - 它支持 continue / redirect / reference_only / stop 哪种决策

@@ -76,9 +76,11 @@ paper_title/
 内容包含：
 - 英文标题 + 中文副标题
 - 摘要截图 + 摘要逐段解读
+- 新手预备知识：任务、术语、指标、baseline、具体例子
 - 方法路线图
-- 关键图表 proof cards
+- 原文关键图表截图 + 逐图 proof cards
 - 证据链和局限
+- 常见误解 / 新手 FAQ
 - 和其他论文的关系
 - 日期校准的项目启发模块
 ```
@@ -135,16 +137,19 @@ paper_title/
 
 - Markdown-first 精读包：先写完整 `paper_understanding.md`，再派生 HTML / PPT / Word / Obsidian。
 - 中文深度讲解：不是摘要式 bullet，而是讲清 problem、gap、method principle、mechanism、evidence、limitations、paper relation。
+- 新手深读标准：默认假设读者不懂该领域，补齐任务、术语、指标、baseline、公式和图表读法。
 - 论文身份页：英文标题 + 中文副标题，作者、venue/year、paper type、source status、期刊/会议说明。
 - 摘要截图与摘要解读：要求有 abstract/front-page crop，并解释摘要承诺、核心假设、输出和未证明内容。
 - 证据线重建：`problem -> claimed cause -> method principle -> proof object -> ablation -> limitation -> project implication`。
-- 图表精读卡：每张关键图/表说明“看哪里、证明什么、用什么 control、不能证明什么”。
+- 图表精读卡：每张关键图/表说明“看哪里、怎么读、证明什么、用什么 control、不能证明什么”。
 - 视觉 HTML 规范：支持截图、原文图表 crop、assistant-drawn 架构图/机制图、导航、proof cards、项目 attachment。
 - 截图排版规则：保留图像长宽比，页面适应截图，不拉伸图表。
+- 常见误解：区分论文真正证明的内容和后人常见过度外推。
 - Obsidian / Word / PPT 协调：可输出 Obsidian 结构、Word 文档，PPT 可交给 `deckforge-paper2ppt`。
 - 项目挂接模块：正文讲论文本身，最后单独写带日期的 project attachment，避免被当前项目视角污染。
 - 内置参考文件：
   - `references/packet_schema.md`：完整精读包结构。
+  - `references/novice_depth_standard.md`：新手可懂的深读深度标准。
   - `references/evidence_spine.md`：证据链和图表 proof-card 规则。
   - `references/html_visual_guidelines.md`：视觉 HTML 排版与图表解释规范。
 - 内置脚本：

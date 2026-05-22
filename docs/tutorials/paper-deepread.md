@@ -13,6 +13,7 @@ Use sci-literature-manager and sci-paper-reader.
 Read this paper deeply in Chinese.
 First create a Markdown understanding packet, then create a visual HTML packet.
 Include abstract screenshot, abstract interpretation, method route, figure/table proof cards, limitations, relation to other papers, and a dated project attachment.
+Assume the reader is new to this topic: explain prerequisite concepts, metrics, formulas, figures, and common misunderstandings in Chinese.
 ```
 
 ## 2. 推荐文件结构
@@ -135,13 +136,15 @@ problem
 - 英文标题 + 中文副标题；
 - 论文身份卡；
 - 摘要截图 + 详细摘要解读；
+- 新手预备知识：任务、术语、指标、baseline、一个具体例子；
 - 阅读路线导航；
 - 方法流程图；
 - assistant-drawn 机制图；
 - 原论文关键图表 crop；
-- proof cards；
+- proof cards：先描述图里有什么，再讲怎么读、证明什么、不证明什么；
 - limitations；
 - relation-to-other-papers map；
+- 常见误解 / 新手 FAQ；
 - 日期校准的 project attachment。
 
 生成 HTML 后检查本地图像：
@@ -185,6 +188,8 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 | 只翻译摘要 | 写 abstract interpretation，解释承诺、假设和未证明内容 |
 | 只列模块 | 写 method principle 和每个模块存在的原因 |
 | 图表只贴不讲 | 每张关键图表写 proof card |
+| 默认读者懂术语、公式和数据集 | 先写 prerequisite ladder 和 concept dictionary |
+| 表格只复述数字 | 解释 baseline、指标方向、差距大小和结论边界 |
 | 读完马上设计实验 | 先输出 literature-to-experiment brief |
 | 用当前项目视角重写整篇论文 | 主体讲论文，项目启发放最后 |
 | 重要句子全翻译成中文失去精度 | 可以短引原句，但解释用中文 |
@@ -195,8 +200,10 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 Use sci-paper-reader.
 Create a Chinese paper understanding packet for this PDF.
 Do not make it a short summary.
-Explain the abstract, problem, method route, key figures/tables, evidence spine,
-limitations, relation to other papers, and a dated project attachment.
+Assume the reader is new to the topic. Explain prerequisite concepts, terms,
+metrics, formulas, method route, key figures/tables, evidence spine,
+limitations, common misunderstandings, relation to other papers, and a dated
+project attachment.
 If you create HTML, preserve figure aspect ratios and run the HTML asset checker.
 ```
 

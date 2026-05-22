@@ -26,16 +26,23 @@ For each figure/table, write a proof card:
 ### Figure/Table X
 
 What it shows:
+What a beginner sees first:
 What to look at:
+How to read the rows/columns/arrows/axes:
 Comparison/control:
 Paper claim supported:
 What it does not prove:
 Why it matters:
+One-glance pointer:
 ```
 
 The explanation should be readable without seeing the whole paper.  If a number
 matters, explain the baseline, direction, and implication; do not just repeat
 the number.
+
+For beginner-facing packets, each proof card should include enough local
+context that the reader understands the figure without knowing the surrounding
+section of the paper.
 
 ## Claim Calibration
 
@@ -71,6 +78,8 @@ Stop and rebuild the spine if the output:
 - lists modules without explaining why each module exists;
 - says "performance improves" without naming the baseline/control;
 - uses a figure without explaining what the reader should inspect;
+- uses a metric or dataset name without explaining what it measures;
+- repeats a table's numbers without interpreting the direction and size of the
+  comparison;
 - treats a mature framework's built-in mechanism as the user's contribution;
 - hides limitations or missing controls.
-

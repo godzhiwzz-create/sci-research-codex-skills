@@ -8,6 +8,10 @@ rather than a short summary.
 Write the Markdown packet first.  HTML, PPTX, Word, and Obsidian outputs are
 derivatives of the Markdown proof route, not separate summaries.
 
+For full deep reads, apply `novice_depth_standard.md`: assume the reader is new
+to the topic and needs prerequisite concepts, method intuition, figure/table
+teaching, and claim boundaries.  Do not compress away the reasoning ladder.
+
 The main body explains the paper itself.  Project-specific interpretation goes
 at the end under a dated project attachment so future projects can reuse the
 reading without inheriting today's project lens.
@@ -46,6 +50,19 @@ Interpret the abstract in Chinese:
 
 This section should be detailed enough that a reader can understand the paper's
 promise before reading the method.
+
+### 1.5 Prerequisite Ladder
+
+Before the background/method sections, teach the minimum needed context:
+
+- task definition in plain language;
+- important terms and symbols;
+- baseline and metric definitions;
+- one concrete example;
+- what the reader should watch for in the method and results.
+
+This section is mandatory for papers whose main idea depends on field-specific
+terminology, formulas, model families, benchmarks, or metrics.
 
 ### 2. One-Minute Explanation
 
@@ -94,6 +111,15 @@ Describe:
 
 Use a diagram when the method has more than two moving parts.
 
+For each module, include:
+
+- plain-language intuition;
+- role in the full method;
+- what would fail or weaken without it;
+- whether it is a core innovation, supporting engineering, or inherited tool.
+
+For each formula, unpack symbols, operations, and intuition line by line.
+
 ### 6. Figure And Table Reading Guide
 
 For each important figure/table, write:
@@ -107,6 +133,11 @@ For each important figure/table, write:
   analysis.
 
 Do not simply paste captions.  Teach the reader how to read the evidence.
+
+For visual outputs, include original crops for important proof objects when
+copyright and source availability allow.  Preserve aspect ratio and pair each
+crop with a detailed teaching explanation.  Crops without interpretation are
+not acceptable.
 
 ### 7. Evidence Spine
 
@@ -157,8 +188,13 @@ Keep this section explicitly separate from the paper's own claims.
 The packet should let a reader who has not opened the PDF understand:
 
 - the paper's problem;
+- the prerequisite concepts needed to follow the paper;
 - the method route;
 - the important figures/tables;
 - why the evidence supports or fails to support the claim;
 - how the paper relates to neighboring literature;
 - how it can and cannot be used in a project.
+
+If the packet only helps someone who already knows the field, it fails the
+quality bar.  Increase background explanation, concept definitions, figure
+walkthroughs, and result interpretation rather than shortening the artifact.
