@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>教程导航｜SCI Research Codex Skills</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --card: #ffffff;
+      --blue: #2264d1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--ink);
+      background: #f2f5f9;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      background: #132237;
+      color: #fff;
+      padding: 54px 22px 38px;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; }
+    h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.08; }
+    .subtitle { margin: 16px 0 0; max-width: 780px; color: #dbeafe; font-size: 20px; }
+    main { padding: 28px 22px 62px; }
+    section {
+      max-width: 1040px;
+      margin: 0 auto 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(16, 32, 51, .05);
+    }
+    h2 { margin: 0 0 12px; font-size: 25px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 18px;
+      min-height: 170px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 19px; }
+    .card p { margin: 0 0 12px; color: var(--muted); }
+    .back { display: inline-flex; margin-bottom: 18px; }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="back" href="../">← 返回首页</a>
+      <h1>教程导航</h1>
+      <p class="subtitle">这里把仓库里的技能说明转换成可直接阅读的教程入口。你可以先看成品，再回到 GitHub 复制或安装 skills。</p>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>从这里开始</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>项目管理教程</h3>
+          <p>适合项目文件乱、实验太多、主线不清楚的场景。重点是项目记忆、实验索引、失败原因和下一步决策。</p>
+          <a href="project-management.md">阅读 Markdown 教程</a>
+        </article>
+        <article class="card">
+          <h3>论文精读教程</h3>
+          <p>适合想让 Codex 把一篇论文读成 MD/HTML/PPT/Obsidian 理解包的场景。重点是摘要解读、图表 proof card 和证据线。</p>
+          <a href="paper-deepread.md">阅读 Markdown 教程</a>
+        </article>
+        <article class="card">
+          <h3>Attention Is All You Need 精读演示</h3>
+          <p>这是 `sci-paper-reader` 的公开 HTML 成品示例，可以直接在浏览器里查看渲染效果。</p>
+          <a href="examples/attention-is-all-you-need/">打开渲染后的演示网页</a>
+        </article>
+        <article class="card">
+          <h3>返回 GitHub 仓库</h3>
+          <p>查看完整 skill 源文件、安装方式、脚本和 README。</p>
+          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills">打开 GitHub 仓库</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

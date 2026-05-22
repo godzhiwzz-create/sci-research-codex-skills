@@ -33,7 +33,11 @@ assets/
 
 ## 如何查看 HTML
 
-直接打开：
+在线渲染版：
+
+- [GitHub Pages HTML 演示](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/)
+
+本地直接打开：
 
 ```text
 Attention_Is_All_You_Need_visual_20260522.html

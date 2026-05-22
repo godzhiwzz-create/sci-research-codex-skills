@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCI Research Codex Skills｜中文教程与演示</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --soft: #f5f7fb;
+      --card: #ffffff;
+      --blue: #2264d1;
+      --green: #0f9f6e;
+      --amber: #bc7a00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--ink);
+      background: #eef2f7;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .hero {
+      background: linear-gradient(135deg, #102033 0%, #244a70 58%, #587692 100%);
+      color: #fff;
+      padding: 78px 22px 54px;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.28);
+      color: #e8f2ff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 74px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      margin: 20px 0 0;
+      max-width: 870px;
+      color: #d8e7f7;
+      font-size: 22px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 17px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.34);
+      color: #fff;
+      background: rgba(255,255,255,.12);
+    }
+    .button.primary {
+      background: #ffffff;
+      color: #102033;
+      border-color: #ffffff;
+    }
+    main { padding: 34px 22px 72px; }
+    section {
+      max-width: 1120px;
+      margin: 0 auto 26px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 10px 28px rgba(16, 32, 51, .05);
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      letter-spacing: 0;
+    }
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 840px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      background: #fff;
+      min-height: 210px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+    .card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      color: #10315e;
+      background: #e8f1ff;
+      border: 1px solid #cbdcf8;
+      font-weight: 700;
+    }
+    .tag.green {
+      color: #075c40;
+      background: #e8f8f1;
+      border-color: #bfe9d5;
+    }
+    .tag.amber {
+      color: #6b4300;
+      background: #fff4dc;
+      border-color: #f3d596;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .step {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .step strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    .demo-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 22px;
+      align-items: center;
+    }
+    .preview {
+      background: #132237;
+      color: #dbeafe;
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid #253852;
+    }
+    .preview .title {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .preview ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 22px 44px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 860px) {
+      .grid, .flow, .demo-box { grid-template-columns: 1fr; }
+      .hero { padding-top: 54px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="badge">SCI Research Codex Skills · 在线教程</div>
+      <h1>把长期科研项目整理成可追踪、可写作、可复用的工作流</h1>
+      <p class="subtitle">这套 skills 关注 SCI 论文项目中的方向管理、论文精读、实验证据、论文主张和归档审计。这里是 GitHub Pages 渲染版入口，可以直接查看教程和示例网页。</p>
+      <div class="actions">
+        <a class="button primary" href="tutorials/">进入教程导航</a>
+        <a class="button" href="tutorials/examples/attention-is-all-you-need/">查看论文精读演示</a>
+        <a class="button" href="https://github.com/godzhiwzz-create/sci-research-codex-skills">返回 GitHub 仓库</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>这套工具解决什么问题</h2>
+      <p class="lead">科研项目最容易失控的地方，不是单个实验不会跑，而是方向、文献、实验、证据和写作分散在不同文件里。这里把它拆成一条闭环：先明确问题，再读论文，再设计验证，最后把结果写进可审计的论文证据链。</p>
+      <div class="flow">
+        <div class="step"><strong>方向</strong>判断问题和根因，避免陷入无意义调参。</div>
+        <div class="step"><strong>论文</strong>把论文读成可复用的理解包，而不是几条摘要。</div>
+        <div class="step"><strong>实验</strong>用实验卡、索引和结果路径保存证据。</div>
+        <div class="step"><strong>写作</strong>先做 claim-evidence map，再写论文主张。</div>
+        <div class="step"><strong>审计</strong>检查证据、文件、结论和归档是否一致。</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>推荐先看的页面</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">项目管理</span>
+          <h3>长期研究项目怎么不乱</h3>
+          <p>展示如何用 handoff、query map、experiment index、decision log 保存方向和证据，避免每次都从日志堆里重新开始。</p>
+          <a href="tutorials/project-management.md">打开项目管理教程</a>
+        </article>
+        <article class="card">
+          <span class="tag green">论文精读</span>
+          <h3>把一篇论文读成理解包</h3>
+          <p>展示 paper reader 的输出标准：中文摘要解读、方法路线、图表 proof cards、证据线、局限和项目启发边界。</p>
+          <a href="tutorials/paper-deepread.md">打开论文精读教程</a>
+        </article>
+        <article class="card">
+          <span class="tag amber">演示成品</span>
+          <h3>Attention Is All You Need</h3>
+          <p>一个可以直接在浏览器里看的中文精读 HTML，包含自绘架构图、attention 机制图和证据线。</p>
+          <a href="tutorials/examples/attention-is-all-you-need/">打开渲染后的 HTML</a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="demo-box">
+        <div>
+          <h2>论文精读演示</h2>
+          <p class="lead">这个演示不是把论文压成摘要，而是模拟“认真读完之后怎么给别人讲清楚”：先讲论文身份和摘要，再解释问题、方法、关键图表、证据线、局限，以及它和其他论文的关系。</p>
+          <div class="actions">
+            <a class="button primary" href="tutorials/examples/attention-is-all-you-need/">直接看 HTML 演示</a>
+            <a class="button" style="color:#102033;border-color:#cfd8e6;background:#fff" href="tutorials/examples/attention-is-all-you-need/Attention_Is_All_You_Need_understanding_20260522.md">查看 MD 源稿</a>
+          </div>
+        </div>
+        <div class="preview">
+          <div class="title">Paper Understanding Packet</div>
+          <ul>
+            <li>英文标题 + 中文副标题</li>
+            <li>论文身份、来源、分区说明</li>
+            <li>摘要解读与关键问题</li>
+            <li>自绘方法图和机制图</li>
+            <li>图表证明卡与证据线</li>
+            <li>项目启发模块放在最后</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Last updated: 2026-05-22 · Public tutorial site for sci-research-codex-skills.
+  </footer>
+</body>
+</html>

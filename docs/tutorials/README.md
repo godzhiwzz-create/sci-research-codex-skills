@@ -2,6 +2,11 @@
 
 这页是 `sci-research-codex-skills` 的使用入口。它不是 API 文档，而是告诉你：什么时候该用哪一个 skill，输出应该长什么样，如何避免把研究项目越做越乱。
 
+在线渲染版入口：
+
+- [GitHub Pages 教程首页](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/)
+- [Attention Is All You Need 精读 HTML 演示](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/)
+
 ## 你现在遇到的情况
 
 | 你遇到的问题 | 先用哪个 skill | 看哪个教程 |

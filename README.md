@@ -30,6 +30,11 @@ flowchart LR
 
 如果你第一次打开这个仓库，建议不要从每个 `SKILL.md` 逐个读起。先看教程入口：
 
+在线渲染版：
+
+- [GitHub Pages 首页](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+- [论文精读 HTML 演示](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/)
+
 | 入口 | 适合谁 | 你会看到什么 |
 |---|---|---|
 | [教程导航](docs/tutorials/README.md) | 想快速知道这套 skills 怎么连起来用 | 项目管理、论文精读、实验卡、写作审计的路线图 |
