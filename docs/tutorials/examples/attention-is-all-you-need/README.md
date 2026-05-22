@@ -9,6 +9,12 @@ Attention_Is_All_You_Need_understanding_20260522.md
 Attention_Is_All_You_Need_visual_20260522.html
 assets/
   source_card.svg
+  paper_crop_abstract_frontpage.png
+  paper_crop_figure1_transformer_architecture.png
+  paper_crop_figure2_attention.png
+  paper_crop_table1_complexity.png
+  paper_crop_table2_results.png
+  paper_crop_table3_ablation.png
   transformer_flow.svg
   attention_mechanism.svg
   evidence_spine.svg
@@ -24,7 +30,8 @@ assets/
 
 - 英文标题 + 中文副标题。
 - 论文身份和来源验证。
-- 摘要解读，但不转载完整长摘要。
+- 首页摘要区原文截图 + 摘要解读，但不在正文转载完整长摘要。
+- 关键原文图表截图：Figure 1、Figure 2、Table 1、Table 2、Table 3。
 - 自绘 Transformer 架构图。
 - 自绘 scaled dot-product / multi-head attention 机制图。
 - 图表 proof cards：每张关键图表说明“看哪里、证明什么、不能证明什么”。
