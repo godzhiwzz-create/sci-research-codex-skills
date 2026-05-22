@@ -158,7 +158,7 @@ For hard route decisions, use this shape:
 9. Decision label: continue / redirect / reference_only / stop /
    needs_literature.
 
-### CVPR-style direction loop
+### SCI-style direction loop
 
 For a serious new-method direction, organize the exploration as a closed
 research loop rather than a list of experiments. The loop is:
@@ -236,7 +236,7 @@ user.
    can this signal be inserted?" instead of asking what representation,
    supervision, or decision should change.
 3. **Forgetting the original goal**: optimizing local metrics while losing the
-   user's larger aim of a CVPR-level low-visibility detection paradigm.
+   user's larger aim of a SCI-level research contribution.
 4. **Tool-as-method confusion**: treating a physical cue, a mature framework,
    an edge map, a detector carrier, or a diagnostic metric as the method instead
    of asking what problem they solve and what role they play.

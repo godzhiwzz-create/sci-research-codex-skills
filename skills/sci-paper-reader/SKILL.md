@@ -1,6 +1,6 @@
 ---
 name: sci-paper-reader
-description: Deep-read academic papers into a fast, intuitive "I understand this paper" artifact for SCI/CVPR projects. Use when the user gives a paper and wants an MD/PPT/HTML/Word-style explanation that makes the paper's problem, idea, method, evidence, figures, results, limitations, and relation to other papers clear as if they had spent serious time reading it. Also supports project-facing mechanism extraction and experiment-design handoff while keeping literature separate from experiment evidence.
+description: Deep-read academic papers into a fast, intuitive "I understand this paper" artifact for SCI-style academic projects. Use when the user gives a paper and wants an MD/PPT/HTML/Word-style explanation that makes the paper's problem, idea, method, evidence, figures, results, limitations, and relation to other papers clear as if they had spent serious time reading it. Also supports project-facing mechanism extraction and experiment-design handoff while keeping literature separate from experiment evidence.
 ---
 
 # sci-paper-reader
@@ -449,7 +449,7 @@ Do not create experiment IDs, configs, runs, or result files in this skill.
 - Do not invent titles, authors, venues, DOIs, arXiv IDs, datasets, metrics, or
   code repositories.
 - Mark uncertain items as `needs verification`.
-- Prefer official publisher, arXiv, OpenReview, CVF, project pages, or cached
+- Prefer official publisher, arXiv, OpenReview, project pages, or cached
   PDFs.
 - Do not cite exact numbers unless source/page/table is verified.
 - Do not let a paper override project negative evidence.

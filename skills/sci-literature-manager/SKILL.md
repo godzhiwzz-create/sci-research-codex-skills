@@ -1,6 +1,6 @@
 ---
 name: sci-literature-manager
-description: Manage research-paper libraries for SCI/CVPR-style projects independently from experiment records. Use when searching papers, organizing literature folders, creating paper indexes, reading-route maps, paper cards, source-verification queues, or experiment-facing literature briefs. Keeps literature assets separate from experiment evidence while making papers callable by later experiment design.
+description: Manage research-paper libraries for SCI-style academic projects independently from experiment records. Use when searching papers, organizing literature folders, creating paper indexes, reading-route maps, paper cards, source-verification queues, or experiment-facing literature briefs. Keeps literature assets separate from experiment evidence while making papers callable by later experiment design.
 ---
 
 # sci-literature-manager

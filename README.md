@@ -1,6 +1,6 @@
 # SCI Research Codex Skills
 
-面向长期 SCI / CVPR 研究项目的 Codex Skills。
+面向长期 SCI 论文研究项目的 Codex Skills。
 
 这套技能不是为了让 Codex 只会“写一段论文”或“跑一个实验”。它的目标是把 Codex 变成一个长期研究协作助手：能记住研究方向，管理实验和论文证据，先读论文再设计实验，避免把失败路线反复调参，最后把结果沉淀成可审计、可写作、可复用的研究材料。
 
@@ -55,7 +55,7 @@ Codex 输出：
 **2. 论文精读：不是摘要，而是一份可复用的理解包**
 
 ```text
-用户：读这篇 CVPR 论文，中文讲清楚，做成 HTML。
+用户：读这篇学术论文，中文讲清楚，做成 HTML。
 
 Codex 输出：
 paper_title/
@@ -88,7 +88,7 @@ paper_title/
 - 项目启动 / 恢复：读取 `PROJECT_HANDOFF.md`、计划、阶段和决策日志。
 - 阶段判断：区分 `idea_exploration`、`minimal_probe`、`formal_experiment`、`result_analysis`、`paper_writing`、`submission_prepare`、`maintenance`。
 - 方向探索闭环：按 `problem -> cause -> method hypothesis -> tool role -> validation requirement -> result interpretation -> next problem` 推进。
-- CVPR 级问题流程：先问问题和根因，再谈机制、工具、验证和 stop gate。
+- SCI 论文级问题流程：先问问题和根因，再谈机制、工具、验证和 stop gate。
 - 失败原因分类：signal mismatch、task mismatch、interface mismatch、supervision mismatch、carrier mismatch、real-domain support mismatch、control/confound failure。
 - 防调参护栏：明确禁止失败后直接加 epoch、seed、loss、head、gate、verifier、query residual、box delta。
 - reference track / main track 分离：防止把强成熟框架的小优化误当原创主线。

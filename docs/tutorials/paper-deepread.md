@@ -48,7 +48,7 @@ literature/
 ## 论文身份
 
 - Authors: ...
-- Venue: CVPR 20XX
+- Venue / Journal: verified venue or journal, 20XX
 - Paper type: method paper
 - Source status: PDF verified
 - Journal partition: conference paper, JCR/CAS journal partition not applicable
@@ -199,4 +199,3 @@ If you create HTML, preserve figure aspect ratios and run the HTML asset checker
 ```
 
 这个提示词已经足够触发 deep reader，而不是普通摘要器。
-

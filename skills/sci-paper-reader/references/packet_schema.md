@@ -24,7 +24,7 @@ Include:
 - venue or journal, year, and source status;
 - paper type: method, dataset, theory, benchmark, review, or system paper;
 - field and literature line;
-- DOI, arXiv, OpenReview, CVF, publisher, or PDF path when verified;
+- DOI, arXiv, OpenReview, publisher, project page, or PDF path when verified;
 - journal partition notes only when relevant and verified.
 
 If it is a conference paper, say that JCR/CAS journal partitions do not apply.
@@ -162,4 +162,3 @@ The packet should let a reader who has not opened the PDF understand:
 - why the evidence supports or fails to support the claim;
 - how the paper relates to neighboring literature;
 - how it can and cannot be used in a project.
-
