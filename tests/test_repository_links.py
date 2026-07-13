@@ -29,7 +29,11 @@ def is_external(value: str) -> bool:
 
 class RepositoryLinkTests(unittest.TestCase):
     def test_repository_markdown_links(self) -> None:
-        files = [ROOT / "README.md", *sorted((ROOT / "docs").rglob("*.md"))]
+        files = [
+            *sorted(ROOT.glob("*.md")),
+            *sorted((ROOT / ".github").glob("*.md")),
+            *sorted((ROOT / "docs").rglob("*.md")),
+        ]
         for source in files:
             text = FENCED_CODE_RE.sub("", source.read_text(encoding="utf-8", errors="replace"))
             for match in LINK_RE.finditer(text):
@@ -42,6 +46,25 @@ class RepositoryLinkTests(unittest.TestCase):
                     continue
                 with self.subTest(source=str(source.relative_to(ROOT)), target=target):
                     self.assertTrue((source.parent / path_text).exists())
+
+    def test_repository_community_files(self) -> None:
+        expected = [
+            ROOT / "CHANGELOG.md",
+            ROOT / "CONTRIBUTING.md",
+            ROOT / "SECURITY.md",
+            ROOT / ".github" / "PULL_REQUEST_TEMPLATE.md",
+            ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.yml",
+            ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.yml",
+            ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml",
+        ]
+        for path in expected:
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                self.assertTrue(path.is_file())
+                self.assertGreater(path.stat().st_size, 0)
+
+        changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        self.assertIn(f"## [{version}]", changelog)
 
     def test_docs_html_local_assets(self) -> None:
         for source in sorted((ROOT / "docs").rglob("*.html")):

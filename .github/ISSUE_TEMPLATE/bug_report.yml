@@ -1,0 +1,57 @@
+name: Bug report
+description: Report a reproducible defect in a Skill, script, template, test, or documentation page.
+title: "[Bug]: "
+body:
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      options:
+        - v2.0.0
+        - main
+        - v1.0.0 (archived)
+    validations:
+      required: true
+  - type: input
+    id: component
+    attributes:
+      label: Skill or component
+      placeholder: sci-experiment-manager, audit_workspace.py, Pages, ...
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem
+      description: Describe the observed behavior and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include safe commands, fixture structure, and exact output. Remove credentials and private research data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, Python version, Codex surface, relevant project layout
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues and releases.
+          required: true
+        - label: I removed credentials, private paths, and unpublished research data.
+          required: true
+        - label: This report does not contain a vulnerability requiring private disclosure.
+          required: true

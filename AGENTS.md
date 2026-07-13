@@ -25,6 +25,15 @@ Scope: the entire `sci-research-codex-skills` repository.
 - Preserve original file timestamps and Git worktree state during maintenance workflows.
 - Keep the public names `sci-research-manager`, `sci-literature-manager`, `sci-paper-reader`, `sci-experiment-manager`, `sci-paper-manager`, `sci-result-auditor`, `sci-asset-manager`, and `academic-manuscript-writing` compatible.
 
+## Releases and repository front
+
+- Treat `VERSION` as the canonical release number and keep it aligned with `README.md`, `CHANGELOG.md`, Pages, tags, and GitHub Releases.
+- Use semantic version tags on commits reachable from `main`; create annotated tags and never move or reuse a published tag.
+- Keep `v1.0.0` immutable as the pre-v2 compatibility baseline.
+- Update public-facing version claims, maintenance links, and release notes in the same release change.
+- Keep repository description, homepage, topics, issue forms, pull request template, contribution guide, and security policy current.
+- Publish a release only after the corresponding commit has passed repository tests and GitHub Actions.
+
 ## Validation
 
 Before commit:

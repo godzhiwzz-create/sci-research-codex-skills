@@ -1,0 +1,39 @@
+name: Feature request
+description: Propose a compatible improvement to the research workflow or its maintenance tools.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Research or maintenance use case
+      description: What recurring problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful change and its expected output.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and alternatives
+      description: What repository behavior, project experience, or comparison supports the request?
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and safety
+      description: Explain effects on public Skill names, paths, timestamps, overwrite behavior, evidence states, and remote actions.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues, releases, and the Changelog.
+          required: true
+        - label: The request does not depend on private credentials or unpublished data.
+          required: true

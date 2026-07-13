@@ -1,8 +1,15 @@
 # SCI Research Codex Skills
 
+[![Release](https://img.shields.io/github/v/release/godzhiwzz-create/sci-research-codex-skills?display_name=tag&sort=semver)](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)
+[![Tests](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2264d1)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0f9f6e.svg)](LICENSE)
+
 面向长期、证据驱动科研项目的 Codex Skills。当前版本：**2.0.0**。
 
 这套系统让 Codex 不只会“写一段论文”或“跑一个实验”，而是能在跨会话、跨阶段的研究中保存方向、追溯证据、约束 claim、保护工作区，并把专门任务路由给合适的 Skill。
+
+> 稳定版：[v2.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0) · 历史基线：[v1.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v1.0.0) · [在线教程](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 
 ## v2 的核心变化
 
@@ -13,6 +20,16 @@
 - 新增工作区只读审计、文件时间/provenance 保护、E/F 实验卡生成、双格式索引和通用一致性审计。
 - 为全部 Skill 补齐 `agents/openai.yaml`。
 - 新增零第三方依赖的自动化测试和 GitHub Actions。
+
+## 版本与维护
+
+- [Releases](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)：下载稳定快照并查看发布说明。
+- [CHANGELOG](CHANGELOG.md)：查看版本间的行为、兼容性和维护变化。
+- [CONTRIBUTING](CONTRIBUTING.md)：提交问题、改进 Skill 或脚本前先阅读。
+- [SECURITY](SECURITY.md)：涉及路径越界、覆盖、凭据泄露或未授权远程执行时使用私密报告渠道。
+- [Issues](https://github.com/godzhiwzz-create/sci-research-codex-skills/issues)：报告可公开复现的问题或提出功能请求。
+
+`v1.0.0` 是 v2 合并前的不可移动历史标签；新安装默认使用 `v2.0.0`。仓库遵循语义化版本，已发布标签不重写、不复用。
 
 ## 设计原则
 
