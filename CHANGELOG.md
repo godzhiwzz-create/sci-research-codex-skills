@@ -15,6 +15,7 @@
 
 - PR 测试现在先验证版本、文档、社区配置和公开 Skill 的维护不变量。
 - GitHub Actions 升级到官方当前主要版本的运行时。
+- 稳定标签核验兼容 GitHub Actions 的 detached HEAD，同时仍要求标签可达 `origin/main`。
 
 ## [2.0.0] - 2026-07-13
 

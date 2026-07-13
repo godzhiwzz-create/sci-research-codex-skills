@@ -247,6 +247,14 @@ def git_show(root: Path, spec: str) -> subprocess.CompletedProcess[str]:
     return run_git(root, "show", spec)
 
 
+def resolve_main_ref(root: Path) -> str | None:
+    for candidate in ("main", "refs/remotes/origin/main"):
+        resolved = run_git(root, "rev-parse", "--verify", candidate)
+        if resolved.returncode == 0:
+            return candidate
+    return None
+
+
 def verify_tag(root: Path, tag: str) -> Report:
     root = root.resolve()
     report = Report(mode="verify-tag", root=root)
@@ -267,8 +275,10 @@ def verify_tag(root: Path, tag: str) -> Report:
 
     commit = run_git(root, "rev-parse", f"{tag}^{{}}")
     report.require(commit.returncode == 0, f"cannot resolve tag commit: {tag}")
-    if commit.returncode == 0:
-        ancestor = run_git(root, "merge-base", "--is-ancestor", commit.stdout.strip(), "main")
+    main_ref = resolve_main_ref(root)
+    report.require(main_ref is not None, "cannot resolve main or origin/main")
+    if commit.returncode == 0 and main_ref is not None:
+        ancestor = run_git(root, "merge-base", "--is-ancestor", commit.stdout.strip(), main_ref)
         report.require(ancestor.returncode == 0, f"tag commit is not reachable from main: {tag}")
 
     version_file = git_show(root, f"{tag}:VERSION")

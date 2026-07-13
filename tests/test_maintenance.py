@@ -129,6 +129,37 @@ class MaintenanceCheckTests(unittest.TestCase):
             self.assertEqual(report["status"], "ok")
             self.assertEqual(report["version"], "2.0.1")
 
+    def test_tag_verification_accepts_detached_ci_checkout(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            copy = Path(tmp) / "repository"
+            shutil.copytree(ROOT, copy, ignore=ignore_local_state)
+            commands = (
+                ("init", "-b", "main"),
+                ("config", "user.name", "Maintenance Test"),
+                ("config", "user.email", "maintenance-test@example.invalid"),
+                ("add", "."),
+                ("commit", "-m", "stable snapshot"),
+                ("tag", "-a", "v2.0.0", "-m", "stable snapshot"),
+                ("update-ref", "refs/remotes/origin/main", "HEAD"),
+                ("checkout", "--detach", "HEAD"),
+                ("branch", "-D", "main"),
+            )
+            for command in commands:
+                completed = run_git(copy, *command)
+                self.assertEqual(completed.returncode, 0, completed.stderr + completed.stdout)
+
+            result = run_check(
+                "verify-tag",
+                "v2.0.0",
+                "--root",
+                str(copy),
+                "--json",
+                script=copy / "scripts" / "maintenance_check.py",
+                cwd=copy,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+            self.assertEqual(json.loads(result.stdout)["status"], "ok")
+
 
 if __name__ == "__main__":
     unittest.main()
