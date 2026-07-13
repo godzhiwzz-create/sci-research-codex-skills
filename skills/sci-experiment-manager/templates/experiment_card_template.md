@@ -1,70 +1,75 @@
-# E??? experiment_name
+# {{ID}} {{NAME}}
 
 ## One-line Summary
 
 not available yet
 
-## Research Question
+## Identity
+
+- Stage: `idea_exploration / minimal_probe / formal_experiment / result_analysis`
+- Status: `designed / running / complete / stop / superseded / needs_verification`
+- Parent family:
+- Evidence status: `needs_verification`
+
+## Scientific Question
 
 ## Hypothesis
 
-## Stage
+## Competing Explanation
 
-idea_exploration / minimal_probe / formal_experiment / result_analysis
+## Validation Requirement
 
-## Setup
+## Frozen Protocol
 
-- Teacher:
-- Student:
-- Dataset:
-- Visibility levels:
-- Seed:
-- Epochs:
-- Fraction:
+- Dataset/version:
+- Split:
+- Seeds:
+- Model/checkpoint:
+- Baseline:
+- Metric definition:
+- Aggregation:
+- Checkpoint/threshold/method-selection rule:
 - Config path:
-- Run path:
+- Command/run path:
 - Result path:
+- Code commit:
+
+## Controls and Fairness Constraints
+
+## Promotion Gate
+
+## Stop Gate
 
 ## Key Results
 
-Use tables only if real results exist.
-If results are not available, write: not available yet.
+Use only verified result artifacts. If unavailable, write `not available yet`.
 
 ## Interpretation
 
-Use cautious language.
-Do not overclaim.
+- Supports:
+- Does not support:
+- Weakened/falsified assumption:
+- Confounds/protocol warnings:
 
 ## Paper Usage
 
-- paper_role:
-- candidate section:
-- candidate table:
-- candidate figure:
-- related claim:
+- Claim strength: `unsupported`
+- Paper role: `not_used`
+- Candidate section/table/figure:
+- Related claim IDs:
 
-## Related Experiments
+## Decision
 
-## Status Decision
+- Next action:
+- Do-not-do-next:
+- Keep/archive level:
 
-- status:
-- keep_level:
-- archive decision:
+## Related Experiments and Merge Manifest
 
-## Notes
+## Provenance
 
-- uncertainties:
-- risks:
-- do-not-repeat:
-
-## Tags
-
-- 
-
-## Raw File Links
-
-- config:
-- logs:
-- results:
-- weights:
-
+- Raw result:
+- Config:
+- Logs:
+- Weights/checkpoint:
+- Verification date/owner:

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCI Result Auditor"
+  short_description: "Audit research evidence, protocols, and claims"
+  default_prompt: "Use $sci-result-auditor to perform a read-only audit of these results, protocols, and paper claims."

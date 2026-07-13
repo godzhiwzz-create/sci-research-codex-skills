@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCI Literature Manager"
+  short_description: "Organize and verify reusable academic literature"
+  default_prompt: "Use $sci-literature-manager to organize these papers, verify their sources, and build a problem-driven reading route."

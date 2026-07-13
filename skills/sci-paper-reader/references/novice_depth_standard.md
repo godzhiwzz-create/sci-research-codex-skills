@@ -3,6 +3,14 @@
 Use this reference for every full paper understanding packet unless the user
 explicitly asks for a brief preview.
 
+## Contents
+
+- Core standard
+- Minimum depth requirements
+- Prerequisite, problem, concept, method, figure, and evidence ladders
+- Misunderstandings, relation map, and reader checkpoint
+- Length guidance and bad-output signs
+
 ## Core Standard
 
 The output must be understandable to a smart reader who has not read the paper

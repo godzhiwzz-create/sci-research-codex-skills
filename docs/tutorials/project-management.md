@@ -4,6 +4,8 @@
 
 ## 1. 先建立项目骨架
 
+下面是兼容 v1 的示例结构，不是 v2 的硬编码要求。已有项目应优先沿用自己的 `AGENTS.md`、README/HANDOFF 和目录约定；新脚本也支持显式指定路径。
+
 在项目根目录建立：
 
 ```text
@@ -133,8 +135,8 @@ research_workspace/paper/CLAIM_EVIDENCE_MAP.md
 ```markdown
 | Claim ID | Claim | Evidence | Strength | Status |
 |---|---|---|---|---|
-| C001 | 方法解决了某类 shortcut | E001, E006 | strong | supported |
-| C002 | 该信号能作为通用任务先验 | F012-D01, F018-D02 | weak | unsupported |
+| C001 | 方法解决了某类 shortcut | E001, E006 | main_claim | verified |
+| C002 | 该信号能作为通用任务先验 | F012-D01, F018-D02 | unsupported | unsupported |
 ```
 
 写论文前先让 Codex 做：

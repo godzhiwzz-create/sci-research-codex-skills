@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCI Paper Manager"
+  short_description: "Align paper claims, evidence, and submission files"
+  default_prompt: "Use $sci-paper-manager to reconcile this manuscript claim map, paper structure, and submission evidence."

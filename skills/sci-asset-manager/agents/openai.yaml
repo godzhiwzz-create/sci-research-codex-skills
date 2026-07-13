@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCI Asset Manager"
+  short_description: "Review archives and cleanup without losing evidence"
+  default_prompt: "Use $sci-asset-manager to review these research assets for safe retention, migration, archive, or deletion."

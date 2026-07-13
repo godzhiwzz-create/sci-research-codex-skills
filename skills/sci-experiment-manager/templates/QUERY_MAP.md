@@ -1,85 +1,50 @@
 # QUERY_MAP
 
-Use this file before reading `EXPERIMENT_INDEX.md` or experiment cards. It maps research tasks to relevant experiments and prevents global scans.
+Use this compact map before opening the full experiment index or raw runs. Add project-specific categories; do not copy results here.
 
-Keep this file compact. List experiment IDs, card paths, and short notes only.
+## Active Central Question
 
-## Baseline Comparison
+- Question:
+- Read:
+- Do not read unless needed:
 
-Use when the task asks:
+## Baselines and Protocol
 
-Read:
+- Use when:
+- Read:
+- Known incompatibilities:
 
-Do not read unless necessary:
+## Direction Families
 
-## Branch-level KD Behavior
+| Family | Question | Canonical card | Status |
+|---|---|---|---|
 
-Use when the task asks:
+## Main Results
 
-Read:
+- Use when:
+- Read:
+- Raw verification source:
 
-Do not read unless necessary:
+## Diagnostics and Mechanism
 
-## Domain-Specific Mechanism Analysis
+- Use when:
+- Read:
+- Required controls:
 
-Use when the task asks:
+## Negative Evidence and Stopped Routes
 
-Read:
+- Use when:
+- Read:
+- Do-not-repeat:
 
-Do not read unless necessary:
+## Paper and Submission
 
-## Learned Gate / Policy Experiments
+- Use when:
+- Read:
+- Claim map/status:
 
-Use when the task asks:
+## Reviewer or Reproducibility Questions
 
-Read:
-
-Do not read unless necessary:
-
-## Method Variant Exploration
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
-
-## Negative Transfer
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
-
-## External Evaluation
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
-
-## Paper Writing
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
-
-## Reviewer Response
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
-
-## Failure Diagnosis
-
-Use when the task asks:
-
-Read:
-
-Do not read unless necessary:
+- Use when:
+- Read:
+- Missing evidence:
