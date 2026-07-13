@@ -26,6 +26,7 @@
 - [Releases](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)：下载稳定快照并查看发布说明。
 - [CHANGELOG](CHANGELOG.md)：查看版本间的行为、兼容性和维护变化。
 - [CONTRIBUTING](CONTRIBUTING.md)：提交问题、改进 Skill 或脚本前先阅读。
+- [CODE OF CONDUCT](CODE_OF_CONDUCT.md)：参与 Issue、Pull Request 和评审时遵守科研协作与数据保护边界。
 - [SECURITY](SECURITY.md)：涉及路径越界、覆盖、凭据泄露或未授权远程执行时使用私密报告渠道。
 - [Issues](https://github.com/godzhiwzz-create/sci-research-codex-skills/issues)：报告可公开复现的问题或提出功能请求。
 
