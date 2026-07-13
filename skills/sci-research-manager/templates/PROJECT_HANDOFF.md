@@ -1,63 +1,50 @@
 # PROJECT_HANDOFF
 
-## 1. Project Identity
+## Project Identity
 
-- Project name:
-- Paper/topic short name:
-- Repository:
+- Project/topic:
+- Repository/worktree:
 - Owner:
+- Project status: `active / paused / submission / maintenance / archived`
+- Current stage: `idea_exploration / minimal_probe / formal_experiment / result_analysis / paper_writing / submission_prepare / maintenance`
 
-## 2. Current Research Stage
+## Central Scientific Question
 
-- Stage: idea_exploration / minimal_probe / formal_experiment / result_analysis / paper_writing / submission_prepare / maintenance
-- Stage rationale:
+## Current Canonical Route or Story
 
-## 3. Core Research Direction
+## Verified Evidence
 
-State the stable research direction. Mark uncertain parts as `uncertain`.
+| ID | What it supports | Canonical card/raw source | Claim role |
+|---|---|---|---|
 
-## 4. Current Central Story
+## Unverified or Conflicting Evidence
 
-Summarize the current SCI paper story in 3-6 bullets.
+| Item | Current label | Conflict/missing artifact | Arbitration step |
+|---|---|---|---|
 
-## 5. Current Main Claims
+## Failed or Downgraded Directions
 
-| Claim ID | Claim | Evidence IDs | Strength | Status |
+| Direction | Evidence/reason | Decision | Do-not-repeat condition |
+|---|---|---|---|
+
+## Active Work
+
+| ID/task | Purpose | Owner/location | Next gate | Risk |
 |---|---|---|---|---|
 
-## 6. Completed Experiments Summary
+## Blockers and Risks
 
-| ID | One-line finding | Paper role | Status |
-|---|---|---|---|
-
-## 7. Failed or Downgraded Directions
-
-| Direction | Evidence/Reason | Do-not-repeat note |
-|---|---|---|
-
-## 8. Active Experiments
-
-| ID | Purpose | Next action | Risk |
-|---|---|---|---|
-
-## 9. Next Actions
+## Prioritized Next Actions
 
 1.
 
-## 10. Do-not-repeat List
+## Git, Worktree, and Remote State
 
-- 
+## Startup Route
 
-## 11. Codex Startup Rules
+Read this file, then the relevant query map/index/cards. Do not scan all raw runs or infer results from chat context.
 
-At the start of every task, read this file first. Then read `QUERY_MAP.md`, `EXPERIMENT_INDEX.md`, and relevant experiment cards only.
-
-Do not scan all raw runs/logs/results/weights unless lightweight context is insufficient.
-
-Do not invent results, claims, citations, or metrics.
-
-## 12. Last Updated
+## Last Updated
 
 - Date:
 - Updated by:
-

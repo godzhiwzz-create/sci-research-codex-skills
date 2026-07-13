@@ -3,6 +3,15 @@
 Use this reference before producing a browser-style paper understanding packet.
 The HTML should feel like a guided reading artifact, not a plain Markdown dump.
 
+## Contents
+
+- Core rule
+- Page structure
+- Visual standards and figure crops
+- Abstract and beginner teaching blocks
+- CSS/layout guidance
+- Validation
+
 ## Core Rule
 
 The HTML layout must follow the Markdown evidence spine.  Visual design cannot

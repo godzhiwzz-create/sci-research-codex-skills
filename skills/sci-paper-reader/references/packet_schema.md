@@ -3,6 +3,15 @@
 Use this reference when the user wants a serious paper understanding artifact
 rather than a short summary.
 
+## Contents
+
+- Production rule
+- Required packet sections
+- Paper identity and abstract
+- Prerequisites, explanation, gap, method, figures, and evidence
+- Limitations, related work, and project attachment
+- Quality bar
+
 ## Production Rule
 
 Write the Markdown packet first.  HTML, PPTX, Word, and Obsidian outputs are

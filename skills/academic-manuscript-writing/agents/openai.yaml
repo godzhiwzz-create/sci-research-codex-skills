@@ -1,4 +1,4 @@
 interface:
   display_name: "Academic Manuscript Writing"
-  short_description: "Evidence-aware academic prose drafting"
-  default_prompt: "Use $academic-manuscript-writing to rewrite this evidence-bounded manuscript section in journal-quality English after the route and claim map are fixed."
+  short_description: "Draft evidence-aware academic manuscript prose"
+  default_prompt: "Use $academic-manuscript-writing to draft this evidence-bounded manuscript section in clear journal-quality English."

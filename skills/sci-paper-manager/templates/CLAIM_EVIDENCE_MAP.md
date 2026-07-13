@@ -1,26 +1,15 @@
 # CLAIM_EVIDENCE_MAP
 
-## Claim ID:
+| Claim ID | Exact Claim | Strength | Evidence IDs/Paths | Protocol Compatible | Contrary/Boundary Evidence | Allowed Paper Location | Missing Evidence | Status |
+|---|---|---|---|---|---|---|---|---|
 
-## Current Wording:
+Allowed strengths:
 
-## Evidence Experiment IDs:
+- `main_claim`
+- `trend_only`
+- `diagnostic_only`
+- `negative_boundary`
+- `internal_exploration`
+- `unsupported`
 
-## Evidence Strength:
-
-preliminary / weak / moderate / strong
-
-## Supported Scope:
-
-## Risks:
-
-## Missing Evidence:
-
-## Writing Rule:
-
-## Forbidden Overclaim:
-
-## Related Sections:
-
-Do not write unsupported claims as confirmed conclusions.
-
+Do not phrase an unsupported, mismatched, or internal result as a confirmed contribution.

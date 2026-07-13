@@ -1,8 +1,6 @@
 # EXPERIMENT_INDEX
 
-Short index for low-token experiment retrieval. Do not store raw logs here.
+| ID | Name | Stage | Status | Evidence Status | Claim Role | Key Finding | Canonical Card | Raw Result |
+|---|---|---|---|---|---|---|---|---|
 
-Keep each row concise. Put details in experiment cards, not in this index.
-
-| ID | Name | Phase | Status | Paper Role | Key Finding | Tags | Card |
-|---|---|---|---|---|---|---|---|
+Use one canonical row per active evidence item. Keep archived aliases in the family card or archive manifest.

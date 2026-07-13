@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCI Experiment Manager"
+  short_description: "Manage traceable experiments, cards, and indexes"
+  default_prompt: "Use $sci-experiment-manager to create an auditable experiment record with a frozen protocol and evidence boundaries."

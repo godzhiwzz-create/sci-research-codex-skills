@@ -1,11 +1,12 @@
 # 教程导航
 
-这页是 `sci-research-codex-skills` 的使用入口。它不是 API 文档，而是告诉你：什么时候该用哪一个 skill，输出应该长什么样，如何避免把研究项目越做越乱。
+这页是 `sci-research-codex-skills` v2 的使用入口。它不是 API 文档，而是告诉你：什么时候该用哪一个 Skill，输出应该长什么样，如何避免把研究项目越做越乱。v2 继续沿用全部原名称，由 `sci-research-manager` 统一生命周期和证据边界。
 
 在线渲染版入口：
 
 - [GitHub Pages 教程首页](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/)
 - [Attention Is All You Need 精读 HTML 演示](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/)
+- [v2 架构与兼容说明](../architecture-v2.md)
 
 ## 你现在遇到的情况
 
@@ -22,7 +23,7 @@
 
 ```mermaid
 flowchart TD
-  A["1. 建项目记忆<br/>PROJECT_HANDOFF / STAGE_PLAN"] --> B["2. 建论文地基<br/>reading route / paper packet"]
+  A["1. 建项目记忆<br/>HANDOFF / project plan"] --> B["2. 建论文地基<br/>reading route / paper packet"]
   B --> C["3. 定验证需求<br/>hypothesis / controls / stop gate"]
   C --> D["4. 建实验卡<br/>ID / config / run / result"]
   D --> E["5. 做结果复盘<br/>supports / does not support / next action"]

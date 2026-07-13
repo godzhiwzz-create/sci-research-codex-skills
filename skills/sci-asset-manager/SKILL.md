@@ -1,73 +1,36 @@
 ---
 name: sci-asset-manager
-description: Manage research project assets for long-term SCI paper work, including experiment archives, cleanup candidates, submission keep lists, and cold archive manifests while preserving evidence metadata. Use when deciding what to keep, archive, or delete in an experiment-driven research workspace.
+description: Review and maintain research project assets without losing evidence metadata, including cleanup candidates, cold archives, migration manifests, submission keep lists, and deletion risk. Use when deciding what to keep, move, archive, deduplicate, or delete in a research workspace. Default to review manifests; never delete or move protected assets without explicit user authorization.
 ---
 
-# sci-asset-manager
+# SCI Asset Manager
 
-## Purpose
+Preserve evidence while reducing active-workspace clutter. Follow project-local rules and the provenance safeguards in `sci-research-manager`.
 
-Manage experiment archives, old paper versions, cleanup candidates, submission keep lists, and cold archive manifests without losing evidence metadata.
+## Read ownership before storage
 
-## Startup rule
+Start from handoff, experiment index/registry, relevant cards, and claim map. Use known run paths before scanning large artifact directories. Never open large binary weights merely to classify them.
 
-First classify the task stage and read:
+## Always preserve
 
-1. `PROJECT_HANDOFF.md`
-2. `research_workspace/experiments/EXPERIMENT_INDEX.md`
-3. relevant experiment cards
-4. `research_workspace/paper/CLAIM_EVIDENCE_MAP.md`
+- experiment/family card;
+- frozen config and code commit;
+- result summary and authoritative raw result;
+- run command/path;
+- archive/migration note;
+- claim-evidence relation;
+- original timestamp/size and optional hash for path-sensitive moves.
 
-Use lightweight indexes before raw file inspection.
+Potential cleanup candidates include reproducible caches, duplicate logs, temporary outputs, superseded generated files, and large intermediate checkpoints whose evidence metadata is preserved.
 
-## Context discipline policy
+## Review before action
 
-- Start from `EXPERIMENT_INDEX.csv` keep levels and experiment cards.
-- Do not scan full checkpoint or log directories during ordinary planning.
-- Scanning large artifact directories is acceptable when estimating cleanup candidates or preparing archive manifests.
-- For cleanup review, list candidate paths from known run paths first.
-- Never open large binary weights.
-- Generate review manifests instead of reading large artifacts.
+Use the bundled templates for archive, cold-storage, submission-keep, and deletion reviews. Record path, owner, related ID/claim, reason, evidence risk, replacement, recommendation, and rollback.
 
-## Core rule
+Before an approved move, snapshot provenance with `sci-research-manager/scripts/provenance_guard.py`; prefer same-volume moves; update old-to-new mappings and links; then verify content, size, timestamp, symlink target, and optional hash.
 
-Never delete experiment metadata.
+## Keep deletion separate
 
-May clean:
-- large checkpoints
-- cache
-- duplicate logs
-- temporary outputs
-- failed intermediate weights
+Never delete files unless the user explicitly authorizes the exact scope. First produce `delete_review.md`. Treat unknown ownership as `needs_verification`. A cleanup review is not deletion permission.
 
-Must preserve:
-- experiment card
-- config
-- result summary
-- run command
-- archive note
-- claim evidence relation if any
-
-## Archive review nodes
-
-1. after `idea_probe`
-2. after each phase
-3. after central story is fixed
-4. after `draft_core` is complete
-5. before submission
-
-## Delete rule
-
-Codex must never directly delete files unless explicitly instructed by the user.
-
-It must first create `delete_review.md` with:
-- file path
-- reason
-- related experiment ID
-- whether metadata is preserved
-- risk
-- recommended action
-
-## No fabrication
-
-Do not invent archive decisions or claim relations. Mark uncertain file ownership as `needs verification`.
+Review assets after exploratory probes, phase completion, central-story freeze, draft-core completion, and before submission/release.
