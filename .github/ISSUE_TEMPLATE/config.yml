@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation and tutorials
+    url: https://godzhiwzz-create.github.io/sci-research-codex-skills/
+    about: Read the architecture, project-management tutorial, and paper-reading demonstration first.
+  - name: Security policy
+    url: https://github.com/godzhiwzz-create/sci-research-codex-skills/security/policy
+    about: Use the private reporting path for vulnerabilities or sensitive disclosures.
