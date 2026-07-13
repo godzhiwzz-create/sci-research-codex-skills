@@ -23,6 +23,7 @@
 
 ## 版本与维护
 
+- [MAINTENANCE](MAINTENANCE.md)：日常更新、版本发布、定期巡检、回滚与交接的唯一流程入口。
 - [Releases](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)：下载稳定快照并查看发布说明。
 - [CHANGELOG](CHANGELOG.md)：查看版本间的行为、兼容性和维护变化。
 - [CONTRIBUTING](CONTRIBUTING.md)：提交问题、改进 Skill 或脚本前先阅读。
@@ -160,11 +161,13 @@ literature/
 本地运行：
 
 ```bash
+python scripts/maintenance_check.py check
 python -m unittest discover -s tests -v
 ```
 
 测试覆盖：
 
+- VERSION、Changelog、README、Pages、CI、社区文件和公开 Skill 的维护一致性；
 - 8 个 Skill 的 frontmatter、名称、长度、引用和 UI 元数据；
 - Markdown/HTML 本地链接；
 - 工作区审计的正常与故障路径；
@@ -174,6 +177,7 @@ python -m unittest discover -s tests -v
 - HTML 本地资产检查。
 
 GitHub Actions 在 Python 3.10、3.11 和 3.13 上运行同一测试集。
+每月只读巡检会重复运行维护检查、测试和当前稳定标签核验；Dependabot 每月检查 GitHub Actions 更新。
 
 ## 教程与演示
 

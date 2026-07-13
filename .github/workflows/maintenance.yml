@@ -1,0 +1,33 @@
+name: maintenance
+
+on:
+  schedule:
+    # 02:17 UTC on the first day of every month (10:17 Asia/Shanghai).
+    - cron: "17 2 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-maintenance
+  cancel-in-progress: false
+
+jobs:
+  repository-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Check repository maintenance invariants
+        run: python scripts/maintenance_check.py check
+      - name: Run standard-library test suite
+        run: python -m unittest discover -s tests -v
+      - name: Verify the current stable tag
+        run: python scripts/maintenance_check.py verify-tag "v$(tr -d '\n' < VERSION)"

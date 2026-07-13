@@ -52,11 +52,14 @@ class RepositoryLinkTests(unittest.TestCase):
             ROOT / "CHANGELOG.md",
             ROOT / "CODE_OF_CONDUCT.md",
             ROOT / "CONTRIBUTING.md",
+            ROOT / "MAINTENANCE.md",
             ROOT / "SECURITY.md",
+            ROOT / ".github" / "dependabot.yml",
             ROOT / ".github" / "PULL_REQUEST_TEMPLATE.md",
             ROOT / ".github" / "ISSUE_TEMPLATE" / "bug_report.yml",
             ROOT / ".github" / "ISSUE_TEMPLATE" / "feature_request.yml",
             ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml",
+            ROOT / ".github" / "workflows" / "maintenance.yml",
         ]
         for path in expected:
             with self.subTest(path=str(path.relative_to(ROOT))):

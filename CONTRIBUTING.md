@@ -8,7 +8,8 @@
 2. Bug 使用 Bug report；新能力或行为变化使用 Feature request。
 3. 安全问题不要公开提交，按 [SECURITY.md](SECURITY.md) 私密报告。
 4. 阅读并遵守 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)。
-5. 阅读根目录 [AGENTS.md](AGENTS.md)，它定义 Skill、证据、文件和发布边界。
+5. 阅读 [MAINTENANCE.md](MAINTENANCE.md)，它是更新、发布和回滚的唯一流程。
+6. 阅读根目录 [AGENTS.md](AGENTS.md)，它定义 Skill、证据、文件和发布边界。
 
 ## 兼容性边界
 
@@ -31,6 +32,7 @@ git switch -c agent/short-description
 提交前运行：
 
 ```bash
+python scripts/maintenance_check.py check
 python -m unittest discover -s tests -v
 ```
 

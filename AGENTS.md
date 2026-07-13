@@ -5,8 +5,9 @@ Scope: the entire `sci-research-codex-skills` repository.
 ## Start
 
 1. Read `README.md` and the target skill's complete `SKILL.md`.
-2. Preserve the repository name and existing public skill folder names unless a breaking rename is explicitly approved.
-3. Inspect `git status -sb` before editing; never overwrite unrelated work.
+2. Read `MAINTENANCE.md` before repository maintenance, release, CI, or GitHub-front changes.
+3. Preserve the repository name and existing public skill folder names unless a breaking rename is explicitly approved.
+4. Inspect `git status -sb` before editing; never overwrite unrelated work.
 
 ## Skill design
 
@@ -27,6 +28,7 @@ Scope: the entire `sci-research-codex-skills` repository.
 
 ## Releases and repository front
 
+- Follow `MAINTENANCE.md` as the canonical update, release, rollback, and handoff workflow.
 - Treat `VERSION` as the canonical release number and keep it aligned with `README.md`, `CHANGELOG.md`, Pages, tags, and GitHub Releases.
 - Use semantic version tags on commits reachable from `main`; create annotated tags and never move or reuse a published tag.
 - Keep `v1.0.0` immutable as the pre-v2 compatibility baseline.
@@ -38,10 +40,11 @@ Scope: the entire `sci-research-codex-skills` repository.
 
 Before commit:
 
-1. Run `python -m unittest discover -s tests -v`.
-2. Run the system `quick_validate.py` against every skill when available.
-3. Compile every Python script without leaving `__pycache__` in the repository.
-4. Inspect Markdown links and `agents/openai.yaml` metadata.
-5. Forward-test meaningful coordinator changes on realistic read-only tasks.
+1. Run `python scripts/maintenance_check.py check`.
+2. Run `python -m unittest discover -s tests -v`.
+3. Run the system `quick_validate.py` against every skill when available.
+4. Compile every Python script without leaving `__pycache__` in the repository.
+5. Inspect Markdown links and `agents/openai.yaml` metadata.
+6. Forward-test meaningful coordinator changes on realistic read-only tasks.
 
 Do not commit generated test fixtures, caches, local manifests, or credentials.
