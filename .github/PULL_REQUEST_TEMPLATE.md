@@ -8,6 +8,7 @@
 
 ## Validation
 
+- [ ] `python scripts/maintenance_check.py check`
 - [ ] `python -m unittest discover -s tests -v`
 - [ ] Affected Skills pass `quick_validate.py`
 - [ ] Markdown/HTML links and generated metadata were checked
@@ -19,3 +20,4 @@
 - [ ] I did not add credentials, private paths, unpublished results, caches, or generated fixtures.
 - [ ] New write behavior refuses unsafe overwrite and documents its output path.
 - [ ] Claims in documentation are supported by repository behavior or tests.
+- [ ] User-visible changes are recorded under `CHANGELOG.md` → `Unreleased`.

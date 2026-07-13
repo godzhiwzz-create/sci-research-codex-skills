@@ -94,7 +94,10 @@ class SkillStructureTests(unittest.TestCase):
                 self.assertIn(f"${directory.name}", prompt.group(1))
 
     def test_python_scripts_compile(self) -> None:
-        scripts = sorted(SKILLS.glob("*/scripts/*.py"))
+        scripts = [
+            *sorted((ROOT / "scripts").glob("*.py")),
+            *sorted(SKILLS.glob("*/scripts/*.py")),
+        ]
         self.assertGreaterEqual(len(scripts), 7)
         for path in scripts:
             with self.subTest(script=str(path.relative_to(ROOT))):

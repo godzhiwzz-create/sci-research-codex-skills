@@ -7,6 +7,15 @@
 ### Added
 
 - 新增科研协作、证据诚信、隐私和行为报告准则。
+- 新增统一维护手册，覆盖日常更新、Release、回滚、定期巡检和交接。
+- 新增可执行维护一致性检查及 release candidate/tag 核验。
+- 新增每月只读维护工作流和 GitHub Actions Dependabot 配置。
+
+### Changed
+
+- PR 测试现在先验证版本、文档、社区配置和公开 Skill 的维护不变量。
+- GitHub Actions 升级到官方当前主要版本的运行时。
+- 稳定标签核验兼容 GitHub Actions 的 detached HEAD，同时仍要求标签可达 `origin/main`。
 
 ## [2.0.0] - 2026-07-13
 
