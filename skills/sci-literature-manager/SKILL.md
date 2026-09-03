@@ -1,25 +1,25 @@
 ---
 name: sci-literature-manager
-description: Manage an academic paper library independently from project experiment evidence. Use when discovering papers, organizing literature folders, maintaining indexes/query maps/reading routes, tracking bibliographic verification, deduplicating sources, or producing an experiment-facing literature brief. Use sci-paper-reader for deep reading and never treat literature claims as proof of project results.
+description: Manage a reusable academic source library independently from project experiment evidence. Use when discovering papers, assigning stable source identities, organizing source packets, maintaining global indexes and reading routes, tracking bibliographic verification and versions, deduplicating sources, or returning a source-grounded handback for project adoption. Use sci-paper-reader for deep reading; leave project tags, LiteratureClaim state, experiment decisions, and evidence promotion to sci-research-manager.
 ---
 
 # SCI Literature Manager
 
-Make literature discoverable and reusable without mixing it with experiment records. Follow project-local rules and `sci-research-manager` evidence boundaries.
+Make literature discoverable and reusable without mixing it with experiment records. Follow project-local rules and the ownership boundary in `sci-research-manager`.
 
 ## Classify the task
 
 - `literature_discovery`: find candidate papers from primary/official sources.
-- `literature_indexing`: organize PDFs, notes, folders, and indexes.
+- `literature_indexing`: organize global PDFs, source packets, notes, and indexes.
 - `deep_reading`: hand the located source to `sci-paper-reader`.
-- `route_synthesis`: map papers to a research question and competing causes.
+- `route_synthesis`: return source-grounded options for a project question and competing causes.
 - `citation_verification`: verify title, author, venue, year, DOI/arXiv, code, and exact claims.
-- `experiment_support`: produce a literature-to-experiment brief.
+- `experiment_support`: return verified source material for a literature-to-experiment brief.
 - `maintenance`: deduplicate, repair links, or archive superseded notes.
 
 ## Retrieve before reading broadly
 
-Read the project's literature query map/index, then matching collection manifests/cards, then the PDF or official source for exact claims, figures, metrics, or bibliography. Do not batch-read the entire library unless the user asks for a full audit.
+Read the global library query map/index, then matching collection manifests/cards, then the PDF or official source for exact claims, figures, metrics, or bibliography. If a project supplied a Source ID, use it as the retrieval key; do not edit project tags or claim state as a side effect. Do not batch-read the entire library unless the user asks for a full audit.
 
 ## Keep a portable paper packet
 
@@ -34,7 +34,7 @@ Prefer:
   README.md
 ```
 
-Use project-relative paths and existing conventions. Keep the Markdown understanding artifact canonical; treat HTML/PPT/Word as derivatives. Put dated project-specific implications at the end so the paper packet remains reusable.
+Use library-relative paths and existing conventions. Keep the Markdown understanding artifact canonical; treat HTML/PPT/Word as derivatives. Return source packets and any candidate relevance to `sci-research-manager`; do not embed project state or adoption decisions in global source identity, metadata, or the reusable understanding artifact.
 
 ## Maintain verification states
 
@@ -57,16 +57,17 @@ Use:
 
 Do not turn a mature framework or paper module into the project's contribution by default.
 
-## Produce a literature-to-experiment brief
+## Return a typed source handback
 
-Before an experiment is created, provide:
+Before an experiment is created, return:
 
-- source identities and verification status;
-- theoretical motivation and project-facing hypothesis;
+- stable source identities, canonical locations, versions, and bibliographic verification status;
+- bounded source claims with exact locations and protocol limits;
+- theoretical motivation separated from any proposed project hypothesis;
 - variables/cues and required controls;
 - success/failure criteria;
 - likely confounds and non-transferable assumptions;
 - do-not-overclaim/do-not-do-next;
-- recommended lifecycle stage.
+- unresolved identity, access, or citation gaps.
 
-Then hand experiment IDs, protocols, runs, and results to `sci-experiment-manager`. Literature-only items never enter the experiment index or claim map as project evidence.
+Return this packet to `sci-research-manager`, which owns project adoption, tags, LiteratureClaim verification, experiment allocation, and downstream state. Literature-only items never enter the experiment index or claim map as project evidence.

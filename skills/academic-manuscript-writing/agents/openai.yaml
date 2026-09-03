@@ -1,4 +1,4 @@
 interface:
-  display_name: "Academic Manuscript Writing"
-  short_description: "Draft evidence-aware academic manuscript prose"
-  default_prompt: "Use $academic-manuscript-writing to draft this evidence-bounded manuscript section in clear journal-quality English."
+  display_name: "Academic Manuscript Lifecycle Writing"
+  short_description: "Stage-aware manuscript writing, revision, and response"
+  default_prompt: "Use $academic-manuscript-writing as the sole manuscript owner to select the stage, preserve evidence and the mainline, and integrate only bounded specialist handbacks."

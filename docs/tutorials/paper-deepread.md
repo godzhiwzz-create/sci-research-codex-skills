@@ -4,6 +4,8 @@
 
 成品示例可以先看：[Attention Is All You Need 精读演示包](examples/attention-is-all-you-need/README.md)。
 
+该演示包是 `v2.0.0` 的公开历史快照，其中的 public-demo attachment 不是新项目模板；`main` 的新工作流以本教程后文的独立 typed reading handback 为准。
+
 ## 1. 一句话使用方式
 
 把 PDF 或论文链接给 Codex：
@@ -12,7 +14,7 @@
 Use sci-literature-manager and sci-paper-reader.
 Read this paper deeply in Chinese.
 First create a Markdown understanding packet, then create a visual HTML packet.
-Include abstract screenshot, abstract interpretation, method route, figure/table proof cards, limitations, relation to other papers, and a dated project attachment.
+Include abstract screenshot, abstract interpretation, method route, figure/table proof cards, limitations, relation to other papers, and a separate typed reading handback.
 Assume the reader is new to this topic: explain prerequisite concepts, metrics, formulas, figures, and common misunderstandings in Chinese.
 ```
 
@@ -38,7 +40,7 @@ literature/
 - MD 是源文件；
 - HTML / PPT / Word 是派生展示；
 - 论文主体先讲论文本身；
-- 项目启发放最后，并写日期，避免污染未来项目阅读。
+- 可迁移启发放进独立 reading handback，交回 `sci-research-manager`，不写进可复用论文主体。
 
 ## 3. 精读包效果预览
 
@@ -124,7 +126,7 @@ problem
 -> robustness
 -> limitation
 -> relation to other papers
--> project-facing validation requirement
+-> separate candidate reading handback
 ```
 
 如果这条线写不出来，说明还没读懂，不应该急着做 PPT 或实验。
@@ -145,7 +147,7 @@ problem
 - limitations；
 - relation-to-other-papers map；
 - 常见误解 / 新手 FAQ；
-- 日期校准的 project attachment。
+- 项目中立的 scope summary；需要项目启发时另给 typed reading handback。
 
 生成 HTML 后检查本地图像：
 
@@ -155,31 +157,26 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 
 这个脚本会检查 HTML 引用的本地图像是否缺失或为空。
 
-## 5. 和项目的关系要写在最后
+## 5. 项目启发要作为独立 handback
 
-项目挂接模块示例：
+精读包本体保持项目中立；另行返回：
 
 ```markdown
-## Project Attachment: 当前项目名
+## Reading Handback
 
-- Date: 2026-05-22
-- Current project stage: idea_exploration
-- Why this paper matters:
-  它提供了一个区分 A/B 因子的建模思路。
-- What it supports:
-  可以启发一个 no-training diagnostic。
-- What it does not support:
-  不能直接证明我们的数据集上会提升。
-- Suggested validation:
-  比较 factor A、factor B、shuffle control、metadata baseline。
-- Evidence boundary:
-  literature_reference_only, not project evidence.
+- Source ID/version and reading date:
+- Source-grounded statements and exact locations:
+- Paper protocol and evidence boundary:
+- Candidate relevance (not yet adopted):
+- Candidate hypotheses/diagnostics/controls:
+- Missing verification:
+- Return to: sci-research-manager
 ```
 
 这样做有两个好处：
 
 1. 这篇论文未来给别的项目读时仍然干净；
-2. 当前项目不会把文献结论误写成自己的实验证据。
+2. 研究 owner 会在项目 namespace 中单独决定采用、LiteratureClaim 核验和实验分配，不会把文献结论误写成自己的实验证据。
 
 ## 6. 常见错误
 
@@ -190,8 +187,8 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 | 图表只贴不讲 | 每张关键图表写 proof card |
 | 默认读者懂术语、公式和数据集 | 先写 prerequisite ladder 和 concept dictionary |
 | 表格只复述数字 | 解释 baseline、指标方向、差距大小和结论边界 |
-| 读完马上设计实验 | 先输出 literature-to-experiment brief |
-| 用当前项目视角重写整篇论文 | 主体讲论文，项目启发放最后 |
+| 读完马上设计实验 | 先把 candidate handback 交给 `sci-research-manager`，由它决定是否形成正式 brief |
+| 用当前项目视角重写整篇论文 | 主体讲论文，项目启发放进独立 handback |
 | 重要句子全翻译成中文失去精度 | 可以短引原句，但解释用中文 |
 
 ## 7. 最小提示词
@@ -202,8 +199,8 @@ Create a Chinese paper understanding packet for this PDF.
 Do not make it a short summary.
 Assume the reader is new to the topic. Explain prerequisite concepts, terms,
 metrics, formulas, method route, key figures/tables, evidence spine,
-limitations, common misunderstandings, relation to other papers, and a dated
-project attachment.
+limitations, common misunderstandings, relation to other papers, and a separate
+typed reading handback for any candidate project relevance.
 If you create HTML, preserve figure aspect ratios and run the HTML asset checker.
 ```
 

@@ -10,12 +10,25 @@
 - 新增统一维护手册，覆盖日常更新、Release、回滚、定期巡检和交接。
 - 新增可执行维护一致性检查及 release candidate/tag 核验。
 - 新增每月只读维护工作流和 GitHub Actions Dependabot 配置。
+- 新增项目 Source-ID/LiteratureClaim 接口、实验库生命周期、跨库交接和最终提交六门审核规范。
+- 新增稿件七阶段工作流，覆盖初稿、成稿打磨、提交前审核、大修、小修、最终提交审核和校样纠正。
+- 新增可配置的 `audit_research_libraries.py` 与覆盖文本、OOXML/ODF、PDF、图片和压缩包的 `scan_external_disclosures.py`。
+- 新增非标准库布局、扩展 vocabulary、审计退出码、披露扫描、全 Skill 引用和隐私标记的回归测试。
 
 ### Changed
 
 - PR 测试现在先验证版本、文档、社区配置和公开 Skill 的维护不变量。
 - GitHub Actions 升级到官方当前主要版本的运行时。
 - 稳定标签核验兼容 GitHub Actions 的 detached HEAD，同时仍要求标签可达 `origin/main`。
+- 在保持 8 个公开 Skill ID 的前提下，将 `sci-research-manager` 明确为研究状态与证据 owner，将 `academic-manuscript-writing` 明确为稿件阶段与主线 owner；其余 Skill 通过 typed handback 协作。
+- 新项目的默认实验状态统一为五个正交轴；已有 `EXPERIMENT_INDEX.*`、自定义 vocabulary、模板和公开 CLI 继续兼容，不强制批量迁移。
+- 旧写作 reference 路径保留为阶段化规范的兼容入口，避免形成第二套稿件工作流。
+
+### Safety
+
+- 对外材料披露候选扫描在不支持或未分类的格式、缺少 PDF/OCR 能力、未扫描的嵌入对象、资源/超时上限或软链接边界上返回 `incomplete_scan`，不把部分覆盖报告成通过。
+- 新增公开仓库文本检查，拒绝个人绝对路径和高置信凭据模式；维护提交使用 GitHub noreply 身份。
+- 审计、package 准备和 portal staging 不自动授权修复、上传、发布或最终提交。
 
 ## [2.0.0] - 2026-07-13
 

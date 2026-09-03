@@ -1,6 +1,6 @@
 # Research State Model
 
-Use an existing project vocabulary when one is defined. Otherwise use this compact model. Keep stage, status, evidence quality, paper role, and decision in separate fields; do not compress them into one overloaded status.
+Use an existing project vocabulary when one is defined. Otherwise use this compact model. Keep lifecycle stage, experiment status, evidence status, claim strength, and direction decision in separate fields; do not compress them into one overloaded status.
 
 ## Lifecycle stages
 
@@ -18,29 +18,36 @@ Stages are task-local and may move backward when evidence exposes a new uncertai
 
 ## Project status
 
+Use one of:
+
 - `active`: research work is progressing.
 - `paused`: deliberately inactive but resumable.
-- `submission`: evidence is fixed and packaging/revision dominates.
+- `submission`: the central evidence is fixed and packaging/revision dominates.
 - `maintenance`: no new scientific claim is being pursued in the current task.
 - `archived`: historical and read-only by default.
 
 ## Experiment status
 
+Use one of:
+
 - `designed`: protocol exists; no authoritative result yet.
 - `running`: execution is active.
-- `complete`: result and provenance are available.
-- `stop`: the route failed its stop gate or is no longer justified.
+- `partial`: execution produced some artifacts but did not satisfy the completion gate.
+- `complete`: expected execution artifacts and provenance are available.
+- `stopped`: execution or the route ended before completion.
 - `superseded`: retained for history but replaced by a named canonical record.
-- `needs_verification`: a reported result lacks required artifact/protocol verification.
 
-Keep paper role separate, such as `main_result`, `ablation`, `diagnostic_only`, `negative_evidence`, `internal_reference`, or `not_used`.
+Keep claim strength in its separate field below. An optional manuscript placement such as main result or ablation may be recorded, but it must not replace or upgrade claim strength.
 
 ## Evidence status
 
-- `verified`: raw artifact and protocol provenance agree.
-- `session_result_pending_artifact`: a session reports the result but the raw artifact is missing or unlocated.
+- `not_assessed`: execution state is known but scientific evidence has not been checked.
+- `verified`: raw artifact, frozen protocol, extraction, and interpretation agree.
+- `pending_artifact`: a result is reported but a required artifact is missing or unlocated.
 - `protocol_mismatch`: compared artifacts use incompatible splits, metrics, selection, code, or evaluation rules.
-- `unsupported`: no admissible evidence supports the statement.
+- `unverifiable`: available material cannot establish the result or protocol provenance.
+
+For legacy data, map `stop` to `stopped` and `session_result_pending_artifact` to `pending_artifact`. Do not mechanically map a legacy experiment status of `needs_verification`: retain the true run state and choose `pending_artifact` or `unverifiable` on the evidence axis after inspecting what is missing. A project with a stricter established vocabulary may preserve it, but must document the mapping and extend audit-tool allowed values explicitly. If an alias must participate in completion, verification, or claim-safety gates, also pass `--map-value FIELD=ALIAS:CANONICAL`; allowing a spelling alone never weakens a gate.
 
 ## Claim strength
 
@@ -61,12 +68,14 @@ Keep paper role separate, such as `main_result`, `ablation`, `diagnostic_only`, 
 
 ## Failure-cause taxonomy
 
+Use one or more of:
+
 - `signal_mismatch`: the cue does not represent the needed factor.
 - `task_mismatch`: the cue is meaningful but not for the target prediction.
 - `interface_mismatch`: the role may be valid but is attached to the wrong decision layer.
 - `supervision_mismatch`: the target or loss does not express the phenomenon.
 - `carrier_mismatch`: the model/pipeline cannot naturally use the proposed mechanism.
 - `target_domain_support_mismatch`: source/synthetic evidence does not transfer safely.
-- `control_or_confound_failure`: RGB, metadata, shuffle, native statistics, selection, or another control explains the apparent effect.
+- `control_or_confound_failure`: a trivial baseline, leakage check, randomization, selection artifact, or another control explains the apparent effect.
 
 Tie every failure label to observed evidence and an alternative explanation. A label is not itself a diagnosis.

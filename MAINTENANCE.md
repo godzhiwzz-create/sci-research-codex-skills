@@ -8,6 +8,7 @@
 - 仓库名和 8 个公开 Skill 名称保持兼容；破坏性变化只能进入明确批准的新主版本。
 - 维护不改写研究项目中的原始资产、时间戳、实验结果或证据状态。
 - 凭据、个人绝对路径、未公开数据、缓存和本地生成物不得进入提交。
+- commit/tag 的 author、committer、tagger 元数据也属于公开内容；维护前确认使用仓库本地 GitHub noreply 身份，不沿用个人邮箱。
 - 所有公开变化经分支、Pull Request、CI 和 `main` 合并；不直接在 `main` 上试错。
 - `VERSION`、Changelog、README、Pages、标签和 Release 的版本声明必须一致。
 
@@ -48,6 +49,8 @@ python scripts/maintenance_check.py check
 ```
 
 先阅读 `AGENTS.md`、本文件和目标 Skill 的完整 `SKILL.md`。把已有未提交内容视为他人工作；范围混杂时不要使用 `git add -A`。
+
+在首次提交前只读核对 Git 身份；若邮箱不是 GitHub noreply，先设置当前仓库的 local `user.name`/`user.email`，不要改全局配置，也不要在日志或 PR 中回显原邮箱。
 
 ### 2. 创建单一目的分支
 

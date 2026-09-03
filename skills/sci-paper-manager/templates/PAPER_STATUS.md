@@ -1,39 +1,42 @@
 # PAPER_STATUS
 
-## 1. Current Paper Stage
+## 1. Current Artifact Layer
 
-draft_core / submission_prepare / revision
+`draft_core` / `submission_targets/<target>`
 
-## 2. Current Main Story
+## 2. Manuscript Lifecycle Stage
 
-## 3. Section Status Table
+`initial_draft / manuscript_polish / pre_submission_audit / major_revision_preserving / minor_revision_local / final_submission_audit / proof_correction`
+
+## 3. Current Main Story
+
+## 4. Section Status Table
 
 | Section | Status | Evidence status | Notes |
 |---|---|---|---|
-| Title | not_started | needs verification | |
-| Abstract | not_started | needs verification | |
-| Introduction | not_started | needs verification | |
-| Related Work | not_started | needs verification | |
-| Method | not_started | needs verification | |
-| Experiments | not_started | needs verification | |
-| Ablation | not_started | needs verification | |
-| Discussion | not_started | needs verification | |
-| Limitation | not_started | needs verification | |
-| Conclusion | not_started | needs verification | |
+| Title | not_started | not_assessed | |
+| Abstract | not_started | not_assessed | |
+| Introduction | not_started | not_assessed | |
+| Related Work | not_started | not_assessed | |
+| Method | not_started | not_assessed | |
+| Experiments | not_started | not_assessed | |
+| Ablation | not_started | not_assessed | |
+| Discussion | not_started | not_assessed | |
+| Limitation | not_started | not_assessed | |
+| Conclusion | not_started | not_assessed | |
 
-## 4. Active Writing Tasks
+## 5. Active Writing Tasks
 
-## 5. Frozen Content
+## 6. Frozen Content
 
-## 6. Deprecated Content
+## 7. Deprecated Content
 
-## 7. Tables Needed
+## 8. Tables Needed
 
-## 8. Figures Needed
+## 9. Figures Needed
 
-## 9. Claims Needing Evidence
+## 10. Claims Needing Evidence
 
-## 10. Last Updated
+## 11. Last Updated
 
 Do not import old paper text unless it matches the current story and evidence map.
-

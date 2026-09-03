@@ -6,10 +6,11 @@ not available yet
 
 ## Identity
 
-- Stage: `idea_exploration / minimal_probe / formal_experiment / result_analysis`
-- Status: `designed / running / complete / stop / superseded / needs_verification`
+- Stage: `idea_exploration / minimal_probe / formal_experiment / result_analysis / paper_writing / submission_prepare / maintenance`
+- Status: `designed / running / partial / complete / stopped / superseded`
 - Parent family:
-- Evidence status: `needs_verification`
+- Evidence status: `not_assessed / verified / pending_artifact / protocol_mismatch / unverifiable`
+- Direction decision: `continue / redirect / reference_only / stop / needs_literature`
 
 ## Scientific Question
 

@@ -1,6 +1,6 @@
 ---
 name: sci-paper-reader
-description: Deep-read academic papers into source-grounded Chinese or bilingual understanding packets that explain the problem, prerequisites, method, evidence spine, figures/tables, limitations, relation to other work, and dated project implications. Use when the user wants to understand, translate, teach, compare, or turn a paper into Markdown, HTML, Word, Obsidian, or presentation-ready material. Keep literature evidence separate from project experiment evidence.
+description: Deep-read academic papers into source-grounded Chinese or bilingual understanding packets that explain the problem, prerequisites, method, evidence spine, figures/tables, limitations, and relation to other work. Use when the user wants to understand, translate, teach, compare, or turn a paper into Markdown, HTML, Word, Obsidian, or presentation-ready material. Keep the reusable packet project-neutral; return candidate project relevance as a separate typed reading handback to sci-research-manager, never as project evidence or an experiment allocation.
 ---
 
 # SCI Paper Reader
@@ -46,7 +46,7 @@ Preserve original figure aspect ratios. Treat visual crops as evidence objects, 
 
 Build this before writing derivatives:
 
-`problem -> claimed cause -> method principle -> proof objects -> result/ablation interpretation -> limitation -> project implication -> next validation requirement`
+`problem -> claimed cause -> method principle -> proof objects -> result/ablation interpretation -> limitation -> relation to other work`
 
 If this chain is unclear, do not design slides or experiments yet.
 
@@ -63,7 +63,8 @@ Cover:
 7. Main results, ablations/diagnostics, robustness/generalization, failure cases, and limitations.
 8. Relation to predecessor, competitor, and follow-up papers.
 9. Durable takeaways, common misunderstandings, and evidence boundaries.
-10. A dated project attachment when relevant.
+
+When project relevance is requested, add a separate typed reading handback after producing the reusable artifact; do not append the handback to the paper authority or its derivatives.
 
 For full structure and field details, follow `references/packet_schema.md` rather than expanding this coordinator.
 
@@ -79,35 +80,36 @@ For full structure and field details, follow `references/packet_schema.md` rathe
 
 Do not compress away the reasoning ladder. “Concise” means remove repetition, not prerequisites, proof logic, limitations, or controls.
 
-## Keep project implications separate and dated
+## Return project relevance to the research owner
 
-Append:
+When project relevance is in scope, return this separate handback to `sci-research-manager`:
 
 ```markdown
-## Project Attachment: <project/topic>
+## Reading Handback
 
-- Date:
-- Current project stage:
-- Why this paper matters:
-- What it supports as literature:
-- What it does not support for our project:
-- Hypotheses/diagnostics suggested:
+- Source ID/version and reading date:
+- Source-grounded statements and exact locations:
+- Paper protocol and evidence boundary:
+- Candidate relevance (not yet adopted):
+- Candidate hypotheses/diagnostics:
 - Required controls and evidence boundary:
-- Decision: use / reference_only / verify_more / reject
+- Missing verification:
+- Return to: `sci-research-manager`
 ```
 
-This section may inspire a hypothesis but cannot create a project claim.
+This handback may inspire a hypothesis but cannot create a project tag, LiteratureClaim, direction decision, experiment ID, or project evidence. The reusable paper packet remains project-neutral.
 
-## Hand off to experiments carefully
+## Hand experiment candidates back carefully
 
-Before `sci-experiment-manager` creates an ID, provide:
+Do not send the reusable paper packet or candidate implications directly to `sci-experiment-manager`. Return a typed reading handback to `sci-research-manager`, which decides project adoption, verifies any project LiteratureClaim, and—only when a falsifiable requirement exists—creates the official literature-to-experiment brief before delegating card implementation.
+
+The candidate portion of the handback may include:
 
 ```markdown
-## Literature-to-Experiment Brief
+## Candidate Experiment Implications
 
-Hypothesis:
-Theory:
 Sources and verification status:
+Candidate hypothesis/theory:
 Variables/cues:
 Required controls:
 Minimal validation:
@@ -118,7 +120,7 @@ Do-not-do-next:
 Recommended stage:
 ```
 
-Do not create configs, runs, results, or experiment claims in this skill.
+Do not create project registry rows, configs, runs, experiment IDs/results, or experiment claims in this skill.
 
 ## Validate derivatives
 

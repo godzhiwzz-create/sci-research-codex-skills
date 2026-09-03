@@ -6,8 +6,10 @@
 
 ## Claims
 
-| Claim ID | Section | Evidence IDs | Strength | Status |
+| Claim ID | Section | Evidence IDs | Claim Strength | Evidence Status |
 |---|---|---|---|---|
+
+Use the canonical claim-strength and evidence-status values from `CLAIM_EVIDENCE_MAP.md`.
 
 ## Section Plan
 
@@ -22,4 +24,3 @@
 9. Conclusion
 
 Write only evidence-supported claims. Mark uncertain content clearly.
-

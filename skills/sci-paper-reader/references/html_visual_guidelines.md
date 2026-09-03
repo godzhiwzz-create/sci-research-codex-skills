@@ -39,7 +39,9 @@ Recommended order:
 9. Figure/table proof cards with original crops where useful.
 10. Evidence spine and limitations.
 11. Relation to other papers.
-12. Dated project attachment.
+12. Scope and evidence-boundary summary.
+
+When project relevance is requested, return the typed reading handback as a sibling artifact to `sci-research-manager`; do not embed it in the reusable Markdown packet or its HTML derivative.
 
 ## Visual Standards
 

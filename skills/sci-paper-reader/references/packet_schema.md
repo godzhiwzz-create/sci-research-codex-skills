@@ -9,7 +9,7 @@ rather than a short summary.
 - Required packet sections
 - Paper identity and abstract
 - Prerequisites, explanation, gap, method, figures, and evidence
-- Limitations, related work, and project attachment
+- Limitations, related work, and the separate reading handback
 - Quality bar
 
 ## Production Rule
@@ -21,9 +21,9 @@ For full deep reads, apply `novice_depth_standard.md`: assume the reader is new
 to the topic and needs prerequisite concepts, method intuition, figure/table
 teaching, and claim boundaries.  Do not compress away the reasoning ladder.
 
-The main body explains the paper itself.  Project-specific interpretation goes
-at the end under a dated project attachment so future projects can reuse the
-reading without inheriting today's project lens.
+The reusable packet explains the paper itself and remains project-neutral. If
+project relevance is requested, return it as a separate typed reading handback
+to `sci-research-manager` so future projects do not inherit today's project lens.
 
 ## Required Packet Sections
 
@@ -179,18 +179,22 @@ Explain:
 - what later work might adopt or reject;
 - how it fits into a reading route.
 
-### 10. Project Attachment
+## Separate Typed Reading Handback
 
-Put this at the end.  Include:
+This is a sibling handback, not part of the reusable understanding packet.
+Include:
 
-- date;
-- project or route name;
-- why the paper matters now;
-- what it suggests as hypothesis, variable, control, diagnostic, or risk;
-- what it does not support;
-- next validation requirement.
+- Source ID/version and reading date;
+- source-grounded statements with exact locations;
+- the paper's protocol, limitations, and evidence boundary;
+- candidate relevance explicitly marked not yet adopted;
+- candidate hypotheses, variables, controls, diagnostics, or risks;
+- missing verification and prohibited extrapolations;
+- return destination: `sci-research-manager`.
 
-Keep this section explicitly separate from the paper's own claims.
+The handback cannot assign a project role, verify a project LiteratureClaim,
+choose a direction, or allocate an experiment ID. The research lifecycle owner
+performs those actions in the project namespace.
 
 ## Quality Bar
 
@@ -202,7 +206,8 @@ The packet should let a reader who has not opened the PDF understand:
 - the important figures/tables;
 - why the evidence supports or fails to support the claim;
 - how the paper relates to neighboring literature;
-- how it can and cannot be used in a project.
+- which candidate implications could be handed to a research owner, without
+  presenting them as adopted project state.
 
 If the packet only helps someone who already knows the field, it fails the
 quality bar.  Increase background explanation, concept definitions, figure
