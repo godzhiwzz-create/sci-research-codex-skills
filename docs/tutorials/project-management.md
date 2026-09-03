@@ -27,6 +27,8 @@ research_workspace/
     PROJECT_PLAN.md
 ```
 
+新项目可将 `EXPERIMENTS.tsv` 作为五轴当前状态的唯一 editable 机器源，并在项目 `literature/` 中使用 `SOURCES.tsv` 与 `LITERATURE_CLAIMS.tsv`。旧 `EXPERIMENT_INDEX.*` 可以继续作为 authority 或 generated view，但不要和 `EXPERIMENTS.tsv` 同时手工维护。
+
 推荐对 Codex 说：
 
 ```text
@@ -65,7 +67,11 @@ Do not scan all logs, runs, results, or checkpoints by default.
 ```markdown
 ## Stage
 
-result_analysis / route_review
+result_analysis
+
+## Operating Mode
+
+direction_review
 
 ## Current Central Question
 
@@ -75,15 +81,15 @@ result_analysis / route_review
 
 | Evidence | What it supports | What it does not support |
 |---|---|---|
-| E003 | 主方法在目标设置中有稳定收益 | 不证明所有域都优于 RGB |
-| F012-D01 | 当前一致性目标不成立 | 不否定该研究信号本身 |
-| F018-D02 | 当前辅助头有正则化效应 | 不证明目标机制已经成立 |
+| E041 | 预注册主比较达到预设 gate | 不证明其他任务或设置也成立 |
+| F120-D01 | 候选解释 A 未通过对照 | 不否定原始研究问题 |
+| F121-D02 | 辅助信号只呈现有限诊断作用 | 不支持把它提升为主贡献 |
 
 ## Failure Cause
 
 - signal mismatch：信号测到的是 A，但任务需要 B。
 - interface mismatch：信号被放进了直接决策层。
-- control failure：shuffle / metadata / detector-native statistics 解释了增益。
+- control failure：随机化检查或简单对照解释了表面差异。
 
 ## Do Not Do Next
 
@@ -95,7 +101,7 @@ result_analysis / route_review
 
 ## Decision
 
-redirect：保留问题，停止当前接口，先做 no-training cause diagnostic。
+redirect：保留问题，停止当前接口，先做最小的区分性 probe。
 ```
 
 这个输出的重点是“为什么”，不是“又跑什么”。
@@ -106,11 +112,11 @@ redirect：保留问题，停止当前接口，先做 no-training cause diagnost
 
 ```text
 cards/
-  F012_direction_exploration.md
+  F120_direction_exploration.md
   _archive/
-    F012/
-      F012_D01_old_probe.md
-      F012_D02_old_probe.md
+    F120/
+      F120_D01_old_probe.md
+      F120_D02_old_probe.md
 ```
 
 family card 负责记录：
@@ -120,7 +126,9 @@ family card 负责记录：
 - 哪些支持；
 - 哪些被 control 解释掉；
 - 哪些不能再重复；
-- 最终 go / redirect / stop。
+- 建议的 continue / redirect / reference_only / stop / needs_literature。
+
+family card 保存科学综合；`sci-research-manager` 接收 handback 后再集成最终方向决定和共享 registry 状态。
 
 ## 5. 项目管理和论文写作怎么连起来
 
@@ -133,17 +141,20 @@ research_workspace/paper/CLAIM_EVIDENCE_MAP.md
 例子：
 
 ```markdown
-| Claim ID | Claim | Evidence | Strength | Status |
+| Claim ID | Claim | Evidence | Claim strength | Evidence status |
 |---|---|---|---|---|
-| C001 | 方法解决了某类 shortcut | E001, E006 | main_claim | verified |
-| C002 | 该信号能作为通用任务先验 | F012-D01, F018-D02 | unsupported | unsupported |
+| C001 | 方法在预注册任务上达到目标 | E021, E041 | main_claim | verified |
+| C002 | 该机制可推广到任意设置 | F120-D01, F121-D02 | unsupported | verified |
 ```
+
+第二行刻意展示：证据已核验，不等于 claim 获得支持；五个状态轴不能互相替代。
 
 写论文前先让 Codex 做：
 
 ```text
-Use sci-paper-manager and sci-result-auditor.
-Audit CLAIM_EVIDENCE_MAP before I write the introduction.
+Use sci-research-manager and sci-result-auditor.
+Audit CLAIM_EVIDENCE_MAP and return a bounded evidence packet.
+Then use academic-manuscript-writing to select the manuscript stage before editing prose.
 ```
 
 ## 6. 常见错误
@@ -152,20 +163,20 @@ Audit CLAIM_EVIDENCE_MAP before I write the introduction.
 |---|---|
 | 失败后继续调参 | `sci-research-manager` 要求先输出 failure cause 和 do-not-do-next |
 | 文件夹越整越乱 | `sci-experiment-manager` 用 family card 合并路线 |
-| 论文 claim 先写后补证据 | `sci-paper-manager` 要求 claim-evidence map |
-| 项目公开时泄漏隐私 | `sci-asset-manager` 先做 delete / release review |
-| 强框架跑得好就当自己贡献 | direction layer 标记为 reference track，不自动变主线 |
+| 论文 claim 先写后补证据 | `sci-research-manager` 要求 claim-evidence map 与 evidence packet |
+| 对外包中夹带未审核披露或本地材料 | 最终提交门运行披露候选扫描并阻断 incomplete scan |
+| 强框架跑得好就当自己贡献 | direction decision 标记为 `reference_only`，不自动变主线 |
 
 ## 7. 最小可用流程
 
 如果你只想先用起来：
 
 ```text
-1. Initialize PROJECT_HANDOFF / QUERY_MAP / EXPERIMENT_INDEX.
+1. Initialize HANDOFF / QUERY_MAP and one authoritative experiment current-state index.
 2. 把已有实验补成 cards。
 3. 让 Codex 用 sci-research-manager 做一次 route review。
 4. 把结论写入 DECISION_LOG。
-5. 写论文前用 sci-result-auditor 审计 claim map。
+5. 写论文前用 sci-result-auditor 审计 claim map，再由 academic-manuscript-writing 选择阶段。
 ```
 
 这就足够把一个长期项目从“凭记忆推进”变成“按证据推进”。

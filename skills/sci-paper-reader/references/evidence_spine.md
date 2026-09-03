@@ -15,7 +15,6 @@ modules, or results.  The goal is to reconstruct the paper's proof route.
 7. Robustness / generalization proof
 8. Failure cases and limits
 9. Relation to other papers
-10. Project-facing validation requirement
 ```
 
 ## How To Read A Figure Or Table
@@ -55,7 +54,7 @@ Use precise labels:
 - `negative or boundary evidence`: shows where the method fails.
 - `unsupported from paper`: tempting claim not actually proven.
 
-## Relation To Project Evidence
+## Separate Reading Handback
 
 A paper can suggest:
 
@@ -66,9 +65,11 @@ A paper can suggest:
 - a diagnostic view;
 - a route to stop.
 
-A paper cannot by itself prove the user's project claim.  If the packet includes
-project implications, label them as hypothesis, reference, diagnostic, or
-experiment requirement.
+A paper cannot by itself prove the user's project claim. Keep these candidates
+out of the reusable paper packet and return them in a typed reading handback to
+`sci-research-manager`. The research owner decides project adoption, verifies
+project LiteratureClaims, selects any direction state, and allocates experiment
+IDs. Label every candidate as unadopted until that step occurs.
 
 ## Red Flags
 

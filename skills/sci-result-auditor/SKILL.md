@@ -1,6 +1,6 @@
 ---
 name: sci-result-auditor
-description: Perform read-only consistency and reproducibility audits across experiment cards, raw results, indexes, registries, claim-evidence maps, handoffs, manuscripts, and public artifacts. Use when checking whether claims are supported, metrics and protocols are compatible, results are traceable, or project memory is internally consistent. Do not modify source evidence unless the user separately requests repair.
+description: Perform read-only consistency and reproducibility audits across experiment cards, raw results, indexes, registries, claim-evidence maps, handoffs, manuscripts, and public artifacts. Use when checking whether claims are supported, metrics and protocols are compatible, results are traceable, or project memory is internally consistent. Return findings to sci-research-manager; any repair is a separate owner-scoped task, not an auditor mutation.
 ---
 
 # SCI Result Auditor
@@ -48,8 +48,9 @@ For every issue, state severity, evidence, impact, and recommended repair. For e
 
 - `supports`;
 - `does_not_support`;
-- `paper_role`;
+- `claim_strength`;
+- optional `paper_role` or placement when the project records it separately;
 - `risk`;
 - `next_action`.
 
-For exploratory routes, choose `go`, `pause`, `blocked`, or `stop`. Do not recommend larger training when evidence is weak or confounded.
+Return the findings and any evidence-backed decision recommendation to `sci-research-manager`; do not change route state, promote evidence, or repair canonical artifacts during the audit. Do not recommend larger training when evidence is weak or confounded.

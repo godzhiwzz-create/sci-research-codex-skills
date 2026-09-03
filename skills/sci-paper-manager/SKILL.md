@@ -1,24 +1,24 @@
 ---
 name: sci-paper-manager
-description: Manage evidence-driven academic paper artifacts, including draft-core structure, claim-evidence maps, paper status, figure/table plans, target-venue requirement caches, submission packages, and unsupported-claim control. Use when creating or reconciling manuscript structure, claims, figures/tables, venue preparation, or submission files. Use academic-manuscript-writing for prose and sci-result-auditor for pure evidence audits.
+description: Manage evidence-driven supporting paper artifacts, including claim-evidence maps, paper-status ledgers, figure/table plans, target-venue requirement caches, submission checklists, package inventories, and unsupported-claim control. Use when creating or reconciling those bounded artifacts for a manuscript or submission. Return structure or package plans to academic-manuscript-writing, which owns manuscript stages, mainline, prose, responses, and canonical integration; use sci-result-auditor for pure evidence audits.
 ---
 
 # SCI Paper Manager
 
-Turn verified project evidence into an auditable paper structure. Follow `sci-research-manager` and project-local evidence rules.
+Turn verified project evidence into auditable supporting plans and status artifacts. Follow `sci-research-manager` and project-local evidence rules, and return manuscript-facing plans to `academic-manuscript-writing` for integration.
 
-## Separate content from formatting
+## Separate artifact layers from manuscript stages
 
-Use two stages:
+Maintain two artifact layers when the project uses them:
 
 1. `draft_core`: venue-neutral story, claims, sections, figures, tables, and evidence.
 2. `submission_targets/<target>`: official template, manuscript, figures/tables, supplementary files, declarations, cover letter, checklist, compliance report, submitted versions, and revisions.
 
-Do not adapt to a target venue until the draft core is coherent.
+These are storage layers, not manuscript lifecycle stages. `academic-manuscript-writing` selects the writing/revision stage and owns prose, mainline, response content, and canonical integration. Do not adapt to a target venue until the draft core is coherent.
 
 ## Ground every paper-facing claim
 
-Before drafting or restructuring:
+Before changing a claim map, paper-status ledger, figure/table plan, or package inventory:
 
 1. Read project handoff and paper status.
 2. Read the claim-evidence map.
@@ -26,7 +26,7 @@ Before drafting or restructuring:
 4. Classify claim strength as `main_claim`, `trend_only`, `diagnostic_only`, `negative_boundary`, `internal_exploration`, or `unsupported`.
 5. Record contrary evidence, protocol compatibility, and missing validation.
 
-Do not reuse old prose until it matches the current central story and evidence.
+Do not treat old prose as evidence. Report any mainline discrepancy to the manuscript owner instead of rewriting the prose here.
 
 ## Maintain paper artifacts
 
@@ -52,4 +52,4 @@ Never guess a requirement. Mark ambiguity `needs_verification`.
 
 Check that manuscript, figures/tables, raw results, claim map, supplementary files, public code, and data/code statements use one compatible protocol and frozen version. Label mismatches `protocol_mismatch`; do not claim full reproducibility until resolved.
 
-Use `academic-manuscript-writing` only after claim roles are fixed. Use `sci-result-auditor` for independent consistency checks.
+Use `academic-manuscript-writing` only after claim roles are fixed. Use `sci-result-auditor` for independent consistency checks. Return updated claim maps, plans, requirement notes, checklists, or package inventories to the active primary owner; do not decide final readiness, broaden claims, rewrite manuscript prose, or perform an irreversible submission action.

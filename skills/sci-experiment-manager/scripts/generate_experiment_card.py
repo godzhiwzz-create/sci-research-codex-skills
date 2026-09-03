@@ -23,7 +23,7 @@ def slugify(text: str) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("experiment_id", help="E001, F012, or F012-D01")
+    parser.add_argument("experiment_id", help="E001, F120, or F120-D01")
     parser.add_argument("name", help="Human-readable experiment/family name")
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="Project root")
     parser.add_argument(
@@ -41,7 +41,7 @@ def main() -> int:
     args = parse_args()
     experiment_id = args.experiment_id.strip().upper()
     if not ID_RE.fullmatch(experiment_id):
-        print("Experiment ID must look like E001, F012, or F012-D01", file=sys.stderr)
+        print("Experiment ID must look like E001, F120, or F120-D01", file=sys.stderr)
         return 2
 
     root = args.root.expanduser().resolve()

@@ -18,6 +18,7 @@ Scope: the entire `sci-research-codex-skills` repository.
 - Do not add README, changelog, or installation files inside individual skill folders.
 - Keep `sci-research-manager` as lifecycle route owner. Specialist skills may add narrow workflows but must not override project-local rules or promote unsupported evidence.
 - Keep project-specific paths, metrics, credentials, datasets, and headline numbers out of portable skills.
+- Treat commit author/tagger metadata as public output; use a repository-local GitHub noreply identity instead of a personal email.
 
 ## Safety and compatibility
 

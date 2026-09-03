@@ -21,6 +21,16 @@
 - 为全部 Skill 补齐 `agents/openai.yaml`。
 - 新增零第三方依赖的自动化测试和 GitHub Actions。
 
+## main 分支的 Unreleased 升级
+
+- 保留 8 个公开 Skill ID，把 `sci-research-manager` 和 `academic-manuscript-writing` 分别强化为研究状态 owner 与稿件生命周期 owner。
+- 新增项目文献 Source-ID/LiteratureClaim 接口、实验五轴当前状态、证据晋升/替代门，以及 literature-to-experiment 和 evidence-to-manuscript 两个交接门。
+- 新增 7 个稿件阶段，区分初稿、成稿打磨、提交前只读审核、大修、小修、最终提交审核和校样纠正。
+- 专门 Skill 改为接收有界输入并返回 typed handback，不直接扩大研究状态、claim 或稿件主线。
+- 新增可配置的研究库结构审计和对外材料披露候选扫描；扫描不完整会明确阻断，干净扫描也不等于作者批准。
+
+这些变化已记入 [CHANGELOG 的 Unreleased](CHANGELOG.md)。当前稳定 Release 仍是 `v2.0.0`；后续发布将通过独立版本 PR 完成。
+
 ## 版本与维护
 
 - [MAINTENANCE](MAINTENANCE.md)：日常更新、版本发布、定期巡检、回滚与交接的唯一流程入口。
@@ -31,7 +41,7 @@
 - [SECURITY](SECURITY.md)：涉及路径越界、覆盖、凭据泄露或未授权远程执行时使用私密报告渠道。
 - [Issues](https://github.com/godzhiwzz-create/sci-research-codex-skills/issues)：报告可公开复现的问题或提出功能请求。
 
-`v1.0.0` 是 v2 合并前的不可移动历史标签；新安装默认使用 `v2.0.0`。仓库遵循语义化版本，已发布标签不重写、不复用。
+`v1.0.0` 是 v2 合并前的不可移动历史标签；`v2.0.0` 是当前稳定快照，`main` 还包含 Changelog 中的 Unreleased 变化。仓库遵循语义化版本，已发布标签不重写、不复用。
 
 ## 设计原则
 
@@ -41,34 +51,36 @@
 4. **claim 必须可追溯**：每个论文主张都要对应兼容协议下的证据。
 5. **维护默认只读**：整理不自动删除、移动、提交、推送或重写原始资产时间。
 6. **低上下文检索**：先 HANDOFF、QUERY_MAP、索引，再读卡片和原始文件。
+7. **一个事实一个 owner**：研究状态与证据由生命周期中枢集成，稿件阶段与主线由写作入口集成，专门 Skill 只返回有界产物。
 
 ## 系统结构
 
 ```mermaid
 flowchart LR
-  A["sci-research-manager<br/>生命周期与证据中枢"] --> B["sci-literature-manager<br/>文献库与阅读路线"]
-  B --> C["sci-paper-reader<br/>深度论文理解"]
-  A --> D["sci-experiment-manager<br/>实验卡、协议与索引"]
-  D --> E["sci-result-auditor<br/>结果与 claim 审计"]
-  E --> F["sci-paper-manager<br/>论文与投稿包"]
-  F --> G["academic-manuscript-writing<br/>证据驱动写作"]
-  A --> H["sci-asset-manager<br/>归档、迁移与删除审查"]
+  B["sci-literature-manager<br/>来源身份与题录"] -->|source packet| A["sci-research-manager<br/>研究状态与证据 owner"]
+  C["sci-paper-reader<br/>有界全文精读"] -->|reading handback| A
+  D["sci-experiment-manager<br/>卡片、运行与索引"] -->|experiment handback| A
+  E["sci-result-auditor<br/>只读一致性审计"] -->|findings| A
+  H["sci-asset-manager<br/>归档/删除审查"] -->|review manifest| A
+  A -->|verified evidence packet| G["academic-manuscript-writing<br/>稿件阶段与主线 owner"]
+  F["sci-paper-manager<br/>claim/图表/投稿清单"] -->|bounded artifact| G
+  G -->|new or broadened claim| A
 ```
 
-`sci-research-manager` 负责状态、方向、证据边界和收尾；其他 Skill 只负责自己的专门领域。项目自己的 `AGENTS.md`、schema 和事实来源始终优先。
+`sci-research-manager` 负责研究状态、方向、证据边界、跨库交接和最终提交门；`academic-manuscript-writing` 负责稿件阶段、主线、正文、修订与回复。其余 6 个 Skill 返回有界产物。项目自己的 `AGENTS.md`、schema 和事实来源始终优先。
 
 ## 8 个原有 Skill
 
 | Skill | 负责 | 不负责 |
 |---|---|---|
-| `sci-research-manager` | 项目恢复、方向决策、证据层级、维护和交接 | 代替所有内容专门 Skill |
-| `sci-literature-manager` | 文献发现、索引、验证队列、阅读路线 | 把文献当项目结果 |
-| `sci-paper-reader` | 源材料驱动的深度理解包、图表 proof cards | 创建项目实验结果 |
-| `sci-experiment-manager` | E/F 编号、冻结协议、卡片、索引、结果闭环 | 决定论文方向 |
-| `sci-result-auditor` | 只读证据、协议、claim 和文件一致性审计 | 静默修复证据 |
-| `sci-paper-manager` | claim map、paper status、图表计划、投稿包 | 凭空补结果或猜投稿要求 |
-| `sci-asset-manager` | 迁移/归档/删除风险审查 | 未授权删除或移动 |
-| `academic-manuscript-writing` | 证据边界固定后的学术写作 | 路线决策和证据仲裁 |
+| `sci-research-manager` | 研究状态、项目文献接口、实验语义、证据晋升、方向决策、最终提交门 | 代替内容专门 Skill |
+| `academic-manuscript-writing` | 稿件阶段、主线、正文、修订、回复信、clean/marked-up 与 proof 内容 | 晋升证据或执行最终提交 |
+| `sci-literature-manager` | 全局来源身份、题录、版本、去重、BibTeX 与 source packet | 把文献当项目实验结果或直接改项目 claim |
+| `sci-paper-reader` | 源材料驱动的有界理解包和图表 proof cards | 创建项目实验结果或决定方向 |
+| `sci-experiment-manager` | E/F 编号、冻结协议、卡片、运行记录、项目索引 | 自行晋升证据或改变项目路线 |
+| `sci-result-auditor` | 只读证据、协议、claim 和文件一致性发现 | 静默修复证据或作第二套路线决策 |
+| `sci-paper-manager` | claim map、paper status、图表计划、要求缓存、投稿清单 | 改写稿件主线或决定最终 readiness |
+| `sci-asset-manager` | 迁移/归档/删除风险审查与 manifest | 未授权删除或移动 |
 
 ## 安装
 
@@ -78,6 +90,8 @@ flowchart LR
 git clone https://github.com/godzhiwzz-create/sci-research-codex-skills.git
 cd sci-research-codex-skills
 ```
+
+需要可复现稳定版时执行 `git switch --detach v2.0.0`；需要已通过主分支 CI、但尚未形成新 Release 的最新能力时保持在 `main`。
 
 安装全部 Skill：
 
@@ -109,7 +123,7 @@ and tell me the blocker and safest next action.
 建立实验记录：
 
 ```text
-Use $sci-experiment-manager to create F012-D01.
+Use $sci-experiment-manager to create F120-D01.
 Freeze the protocol, controls, promotion gate, stop gate, paths, and claim boundary before execution.
 ```
 
@@ -118,6 +132,14 @@ Freeze the protocol, controls, promotion gate, stop gate, paths, and claim bound
 ```text
 Use $sci-result-auditor to audit the manuscript, result registry, claim map,
 public code, and protocol consistency without modifying source evidence.
+```
+
+阶段化写作或修订：
+
+```text
+Use $academic-manuscript-writing to identify the manuscript stage first.
+Preserve the canonical mainline and evidence scope, then return the stage artifacts,
+checks, unresolved blockers, and only valid next stages.
 ```
 
 ## 推荐项目入口
@@ -131,13 +153,16 @@ HANDOFF.md                 # 当前状态、证据、blocker、下一动作
 SESSION_MEMORY.md          # 稳定跨会话认知；不替代原始证据
 experiments/
   QUERY_MAP.md
-  EXPERIMENT_INDEX.csv
+  EXPERIMENTS.tsv            # 新项目推荐的五轴当前状态机器源
+  EXPERIMENT_INDEX.csv       # 旧项目可保留为 authority 或 generated view，二选一
   cards/
 paper/
   PAPER_STATUS.md
   CLAIM_EVIDENCE_MAP.md
 literature/
-  LITERATURE_INDEX.md
+  SOURCES.tsv                # 项目 Source-ID、标签、角色与 reading depth
+  LITERATURE_CLAIMS.tsv      # 精确外部 claim 的核验状态
+  QUERY_MAP.md
 ```
 
 旧版 `PROJECT_HANDOFF.md` 和 `research_workspace/` 继续兼容，但不再是硬编码前提。
@@ -148,6 +173,8 @@ literature/
 |---|---|---|
 | `sci-research-manager/scripts/audit_workspace.py` | 检查入口、Markdown 本地链接、软链接和嵌套 Git 状态 | 只读 |
 | `sci-research-manager/scripts/provenance_guard.py` | 记录/核验 size、mtime、symlink target、可选 SHA-256 | 不改原资产 |
+| `sci-research-manager/scripts/audit_research_libraries.py` | 检查 Source ID、LiteratureClaim、实验五轴索引和 canonical registry | 只读；路径按 workspace 相对输出，支持显式目录、vocabulary 扩展和 canonical 语义映射 |
+| `sci-research-manager/scripts/scan_external_disclosures.py` | 扫描文本、OOXML/ODF、PDF、图片和压缩包中的披露候选 | 默认隐藏输入根；`0` 干净、`1` 候选、`2` 不完整；仍需人工审核 |
 | `sci-experiment-manager/scripts/generate_experiment_card.py` | 创建 E/F 卡片 | 拒绝覆盖 |
 | `sci-experiment-manager/scripts/update_experiment_index.py` | 生成 Markdown/CSV 索引 | 只写 `.generated.*` |
 | `sci-experiment-manager/scripts/collect_results.py` | 汇总 `results.csv` | 只写 generated 表 |
@@ -171,6 +198,8 @@ python -m unittest discover -s tests -v
 - 8 个 Skill 的 frontmatter、名称、长度、引用和 UI 元数据；
 - Markdown/HTML 本地链接；
 - 工作区审计的正常与故障路径；
+- 研究库默认/非标准布局、五轴 vocabulary 扩展及 PASS/WARN/FAIL/INCOMPLETE 退出码；
+- 披露扫描的文本、OOXML、嵌套压缩包、未支持格式与软链接边界；
 - provenance 快照、mtime/hash/软链接和越界保护；
 - E/F 卡片生成、不覆盖、索引、结果汇总；
 - claim/index/card/raw-result 一致性；
@@ -191,7 +220,9 @@ GitHub Actions 在 Python 3.10、3.11 和 3.13 上运行同一测试集。
 
 - 仓库名和 8 个 Skill 文件夹名保持不变。
 - 旧模板和 `research_workspace/` 路径仍可读；新脚本允许显式配置路径。
-- v2 收敛状态词，但遇到已有项目 schema 时不强制批量改名。
+- `EXPERIMENTS.tsv` 是新项目推荐的五轴机器源；旧 `EXPERIMENT_INDEX.*` 保留，但必须明确唯一 editable authority。
+- 默认状态词统一为 `partial/stopped` 与 `not_assessed/pending_artifact/unverifiable` 等五轴语义；已有项目 schema 不强制批量改名，可显式扩展审计词表；会影响 completion/verification/claim gate 的别名需用 `--map-value FIELD=ALIAS:CANONICAL` 声明语义。
+- 旧写作 reference 路径保留为指向阶段化规范的兼容入口。
 - 生成器不自动覆盖人工维护的 canonical 文件。
 - 重大行为变化先经过结构测试、脚本测试和独立只读前向测试。
 

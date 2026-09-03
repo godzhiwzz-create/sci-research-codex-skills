@@ -1,4 +1,4 @@
 interface:
-  display_name: "SCI Research Manager"
-  short_description: "Coordinate research state, evidence, and safe handoffs"
-  default_prompt: "Use $sci-research-manager to resume this research project, reconcile its evidence state, and choose the safest next action."
+  display_name: "SCI Research Lifecycle Manager"
+  short_description: "Coordinate project literature, experiments, claims, and audits"
+  default_prompt: "Use $sci-research-manager as the sole research-state owner, route only bounded specialist work with a typed handback, and produce the required verified state transition."

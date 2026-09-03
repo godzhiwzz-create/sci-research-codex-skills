@@ -7,7 +7,7 @@ description: Manage experiment evidence for long-running academic research with 
 
 Maintain the chain:
 
-`validation requirement -> experiment/probe -> raw result -> interpretation -> claim role -> next decision`
+`validation requirement -> experiment/probe -> raw result -> interpretation -> typed handback`
 
 Follow project-local instructions and the lifecycle/evidence rules in `sci-research-manager`.
 
@@ -28,7 +28,7 @@ Do not connect to remote hosts during a local/read-only audit unless the user ex
 
 - Use the project's established convention.
 - Use `E001`, `E002`, ... for formal or standalone experiments when no convention exists.
-- Use `F012` for a direction family and `F012-D01` for a diagnostic inside it.
+- Use `F120` for a direction family and `F120-D01` for a diagnostic inside it.
 - Never renumber historical records for appearance.
 - Keep aliases and archived child IDs in the canonical family card.
 
@@ -53,7 +53,7 @@ Record one run, diagnostic, smoke test, or formal evidence item. Use [experiment
 
 ### Direction family card
 
-Summarize one research question across several probes: shared hypothesis, validation requirements, child table, synthesis, conflicts/confounds, blocked branches, promotion/stop decision, do-not-repeat list, and raw links.
+Summarize one research question across several probes: shared hypothesis, validation requirements, child table, synthesis, conflicts/confounds, blocked branches, proposed promotion/stop decision, do-not-repeat list, and raw links. Return the proposed decision to `sci-research-manager` for integration.
 
 ### Evidence synthesis
 
@@ -68,8 +68,9 @@ After each result, state separately:
 3. weakened/falsified assumption;
 4. confounds and protocol warnings;
 5. evidence status;
-6. paper role/claim strength;
-7. next decision and smallest justified validation.
+6. claim strength;
+7. optional paper role or manuscript placement;
+8. next decision and smallest justified validation.
 
 Never infer metrics from filenames or conversation. Use `not available` or `needs_verification`.
 
@@ -80,8 +81,10 @@ Never infer metrics from filenames or conversation. Use `not available` or `need
 - Use `scripts/collect_results.py` only when explicit result collection is needed. Review the generated table before treating it as evidence.
 - Run scripts with `--help` and prefer explicit `--root`, directory, and output arguments in nonstandard projects.
 
-After verified results change, update the project's established chain, preferably:
+After a run or interpretation changes, update only the bounded project chain in scope, preferably:
 
-`raw result -> card -> project index -> shared registry -> HANDOFF`
+`raw result -> card -> project current-state index/query route`
+
+For new projects, prefer an editable `EXPERIMENTS.tsv`; treat legacy `EXPERIMENT_INDEX.csv/.md` as the established authority or a generated view, never both. Return evidence status, claim-strength recommendation, selection warnings, and any proposed promotion/supersession to `sci-research-manager`. Do not write the shared canonical registry, claim map, or project handoff unless that owner explicitly includes the write in the handoff contract.
 
 Use `sci-result-auditor` before paper promotion or when artifacts disagree.
