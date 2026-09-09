@@ -1,5 +1,7 @@
 # SCI Research Codex Skills
 
+[![SCI Research：8 个按需选择的 Skill，研究状态与稿件写作各有清晰职责](docs/assets/research-overview.svg)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+
 [![Release](https://img.shields.io/github/v/release/godzhiwzz-create/sci-research-codex-skills?display_name=tag&sort=semver)](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)
 [![Tests](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2264d1)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
@@ -9,7 +11,7 @@
 
 从一个论文问题开始，也能接续一个长期项目：按任务选择需要的 Skill，让结论有出处、实验有协议、写作有证据。项目自己的规则和目录结构优先，不要求每次提问都启动完整工作流。
 
-> [安装](#安装) · [快速开始](#快速开始) · [在线主页与教程](https://godzhiwzz-create.github.io/sci-research-codex-skills/) · [版本变化](CHANGELOG.md)
+> **[浏览项目主页 ↗](https://godzhiwzz-create.github.io/sci-research-codex-skills/)** · [安装](#安装) · [快速开始](#快速开始) · [中文教程](docs/tutorials/README.md) · [版本变化](CHANGELOG.md)
 
 ## 从你的任务开始
 
@@ -28,6 +30,9 @@
 
 ## v2 的核心变化
 
+<details>
+<summary>查看 v2 架构升级与兼容变化</summary>
+
 - 保留仓库名和全部 8 个原有 Skill 名称。
 - 将 `sci-research-manager` 升级为统一科研生命周期中枢。
 - 收敛阶段、实验状态、证据状态、claim 强度和方向决策，避免状态词漂移。
@@ -35,6 +40,8 @@
 - 新增工作区只读审计、文件时间/provenance 保护、E/F 实验卡生成、双格式索引和通用一致性审计。
 - 为全部 Skill 补齐 `agents/openai.yaml`。
 - 新增零第三方依赖的自动化测试和 GitHub Actions。
+
+</details>
 
 ## main 分支的 Unreleased 升级
 

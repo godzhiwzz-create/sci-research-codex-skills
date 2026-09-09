@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">SCI Research Codex Skills</title>
+  <desc id="desc">Eight task-scoped skills. Research owns state and evidence; manuscript writing owns stage and narrative. Verified evidence connects the two only when integration is needed.</desc>
+  <rect width="1200" height="420" rx="16" fill="#101914"/>
+  <path d="M64 56H1136M64 365H1136M712 84V335" fill="none" stroke="#33433a"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="104" fill="#ccf79b" font-family="monospace" font-size="14" letter-spacing="2">OPEN-SOURCE RESEARCH TOOLKIT</text>
+    <text x="59" y="189" fill="#eff3ed" font-size="68" font-weight="700" letter-spacing="-2">SCI RESEARCH</text>
+    <text x="64" y="240" fill="#ccf79b" font-size="33">Codex Skills</text>
+    <text x="64" y="300" fill="#adbdac" font-size="19">Evidence-first. Task-scoped. Project-neutral.</text>
+    <text x="64" y="336" fill="#adbdac" font-family="monospace" font-size="15">08 SKILLS / 02 OWNERS / MIT LICENSE</text>
+    <g fill="#1e2d23" stroke="#52684b">
+      <rect x="760" y="89" width="112" height="38" rx="4"/>
+      <rect x="884" y="89" width="112" height="38" rx="4"/>
+      <rect x="1008" y="89" width="128" height="38" rx="4"/>
+    </g>
+    <g fill="#c1cfb9" font-size="14" text-anchor="middle">
+      <text x="816" y="113">Literature</text><text x="940" y="113">Raw results</text><text x="1072" y="113">Protocol</text>
+    </g>
+    <path d="M948 132V151M943 146L948 152L953 146" fill="none" stroke="#88a07e" stroke-width="2"/>
+    <rect x="760" y="161" width="376" height="65" rx="5" fill="#ccf79b"/>
+    <text x="782" y="187" fill="#344d2c" font-family="monospace" font-size="12" letter-spacing="1">RESEARCH OWNER</text>
+    <text x="782" y="211" fill="#17251b" font-size="21" font-weight="600">State &amp; evidence</text>
+    <path d="M948 233V257M943 252L948 258L953 252" fill="none" stroke="#88a07e" stroke-width="2"/>
+    <text x="969" y="249" fill="#adbdac" font-size="12">verified evidence</text>
+    <rect x="760" y="269" width="376" height="65" rx="5" fill="#293d2e" stroke="#6e885f"/>
+    <text x="782" y="295" fill="#c7dcb8" font-family="monospace" font-size="12" letter-spacing="1">MANUSCRIPT OWNER</text>
+    <text x="782" y="319" fill="#eff3ed" font-size="21" font-weight="600">Stage &amp; narrative</text>
+  </g>
+</svg>

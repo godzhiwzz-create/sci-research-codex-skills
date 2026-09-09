@@ -9,363 +9,160 @@
   <meta property="og:title" content="SCI Research Codex Skills｜通用科研工作流">
   <meta property="og:description" content="从一个论文问题到长期科研项目：按需加载、证据可追溯、流程有边界。">
   <meta property="og:url" content="https://godzhiwzz-create.github.io/sci-research-codex-skills/">
-  <meta name="theme-color" content="#102033">
+  <meta name="theme-color" content="#101914">
   <title>SCI Research Codex Skills｜通用科研工作流</title>
-  <style>
-    :root {
-      --ink: #172033;
-      --muted: #667085;
-      --line: #d9e2ef;
-      --soft: #f5f7fb;
-      --card: #ffffff;
-      --blue: #2264d1;
-      --green: #0f9f6e;
-      --amber: #bc7a00;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
-      color: var(--ink);
-      background: #eef2f7;
-      line-height: 1.72;
-    }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    a:focus-visible { outline: 3px solid #bc7a00; outline-offset: 4px; }
-    .skip-link { position: absolute; left: 16px; top: -100px; padding: 10px 16px; background: #fff; z-index: 2; }
-    .skip-link:focus { top: 16px; }
-    section { scroll-margin-top: 20px; }
-    code { overflow-wrap: anywhere; }
-    .hero {
-      background: linear-gradient(135deg, #102033 0%, #244a70 58%, #587692 100%);
-      color: #fff;
-      padding: 78px 22px 54px;
-    }
-    .wrap { max-width: 1120px; margin: 0 auto; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255,255,255,.28);
-      color: #e8f2ff;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(40px, 6vw, 74px);
-      line-height: 1.04;
-      letter-spacing: 0;
-    }
-    .subtitle {
-      margin: 20px 0 0;
-      max-width: 870px;
-      color: #d8e7f7;
-      font-size: 21px;
-    }
-    .version-note { color: #d8e7f7; font-size: 14px; margin: 22px 0 0; }
-    .version-note a { color: #fff; text-decoration: underline; }
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 17px;
-      border-radius: 8px;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,.34);
-      color: #fff;
-      background: rgba(255,255,255,.12);
-    }
-    .button.primary {
-      background: #ffffff;
-      color: #102033;
-      border-color: #ffffff;
-    }
-    main { padding: 34px 22px 72px; }
-    section {
-      max-width: 1120px;
-      margin: 0 auto 26px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 10px 28px rgba(16, 32, 51, .05);
-    }
-    h2 {
-      margin: 0 0 14px;
-      font-size: 26px;
-      letter-spacing: 0;
-    }
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      max-width: 840px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .versions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 18px;
-      background: #fff;
-      min-height: 210px;
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 19px;
-    }
-    .card p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .tag {
-      display: inline-flex;
-      margin-bottom: 12px;
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 12px;
-      color: #10315e;
-      background: #e8f1ff;
-      border: 1px solid #cbdcf8;
-      font-weight: 700;
-    }
-    .tag.green {
-      color: #075c40;
-      background: #e8f8f1;
-      border-color: #bfe9d5;
-    }
-    .tag.amber {
-      color: #6b4300;
-      background: #fff4dc;
-      border-color: #f3d596;
-    }
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .step {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .step strong {
-      display: block;
-      color: var(--ink);
-      margin-bottom: 5px;
-      font-size: 16px;
-    }
-    .demo-box {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-      gap: 22px;
-      align-items: center;
-    }
-    .demo-box .button.primary { color: #fff; background: var(--blue); border-color: var(--blue); }
-    .preview {
-      background: #132237;
-      color: #dbeafe;
-      border-radius: 14px;
-      padding: 20px;
-      border: 1px solid #253852;
-    }
-    .preview .title {
-      color: #fff;
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    .preview ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-    footer {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 22px 44px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    @media (max-width: 860px) {
-      .grid, .flow, .demo-box { grid-template-columns: 1fr; }
-      .hero { padding-top: 54px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">跳转到主要内容</a>
-  <header class="hero">
-    <div class="wrap">
-      <div class="badge">SCI Research Codex Skills · 8 个通用科研 Skill</div>
-      <h1>让科研进展有迹可循</h1>
-      <p class="subtitle">从一个论文问题到一个长期项目，按需处理文献、实验、证据与写作。结论有出处，实验有协议；一次讨论，不必开启整套执行流程。</p>
-      <div class="actions">
-        <a class="button primary" href="https://github.com/godzhiwzz-create/sci-research-codex-skills#安装">安装与快速开始</a>
-        <a class="button" href="#choose">按任务选择 Skill</a>
-        <a class="button" href="tutorials/">中文教程</a>
-        <a class="button" href="https://github.com/godzhiwzz-create/sci-research-codex-skills">GitHub 仓库</a>
-      </div>
-      <p class="version-note">稳定版 <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0">v2.0.0</a> · 按需工作流等最新能力在 main，尚未形成新 Release。</p>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="SCI Research 首页"><span class="brand-mark" aria-hidden="true">S<span>r</span></span><span>SCI <strong>RESEARCH</strong><small>CODEX SKILLS</small></span></a>
+      <nav aria-label="主要导航"><a href="#choose">模块</a><a href="#workflow">工作流</a><a href="#learn">教程</a><a class="nav-repo" href="https://github.com/godzhiwzz-create/sci-research-codex-skills">GitHub <span aria-hidden="true">↗</span></a></nav>
     </div>
   </header>
-
-  <main id="main">
-    <section id="choose" aria-labelledby="choose-title">
-      <h2 id="choose-title">从当前问题开始</h2>
-      <p class="lead">不必同时调用全部 Skill。选一个与任务匹配的入口，只在需要时交接；项目自己的规则、目录和事实来源始终优先。</p>
-      <div class="grid">
-        <article class="card">
-          <span class="tag">研究状态</span><h3>接续项目，讨论下一步</h3>
-          <p>恢复当前问题、证据和缺口。判断是否值得投入时先核验最近先例，不把讨论自动变成实验。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-research-manager"><code>sci-research-manager</code></a>
-        </article>
-        <article class="card">
-          <span class="tag">文献来源</span><h3>查新，或给已知论文入库</h3>
-          <p>验证题录、版本与来源。已知论文查重后增量登记；检索只围绕尚未解决的问题扩展。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-literature-manager"><code>sci-literature-manager</code></a>
-        </article>
-        <article class="card">
-          <span class="tag green">论文阅读</span><h3>读懂机制，核对证据</h3>
-          <p>小问题读取决定性原文并标注位置；需要完整精读时，再生成可复用的理解包与图表说明。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-paper-reader"><code>sci-paper-reader</code></a>
-        </article>
-        <article class="card">
-          <span class="tag">实验记录</span><h3>把已批准的实验闭环</h3>
-          <p>固定协议、原始结果、卡片与索引。通过 SSH 连接用户配置的服务器，一个任务一个监控负责人。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-experiment-manager"><code>sci-experiment-manager</code></a>
-        </article>
-        <article class="card">
-          <span class="tag amber">证据核验</span><h3>结果与论文主张对得上吗</h3>
-          <p>发现冲突就回到原始结果和固定协议，明确证据范围；不静默修复、不用摘要覆盖原始证据。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-result-auditor"><code>sci-result-auditor</code></a>
-        </article>
-        <article class="card">
-          <span class="tag green">阶段化写作</span><h3>从初稿到修订与校样</h3>
-          <p>先确定稿件阶段，再在已核验证据和当前主线内写作；改写文字不等于晋升结论。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/academic-manuscript-writing"><code>academic-manuscript-writing</code></a>
-        </article>
-      </div>
-      <p>还包括 <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-paper-manager">论文配套清单</a>与 <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-asset-manager">资产维护审查</a>。查看 <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/architecture-v2.md">完整架构与职责边界</a>。</p>
-    </section>
-
-    <section id="workflow">
-      <h2>需要多深，就进入多深</h2>
-      <p class="lead">这是不同任务的处理强度，不是每次都要走完的流水线。以下为 main 的当前工作方式；保留关键论文阅读、统计标准和有效负结果。</p>
-      <div class="flow">
-        <div class="step"><strong>讨论</strong>回答眼前问题，不自动建档、下载或远端执行。</div>
-        <div class="step"><strong>定向查新</strong>核验最近先例，说明实质重合和可检验差别。</div>
-        <div class="step"><strong>最小探索</strong>在授权范围内，用固定的小协议区分竞争解释。</div>
-        <div class="step"><strong>正式实验</strong>完整协议、原始证据、验证与实验记录闭环。</div>
-        <div class="step"><strong>投稿审计</strong>对冻结材料做完整一致性检查，不自动提交。</div>
-      </div>
-      <p>复用未变上下文，按事件更新记录。尚未通过可比真实任务量化 token 或额度节省。</p>
-    </section>
-
-    <section>
-      <h2>稳定版与最新进展</h2>
-      <p class="lead">稳定版本、历史基线和维护规则都固定在 GitHub，可按标签复现，也可从 Changelog 判断升级影响。</p>
-      <div class="grid versions">
-        <article class="card">
-          <span class="tag green">当前稳定版</span>
-          <h3>v2.0.0</h3>
-          <p>统一科研生命周期、证据状态、通用实验工具和自动化验证；保留原有 8 个 Skill 名称。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0">查看 v2.0.0 Release</a>
-        </article>
-        <article class="card">
-          <span class="tag amber">main · Unreleased</span>
-          <h3>分级工作流与证据优先</h3>
-          <p>保留 8 个公开 ID 和阶段化写作，按需查新与读文献、增量登记、单负责人监控 SSH 服务器任务；保留关键证据核验，不自动扩大执行范围。尚未形成新 Release。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/CHANGELOG.md">查看 Unreleased</a>
-        </article>
-        <article class="card">
-          <span class="tag amber">历史基线</span>
-          <h3>v1.0.0</h3>
-          <p>冻结 v2 合并前的主分支状态，用于复现旧工作流或维护依赖原始假设的项目。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v1.0.0">查看 v1.0.0 Release</a>
-        </article>
-        <article class="card">
-          <span class="tag">维护入口</span>
-          <h3>变更、贡献与安全</h3>
-          <p>版本变化、贡献边界和私密安全报告分别由 Changelog、贡献指南和安全策略维护。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/MAINTENANCE.md">查看维护流程</a>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>推荐先看的页面</h2>
-      <div class="grid">
-        <article class="card">
-          <span class="tag">项目管理</span>
-          <h3>长期研究项目怎么不乱</h3>
-          <p>从具体问题进入，复用未变上下文，按状态变化维护证据与索引；讨论和局部任务无需先建立完整项目。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/project-management.md">打开项目管理教程</a>
-        </article>
-        <article class="card">
-          <span class="tag green">论文精读</span>
-          <h3>把一篇论文读成理解包</h3>
-          <p>展示 paper reader 的输出标准：中文摘要解读、方法路线、图表 proof cards、证据线、局限和项目启发边界。</p>
-          <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/paper-deepread.md">打开论文精读教程</a>
-        </article>
-        <article class="card">
-          <span class="tag amber">演示成品</span>
-          <h3>Attention Is All You Need</h3>
-          <p>一个可以直接在浏览器里看的中文精读 HTML，包含自绘架构图、attention 机制图和证据线。</p>
-          <a href="tutorials/examples/attention-is-all-you-need/">打开渲染后的 HTML</a>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <div class="demo-box">
-        <div>
-          <h2>论文精读演示</h2>
-          <p class="lead">这个演示不是把论文压成摘要，而是模拟“认真读完之后怎么给别人讲清楚”：先讲论文身份和摘要，再解释问题、方法、关键图表、证据线、局限，以及它和其他论文的关系。</p>
-          <div class="actions">
-            <a class="button primary" href="tutorials/examples/attention-is-all-you-need/">直接看 HTML 演示</a>
-            <a class="button" style="color:#102033;border-color:#cfd8e6;background:#fff" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/examples/attention-is-all-you-need/Attention_Is_All_You_Need_understanding_20260522.md">查看 MD 源稿</a>
-          </div>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> OPEN-SOURCE RESEARCH TOOLKIT</p>
+        <h1>让科研进展，<br><span>有据可循。</span></h1>
+        <p class="hero-description">从读懂一篇论文，到接续一个长期项目。<br>把文献、实验、证据与写作，放回各自清晰的位置。</p>
+        <div class="actions">
+          <a class="button primary" href="#install">开始使用 <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#choose">找到需要的 Skill <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="preview">
-          <div class="title">Paper Understanding Packet</div>
-          <ul>
-            <li>英文标题 + 中文副标题</li>
-            <li>论文身份、来源、分区说明</li>
-            <li>摘要解读与关键问题</li>
-            <li>自绘方法图和机制图</li>
-            <li>图表证明卡与证据线</li>
-            <li>项目启发模块放在最后</li>
-          </ul>
+        <p class="version-note">稳定版 <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0">v2.0.0</a><span aria-hidden="true"> / </span> 本页展示 main 的当前工作流。</p>
+      </div>
+      <figure class="workspace-map" aria-labelledby="map-title" aria-describedby="map-note">
+        <div class="map-header"><span id="map-title">RESEARCH WORKSPACE</span><span class="map-caption">职责示意</span></div>
+        <div class="map-sources"><span>论文与来源</span><span>原始结果</span><span>固定协议</span></div>
+        <div class="map-connector" aria-hidden="true">↓</div>
+        <div class="map-owner"><div class="owner-symbol" aria-hidden="true">R</div><div><span class="mono-label">RESEARCH OWNER</span><strong>研究状态与证据</strong></div><span class="owner-index">01</span></div>
+        <div class="map-handoff"><span aria-hidden="true">↓</span> 已核验证据 · 明确适用边界</div>
+        <div class="map-owner writing"><div class="owner-symbol" aria-hidden="true">W</div><div><span class="mono-label">MANUSCRIPT OWNER</span><strong>稿件阶段与主线</strong></div><span class="owner-index">02</span></div>
+        <figcaption id="map-note">负责人是一种职责，不是额外代理。<br>只有需要集成时才交接，不是每次必走的流水线。</figcaption>
+      </figure>
+    </div>
+    <div class="wrap facts-row" aria-label="项目概览">
+      <div><strong>08</strong><span>按需选择的 Skill</span></div>
+      <div><strong>02</strong><span>清晰的职责边界</span></div>
+      <div><strong>07</strong><span>稿件生命周期阶段</span></div>
+      <div><strong>MIT</strong><span>开放使用与改进</span></div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <section class="section wrap" id="choose" aria-labelledby="choose-title">
+      <div class="section-heading">
+        <div><p class="section-label">01 / THE TOOLKIT</p><h2 id="choose-title">一个具体问题，<br>一个清晰入口。</h2></div>
+        <p class="section-intro">不必同时调用全部 8 个 Skill。研究状态与稿件写作分开负责，其余模块按任务进入；已有项目规则和目录结构始终优先。</p>
+      </div>
+      <div class="owner-grid">
+        <a class="skill-card owner-card research-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-research-manager">
+          <div class="card-topline"><span class="skill-number">01</span><span>研究状态负责人</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>接续项目，<br>判断下一步。</h3>
+          <p>找回当前问题、证据与缺口。先核验最近先例，再决定是否投入；讨论不自动变成实验。</p>
+          <div class="card-bottom"><code>sci-research-manager</code><span class="output-label">State &amp; evidence</span></div>
+        </a>
+        <a class="skill-card owner-card manuscript-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/academic-manuscript-writing">
+          <div class="card-topline"><span class="skill-number">02</span><span>稿件生命周期负责人</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>保持主线，<br>写到恰当的深度。</h3>
+          <p>从初稿、打磨到修订与校样。局部改稿不触发全稿重审，文字变强不等于证据升级。</p>
+          <div class="card-bottom"><code>academic-manuscript-writing</code><span class="output-label">Manuscript &amp; mainline</span></div>
+        </a>
+      </div>
+      <div class="specialist-grid">
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-literature-manager">
+          <div class="card-topline"><span class="skill-number">03</span><span>文献来源</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>查新，也能只入库一篇。</h3><p>验证身份与版本、去重、增量登记。围绕具体疑点检索，不重启全领域搜索。</p>
+          <div class="card-bottom"><code>sci-literature-manager</code><span class="output-label">Source packet</span></div>
+        </a>
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-paper-reader">
+          <div class="card-topline"><span class="skill-number">04</span><span>论文阅读</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>把机制和证据读明白。</h3><p>小问题直达原文；完整精读再生成理解包、方法图与图表说明。</p>
+          <div class="card-bottom"><code>sci-paper-reader</code><span class="output-label">Reading handback</span></div>
+        </a>
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-experiment-manager">
+          <div class="card-topline"><span class="skill-number">05</span><span>实验记录</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>让一次实验真正闭环。</h3><p>固定协议，链接原始结果，维护实验卡与索引。只执行已授权的工作。</p>
+          <div class="card-bottom"><code>sci-experiment-manager</code><span class="output-label">Experiment card</span></div>
+        </a>
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-result-auditor">
+          <div class="card-topline"><span class="skill-number">06</span><span>证据核验</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>让每个数字经得起追问。</h3><p>回到原始结果和协议核对冲突。只读审计，明确支持什么、不支持什么。</p>
+          <div class="card-bottom"><code>sci-result-auditor</code><span class="output-label">Audit findings</span></div>
+        </a>
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-paper-manager">
+          <div class="card-topline"><span class="skill-number">07</span><span>论文配套</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>把稿件和交付物对齐。</h3><p>维护 claim map、图表计划、要求缓存与文件清单，不擅自改写论文主线。</p>
+          <div class="card-bottom"><code>sci-paper-manager</code><span class="output-label">Paper artifacts</span></div>
+        </a>
+        <a class="skill-card" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/main/skills/sci-asset-manager">
+          <div class="card-topline"><span class="skill-number">08</span><span>资产维护</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>整理文件，也守住证据。</h3><p>检查留存、归档和迁移风险。保留来源与时间，未经授权不移动或删除。</p>
+          <div class="card-bottom"><code>sci-asset-manager</code><span class="output-label">Asset review</span></div>
+        </a>
+      </div>
+      <div class="section-footnote"><span>专门模块可以直接完成窄任务，只有状态或主线需要集成时才交接。</span><a class="text-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/architecture-v2.md">完整职责边界 <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
+      <div class="wrap workflow-layout">
+        <div class="workflow-copy"><p class="section-label">02 / RIGHT-SIZED RIGOR</p><h2 id="workflow-title">严谨，<br>不等于每一步<br><span>都很重。</span></h2><p>需要多深，就进入多深。<br>这是五种任务强度，不是五步必经流程。</p><a class="text-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/project-management.md">了解按需工作流 <span aria-hidden="true">↗</span></a></div>
+        <div class="workflow-list">
+          <article><span class="workflow-marker" aria-hidden="true">◇</span><div><h3>讨论一个想法 <small>DISCUSS</small></h3><p>回答眼前的问题，指出可检验差别。不自动建档、下载或远端执行。</p></div></article>
+          <article><span class="workflow-marker" aria-hidden="true">⌕</span><div><h3>做一次定向查新 <small>VERIFY PRIOR ART</small></h3><p>核验最近先例，说明实质重合与尚未测试的差别，不轻率否定整个方向。</p></div></article>
+          <article><span class="workflow-marker" aria-hidden="true">⊙</span><div><h3>进行最小探索 <small>PROBE</small></h3><p>在已有授权内，用小而固定的协议区分竞争解释，为下一次决定提供信息。</p></div></article>
+          <article><span class="workflow-marker" aria-hidden="true">⊞</span><div><h3>开展正式实验 <small>EXPERIMENT</small></h3><p>保留完整协议、公平对照、统计标准与原始证据，完成实验记录闭环。</p></div></article>
+          <article><span class="workflow-marker" aria-hidden="true">✓</span><div><h3>准备投稿审计 <small>AUDIT</small></h3><p>对冻结材料做完整一致性检查。发现缺口就明确报告，不自动提交。</p></div></article>
         </div>
       </div>
+      <div class="wrap principles"><span>复用未变上下文</span><span>记录按事件更新</span><span>原始证据优先</span><span>保留有效负结果</span></div>
+    </section>
+
+    <section class="section wrap learning-section" id="learn" aria-labelledby="learn-title">
+      <div class="section-heading"><div><p class="section-label">03 / SEE IT IN PRACTICE</p><h2 id="learn-title">不只读规则，<br>也看看成品。</h2></div><a class="text-link" href="tutorials/">全部中文教程 <span aria-hidden="true">↗</span></a></div>
+      <article class="demo-feature">
+        <div class="demo-copy"><p class="demo-kicker">PAPER READING / 公开演示</p><h3>Attention Is<br>All You Need.</h3><p>从问题、方法到关键图表和证据边界。看看一篇论文如何变成可以向别人讲清楚的中文理解包。</p><a class="button primary" href="tutorials/examples/attention-is-all-you-need/">打开精读演示 <span aria-hidden="true">↗</span></a><p class="demo-note">v2.0.0 历史演示，不作为当前项目状态模板。</p></div>
+        <a class="demo-preview" href="tutorials/examples/attention-is-all-you-need/" aria-label="查看 Attention Is All You Need 的完整精读演示">
+          <div class="preview-heading"><span>METHOD / 方法路线</span><span aria-hidden="true">↗</span></div>
+          <img src="tutorials/examples/attention-is-all-you-need/assets/transformer_flow.svg" width="1180" height="760" loading="lazy" alt="精读演示中的 Transformer 编码器与解码器方法路线图">
+          <div class="preview-footer"><span>原文位置</span><span>机制解释</span><span>图表证据</span></div>
+        </a>
+      </article>
+      <div class="tutorial-grid">
+        <a class="tutorial-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/project-management.md"><span class="tutorial-index">01</span><div><span class="mono-label">PROJECT MEMORY</span><h3>长期项目，怎样接续而不失焦？</h3><p>从现有入口找到问题和证据，只维护发生变化的记录。</p></div><span aria-hidden="true">↗</span></a>
+        <a class="tutorial-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/paper-deepread.md"><span class="tutorial-index">02</span><div><span class="mono-label">PAPER UNDERSTANDING</span><h3>一篇论文，怎样真正读明白？</h3><p>从决定性原文到完整理解包，按问题选择阅读深度。</p></div><span aria-hidden="true">↗</span></a>
+      </div>
+      <a class="demo-source" href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/docs/tutorials/examples/attention-is-all-you-need/Attention_Is_All_You_Need_understanding_20260522.md">查看演示的 Markdown 源稿 <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="install-section" id="install" aria-labelledby="install-title">
+      <div class="wrap install-grid">
+        <div><p class="section-label">04 / GET STARTED</p><h2 id="install-title">先预览，<br><span>再安装。</span></h2><p class="install-description">从一个需要的 Skill 开始。安装器默认只展示计划，不改文件；已有安装不同会先停止，显式升级才会备份并替换。</p><ul class="install-facts"><li>Python 3.10+，无第三方依赖</li><li>支持选择安装与整个旧目录备份</li><li>安装后重新加载 Codex Skill 列表</li></ul><a class="text-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills#安装">完整安装与升级说明 <span aria-hidden="true">↗</span></a></div>
+        <div class="terminal">
+          <div class="terminal-header"><span><span class="terminal-dot" aria-hidden="true"></span> TERMINAL</span><span>main · 安全安装器</span></div>
+          <div class="command-block"><div class="command-label"><span>01 / 克隆仓库并预览</span><button class="copy-button" type="button" data-copy="preview-command" hidden>复制预览命令</button></div><pre tabindex="0" aria-label="克隆仓库并预览单个 Skill 安装的命令"><code id="preview-command">git clone https://github.com/godzhiwzz-create/sci-research-codex-skills.git
+cd sci-research-codex-skills
+python3 scripts/install_skills.py --skill sci-research-manager</code></pre></div>
+          <div class="command-block apply-block"><div class="command-label"><span>02 / 确认预览后，手动执行</span><button class="copy-button" type="button" data-copy="apply-command" hidden>复制安装命令</button></div><pre tabindex="0" aria-label="确认后实际安装单个 Skill 的命令"><code id="apply-command">python3 scripts/install_skills.py --skill sci-research-manager --apply</code></pre></div>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite">复制不会执行命令。只有 --apply 才写入安装目录。</p>
+          <noscript><p class="copy-status">可以直接选择并手动复制上面的命令。</p></noscript>
+        </div>
+      </div>
+      <div class="wrap release-strip">
+        <div><span class="release-dot" aria-hidden="true"></span><strong>v2.0.0</strong><span>稳定快照</span><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0">查看 Release ↗</a></div>
+        <div><strong>main</strong><span>包含本页按需工作流与安全安装器，尚未形成新 Release</span><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/CHANGELOG.md">查看变化 ↗</a></div>
+      </div>
+      <p class="wrap measured-note">减少重复流程，不减少关键核验。研究 token 或额度节省尚未通过可比真实任务量化。</p>
     </section>
   </main>
 
-  <footer>
-    <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/CHANGELOG.md">更新记录</a> ·
-    <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/SECURITY.md">安全反馈</a> ·
-    <a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/LICENSE">MIT License</a><br>
-    Last updated: 2026-09-09 · stable v2.0.0 · main may include Unreleased changes.
+  <footer class="site-footer">
+    <div class="wrap footer-main"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">S<span>r</span></span><span>SCI <strong>RESEARCH</strong><small>CODEX SKILLS</small></span></a><p>让结论有出处，实验有协议，写作有证据。</p><a class="text-link" href="https://github.com/godzhiwzz-create/sci-research-codex-skills">在 GitHub 查看项目 <span aria-hidden="true">↗</span></a></div>
+    <div class="wrap footer-bottom"><span>MIT LICENSE / OPEN SOURCE</span><nav aria-label="项目与维护"><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/MAINTENANCE.md">维护流程</a><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/CONTRIBUTING.md">参与贡献</a><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/SECURITY.md">安全反馈</a><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/blob/main/LICENSE">许可证</a><a href="https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v1.0.0">v1 历史基线</a></nav></div>
+    <p class="wrap footer-version">Last updated: 2026-09-09 · stable v2.0.0 · main may include Unreleased changes.</p>
   </footer>
+  <script src="assets/site.js" defer></script>
 </body>
 </html>

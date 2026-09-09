@@ -41,7 +41,7 @@ EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 ALLOWED_EMAIL_DOMAINS = {"example.invalid", "users.noreply.github.com"}
 IGNORED_TREE_PARTS = {".git", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__"}
 TEXT_SUFFIXES = {
-    "", ".cfg", ".csv", ".env", ".html", ".ini", ".json", ".md", ".py",
+    "", ".cfg", ".css", ".csv", ".env", ".html", ".ini", ".js", ".json", ".md", ".py", ".svg",
     ".rst", ".sh", ".toml", ".tsv", ".txt", ".yaml", ".yml",
 }
 
