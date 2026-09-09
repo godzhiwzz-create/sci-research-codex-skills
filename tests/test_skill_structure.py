@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import unittest
+from ipaddress import IPv4Address, IPv4Network
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
@@ -30,7 +31,12 @@ PRIVATE_PATTERNS = {
     "API secret token": re.compile("sk" + r"-[A-Za-z0-9_-]{16,}"),
     "AWS access key": re.compile("AK" + "IA" + r"[0-9A-Z]{16}"),
     "private key block": re.compile("BEGIN " + r"(?:RSA |OPENSSH |EC )?PRIVATE KEY"),
+    "provider-specific infrastructure": re.compile("auto" + "dl", re.IGNORECASE),
 }
+IPV4_RE = re.compile(r"(?<![\w.])(?:\d{1,3}\.){3}\d{1,3}(?![\w.])")
+EXAMPLE_NETWORKS = tuple(IPv4Network(network) for network in (
+    "192.0.2.0/24", "198.51.100.0/24", "203.0.113.0/24", "127.0.0.0/8",
+))
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 ALLOWED_EMAIL_DOMAINS = {"example.invalid", "users.noreply.github.com"}
 IGNORED_TREE_PARTS = {".git", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__"}
@@ -42,6 +48,18 @@ TEXT_SUFFIXES = {
 
 def skill_dirs() -> list[Path]:
     return sorted(path.parent for path in SKILLS.glob("*/SKILL.md"))
+
+
+def non_example_ips(text: str) -> list[str]:
+    findings = []
+    for match in IPV4_RE.finditer(text):
+        try:
+            address = IPv4Address(match.group())
+        except ValueError:
+            continue
+        if not any(address in network for network in EXAMPLE_NETWORKS):
+            findings.append(match.group())
+    return findings
 
 
 def frontmatter(text: str) -> dict[str, str]:
@@ -228,6 +246,8 @@ class SkillStructureTests(unittest.TestCase):
             for match in EMAIL_RE.finditer(text):
                 with self.subTest(path=str(path.relative_to(ROOT)), pattern="email"):
                     self.assertIn(match.group(1).lower(), ALLOWED_EMAIL_DOMAINS)
+            with self.subTest(path=str(path.relative_to(ROOT)), pattern="non-example IP"):
+                self.assertFalse(non_example_ips(text), "use a placeholder host or documentation IP")
 
     def test_privacy_patterns_have_positive_and_negative_controls(self) -> None:
         positives = {
@@ -240,6 +260,7 @@ class SkillStructureTests(unittest.TestCase):
             "API secret token": "sk" + "-" + "A" * 24,
             "AWS access key": "AK" + "IA" + "A" * 16,
             "private key block": "BEGIN " + "PRIVATE KEY",
+            "provider-specific infrastructure": "AUTO" + "DL",
         }
         for label, sample in positives.items():
             with self.subTest(pattern=label, control="positive"):
@@ -247,6 +268,13 @@ class SkillStructureTests(unittest.TestCase):
         for label, pattern in PRIVATE_PATTERNS.items():
             with self.subTest(pattern=label, control="negative"):
                 self.assertIsNone(pattern.search("public example with no credential or personal path"))
+
+    def test_ip_privacy_check_allows_only_documentation_and_loopback_examples(self) -> None:
+        self.assertEqual(non_example_ips("server " + ".".join(("10", "23", "45", "67"))),
+                         [".".join(("10", "23", "45", "67"))])
+        self.assertTrue(non_example_ips("server " + ".".join(("8", "8", "4", "4"))))
+        self.assertEqual(non_example_ips("192.0.2.1 198.51.100.2 203.0.113.3 127.0.0.1"), [])
+        self.assertEqual(non_example_ips("999.999.999.999 research-server"), [])
 
 
 if __name__ == "__main__":

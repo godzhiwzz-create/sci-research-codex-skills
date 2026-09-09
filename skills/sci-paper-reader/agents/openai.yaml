@@ -1,4 +1,4 @@
 interface:
   display_name: "SCI Paper Reader"
-  short_description: "Build source-grounded deep paper understanding packets"
-  default_prompt: "Use $sci-paper-reader to explain this paper deeply, ground every claim in the source, and keep project implications separate."
+  short_description: "Answer paper questions or build grounded deep-reading packets"
+  default_prompt: "Use $sci-paper-reader to answer this paper question at the requested depth, verify decisive source locations, and keep project implications separate."

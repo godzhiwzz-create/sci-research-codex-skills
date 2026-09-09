@@ -24,6 +24,20 @@ Read the project's equivalents of:
 Do not globally scan runs, logs, results, or weights when an index can narrow the task.
 Do not connect to remote hosts during a local/read-only audit unless the user explicitly requests remote verification; mark remote-only artifacts unavailable instead.
 
+## Execute only within the requested scope
+
+Discussion, known-paper intake, and a targeted literature check do not allocate experiment IDs or start remote work. Reuse an approved protocol and authorization while the action, target, and cost class remain unchanged. For a new method, changed information role, or costly expansion, have `sci-research-manager` integrate the nearest-prior comparison before proposal-specific preparation or execution; do not repeat it for ordinary approved runs.
+
+Use the smallest protocol that can distinguish the live explanations. Prefer existing artifacts or a no-training check when informative; a small controlled training intervention may be justified when those cannot answer the question. Do not broaden a probe into a sweep, lower statistical standards, or promote exploratory evidence automatically.
+
+## Track work on an SSH server
+
+Use SSH to connect to a user-configured server only within existing authorization. Keep host addresses, usernames, credentials, local paths, and provider configuration outside portable skills and public artifacts.
+
+Give a live task exactly one monitoring owner. Use a deterministic transfer/verification script when appropriate, and follow the waiting rules in `sci-research-manager`: retain the job ID or remote PID, command identity, output path, last progress, and completion marker; poll according to progress/ETA with backoff when event completion is unavailable. Do not delegate a second monitor or restart because a download is quiet.
+
+A local SSH or terminal exit does not prove remote completion. Before restart, query the recorded remote identity; if missing, make a bounded lookup by expected user, command signature, and output path. Unresolved identity means potentially active. After authorized cancellation, verify that the remote job/process and its relevant open output handles are gone; retain partial files as incomplete. When another check cannot change a decision until an event/ETA, hand back the live identity and next eligible check instead of spinning indefinitely. Do not assume a particular notification tool or model is available.
+
 ## Preserve stable identifiers
 
 - Use the project's established convention.
@@ -57,7 +71,7 @@ Summarize one research question across several probes: shared hypothesis, valida
 
 ### Evidence synthesis
 
-When several records support one conclusion, keep one readable active family/synthesis card and archive redundant child cards without deleting their IDs or raw evidence. Include a merge manifest with old ID/path, new status, reason, and preservation proof.
+When several records support one conclusion, prefer one active synthesis linking the existing child cards. Do not create parallel plan/status/audit/handoff records for the same fact. Only archive or move cards within an authorized maintenance task; preserve IDs/raw evidence and record old path, new status, reason, and preservation proof.
 
 ## Interpret results conservatively
 
