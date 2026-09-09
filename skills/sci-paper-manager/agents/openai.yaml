@@ -1,4 +1,4 @@
 interface:
   display_name: "SCI Paper Manager"
   short_description: "Align paper claims, evidence, and submission files"
-  default_prompt: "Use $sci-paper-manager to update this claim map or paper-status artifact, then return it to the manuscript-writing owner."
+  default_prompt: "Use $sci-paper-manager to handle this bounded paper artifact request; involve the manuscript-writing owner only when integration is in scope."

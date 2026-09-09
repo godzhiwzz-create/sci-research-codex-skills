@@ -1,6 +1,6 @@
 ---
 name: sci-result-auditor
-description: Perform read-only consistency and reproducibility audits across experiment cards, raw results, indexes, registries, claim-evidence maps, handoffs, manuscripts, and public artifacts. Use when checking whether claims are supported, metrics and protocols are compatible, results are traceable, or project memory is internally consistent. Return findings to sci-research-manager; any repair is a separate owner-scoped task, not an auditor mutation.
+description: Perform read-only consistency and reproducibility audits across experiment cards, raw results, indexes, registries, claim-evidence maps, handoffs, manuscripts, and public artifacts. Use when checking whether claims are supported, metrics and protocols are compatible, results are traceable, or project memory is internally consistent. Return findings to the requester; involve sci-research-manager only for a requested project decision or evidence transition. Repairs are separately authorized, not auditor mutations.
 ---
 
 # SCI Result Auditor
@@ -9,7 +9,7 @@ Audit trustworthiness, traceability, and consistency. Follow project-local rules
 
 ## Start narrow
 
-Read handoff, query map, index/registry, claim map, and relevant cards before raw files. Audit selected claims/IDs when possible; state scope before a broad audit.
+Use the supplied claim/ID/artifact and its relevant protocol first; consult handoff, query map, or index only to resolve missing context. Audit selected claims/IDs when possible; state scope before a broad audit. Reuse unchanged verified context, but reopen decisive raw evidence when an exact claim or conflict requires it.
 Do not connect to remote hosts during a local/read-only audit unless the user explicitly requests remote verification.
 
 ## Audit experiment evidence
@@ -53,4 +53,4 @@ For every issue, state severity, evidence, impact, and recommended repair. For e
 - `risk`;
 - `next_action`.
 
-Return the findings and any evidence-backed decision recommendation to `sci-research-manager`; do not change route state, promote evidence, or repair canonical artifacts during the audit. Do not recommend larger training when evidence is weak or confounded.
+Return findings to the current requester; involve `sci-research-manager` when a project decision or evidence transition is requested, not merely to close a direct audit. Do not change route state, promote evidence, or repair canonical artifacts during the audit. Do not recommend larger training merely because evidence is weak or confounded; identify the smallest check that resolves the uncertainty.

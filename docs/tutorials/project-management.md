@@ -1,182 +1,93 @@
-# 项目管理教程：让 Codex 接管长期 SCI 论文研究记忆
+# 项目管理教程：按证据接续科研工作
 
-这个教程适合已经有很多实验、文献、报告和草稿的项目。目标不是把文件夹“摆好看”，而是让 Codex 能低成本找回主线、判断证据、解释失败原因，并阻止你把一个失败方向继续调参。
+本教程对应 `main` 的按需工作流。目标是低成本找回问题和证据，不是给每次讨论建立完整项目，也不是把一次失败解释成整个方向无价值。
 
-## 1. 先建立项目骨架
+## 1. 从当前任务进入
 
-下面是兼容 v1 的示例结构，不是 v2 的硬编码要求。已有项目应优先沿用自己的 `AGENTS.md`、README/HANDOFF 和目录约定；新脚本也支持显式指定路径。
-
-在项目根目录建立：
-
-```text
-PROJECT_HANDOFF.md
-AGENTS.md
-research_workspace/
-  experiments/
-    QUERY_MAP.md
-    EXPERIMENT_INDEX.md
-    EXPERIMENT_INDEX.csv
-    cards/
-  literature/
-  paper/
-    PAPER_STATUS.md
-    CLAIM_EVIDENCE_MAP.md
-  project/
-    DECISION_LOG.md
-    STAGE_PLAN.md
-    PROJECT_PLAN.md
-```
-
-新项目可将 `EXPERIMENTS.tsv` 作为五轴当前状态的唯一 editable 机器源，并在项目 `literature/` 中使用 `SOURCES.tsv` 与 `LITERATURE_CLAIMS.tsv`。旧 `EXPERIMENT_INDEX.*` 可以继续作为 authority 或 generated view，但不要和 `EXPERIMENTS.tsv` 同时手工维护。
-
-推荐对 Codex 说：
-
-```text
-Use sci-research-manager.
-Initialize the project memory files for my SCI paper project.
-Keep uncertain information marked as needs verification.
-```
-
-## 2. 让 Codex 每次按低 token 路线读取
-
-在 `AGENTS.md` 写明：
-
-```markdown
-Before starting a research task, read:
-
-1. PROJECT_HANDOFF.md
-2. research_workspace/experiments/QUERY_MAP.md
-3. research_workspace/experiments/EXPERIMENT_INDEX.md
-4. relevant experiment cards only
-
-Do not scan all logs, runs, results, or checkpoints by default.
-```
-
-这样 Codex 每次不会一上来扫全项目，而是先看轻量记忆，再按问题进入相关实验卡。
-
-## 3. 项目管理输出长什么样
-
-当你说：
-
-```text
-现在实验太乱了，帮我整理主线，告诉我哪些该停，哪些还能继续。
-```
-
-理想输出应该像这样：
-
-```markdown
-## Stage
-
-result_analysis
-
-## Operating Mode
-
-direction_review
-
-## Current Central Question
-
-当前路线真正要回答的是：某个信号是否能解释目标任务失败，而不是它能否被塞进某个 head。
-
-## Evidence Ledger
-
-| Evidence | What it supports | What it does not support |
+| 任务 | 入口 | 何时结束 |
 |---|---|---|
-| E041 | 预注册主比较达到预设 gate | 不证明其他任务或设置也成立 |
-| F120-D01 | 候选解释 A 未通过对照 | 不否定原始研究问题 |
-| F121-D02 | 辅助信号只呈现有限诊断作用 | 不支持把它提升为主贡献 |
+| 讨论新方向 | `sci-research-manager` | 回答问题、指出可检验差别和不确定性；不自动下载或运行 |
+| 给已知论文入库 | `sci-literature-manager` | 查重、验证缺失身份信息、登记增量 |
+| 核对一个数字 | `sci-result-auditor` | 读决定性原始结果和协议，报告冲突；不自行修复 |
+| 记录已批准的实验 | `sci-experiment-manager` | 协议、结果、卡片和当前索引闭环 |
+| 改一段稿件 | `academic-manuscript-writing` | 按已有阶段完成局部改动；不自动重做全稿审核 |
 
-## Failure Cause
+这里的负责人是当前执行者承担的职责，不要求额外启动代理或让简单任务在多个 Skill 间往返。只有改变项目方向、证据权威或稿件阶段时，才进入对应的集成流程。
 
-- signal mismatch：信号测到的是 A，但任务需要 B。
-- interface mismatch：信号被放进了直接决策层。
-- control failure：随机化检查或简单对照解释了表面差异。
+## 2. 沿用项目入口，按变化读取
 
-## Do Not Do Next
+已有项目先遵循自己的 `AGENTS.md` 和目录约定。读取当前任务需要的 HANDOFF、相关索引和卡片；已在当前上下文中完整读过、仍可用且未变的资料不重复加载。适用规则要求重新读取、文件变化或上下文缺失时再补读。
 
-- 不加 epoch。
-- 不加 seed。
-- 不调 loss weight。
-- 不再换一个小 head。
-- 不把成熟框架的小优化当主贡献。
-
-## Decision
-
-redirect：保留问题，停止当前接口，先做最小的区分性 probe。
-```
-
-这个输出的重点是“为什么”，不是“又跑什么”。
-
-## 4. 多个实验怎么合并
-
-如果一个方向下有很多小实验，不要让 active 目录塞满几十张卡。用 family card 收束：
+已给出 raw path 或 claim ID 的窄任务可以直接查证；索引用于定位，不是每次必经的仪式。摘要不能替代决定性的原文、原始结果和冻结协议。
 
 ```text
-cards/
-  F120_direction_exploration.md
-  _archive/
-    F120/
-      F120_D01_old_probe.md
-      F120_D02_old_probe.md
+Use sci-research-manager to resume this project.
+Find the current question and only the evidence needed for the next decision.
+Preserve existing records and mark missing evidence as needs_verification.
+Do not run experiments or reorganize files.
 ```
 
-family card 负责记录：
-
-- 方向假设；
-- 子实验表；
-- 哪些支持；
-- 哪些被 control 解释掉；
-- 哪些不能再重复；
-- 建议的 continue / redirect / reference_only / stop / needs_literature。
-
-family card 保存科学综合；`sci-research-manager` 接收 handback 后再集成最终方向决定和共享 registry 状态。
-
-## 5. 项目管理和论文写作怎么连起来
-
-实验卡只说明实验。论文 claim 还要进入：
+新建长期项目时，按实际需要逐步增加入口：
 
 ```text
-research_workspace/paper/CLAIM_EVIDENCE_MAP.md
+HANDOFF.md                 # 当前阶段、blocker、下一动作
+experiments/
+  EXPERIMENTS.tsv           # 一个当前状态机器源
+  cards/                   # 已接受并授权的实验
+literature/
+  SOURCES.tsv              # 项目采用的来源，不复制全局论文库
+paper/
+  CLAIM_EVIDENCE_MAP.md     # 有 paper-facing claim 时再维护
 ```
 
-例子：
+这不是初始化清单。讨论可以只留在回答中；不要为未来可能需要的状态预建空文件。兼容旧 `PROJECT_HANDOFF.md`、`research_workspace/` 和 `EXPERIMENT_INDEX.*`，不强制迁移；若已有索引权威，不再手工维护第二份同义索引。
 
-```markdown
+## 3. 方向审查：结论不超过证据
+
+例如用户问：“这些结果支持继续当前路线吗？”可以返回紧凑证据表：
+
+| 证据 | 支持什么 | 不支持什么 |
+|---|---|---|
+| E041，冻结协议下的主比较 | 当前任务上的预设 gate 已达到 | 任意任务、设置都有效 |
+| F120-D01，负对照 | 当前解释 A 不能独立说明差异 | 原始研究问题没有价值 |
+| 最近先例的特定表格/方法节 | 当前方案与已有工作的重合 | 尚未测试差别的结果 |
+
+接着区分已证实原因和竞争解释，给出 `continue / redirect / reference_only / stop / needs_literature` 的依据、边界与下一步。例如：“停止重复当前接口；保留问题，若仍在授权范围内，用一个能区分 A/B 的最小检查决定是否推进。”
+
+`do-not-do-next` 应针对已被证据排除的重复动作，不应变成通用的“不加 seed、不跑消融、不调参数”。预定的统计重复、公平对照和决定性核验照常保留。最近先例要在为新提案投入下载或准备分析前影响决策，但不要求穷尽文献或证明完整因果链才允许小实验。
+
+## 4. 只维护发生变化的记录
+
+实验结果的最小闭环是：
+
+```text
+原始结果 + 协议/provenance → 实验卡 → 项目当前状态索引
+```
+
+共享结果登记只在证据晋升、替代权威、改变论文 claim 或重要警告时更新；HANDOFF 只在阶段、问题、blocker、活跃任务或下一动作变化时更新。无需另建同义的计划、日报、交接和审计记录。
+
+同一方向的多次实验可以用现有 family card 或索引中的一个综合段落链接起来，写清假设、子实验、反证和仍未测试的边界。默认保留子卡片与原始文件的位置和内容；实际移动/归档需要单独匹配的授权与可恢复方案。
+
+下载或 SSH 任务暂时没有输出时，沿用一个监控负责人和同一任务身份，按工具能力等待通知或有界退避检查。连接退出不等于远端任务结束；状态不明先查原任务，不重复启动。持续等待要有业务期限或明确下一次检查条件，不能无限空转。
+
+## 5. 从证据到稿件
+
+存在论文主张时，把它绑定到已核验证据：
+
 | Claim ID | Claim | Evidence | Claim strength | Evidence status |
 |---|---|---|---|---|
-| C001 | 方法在预注册任务上达到目标 | E021, E041 | main_claim | verified |
-| C002 | 该机制可推广到任意设置 | F120-D01, F121-D02 | unsupported | verified |
-```
+| C001 | 方法在冻结任务上达到预设目标 | E041 | main_claim | verified |
+| C002 | 方法可推广到任意设置 | F120-D01 | unsupported | verified |
 
-第二行刻意展示：证据已核验，不等于 claim 获得支持；五个状态轴不能互相替代。
-
-写论文前先让 Codex 做：
+证据已核验，不等于主张获支持。新增或扩大 claim 时核对内部 raw/protocol 或外部论文的精确位置；只修改拼写或格式不需要重启整个证据链。
 
 ```text
-Use sci-research-manager and sci-result-auditor.
-Audit CLAIM_EVIDENCE_MAP and return a bounded evidence packet.
-Then use academic-manuscript-writing to select the manuscript stage before editing prose.
+Use sci-result-auditor to verify the specified claim against its raw result and protocol.
+Return findings without modifying evidence.
 ```
 
-## 6. 常见错误
+当用户要求实际写作，再由 `academic-manuscript-writing` 按稿件阶段使用该证据。局部任务完成不等于整个阶段完成；全稿转换、最终提交或对外发布才执行匹配范围的完整门控。上传和不可逆提交仍需对应授权。
 
-| 错误 | 这套 skills 怎么拦住 |
-|---|---|
-| 失败后继续调参 | `sci-research-manager` 要求先输出 failure cause 和 do-not-do-next |
-| 文件夹越整越乱 | `sci-experiment-manager` 用 family card 合并路线 |
-| 论文 claim 先写后补证据 | `sci-research-manager` 要求 claim-evidence map 与 evidence packet |
-| 对外包中夹带未审核披露或本地材料 | 最终提交门运行披露候选扫描并阻断 incomplete scan |
-| 强框架跑得好就当自己贡献 | direction decision 标记为 `reference_only`，不自动变主线 |
+## 6. 最小可用方式
 
-## 7. 最小可用流程
-
-如果你只想先用起来：
-
-```text
-1. Initialize HANDOFF / QUERY_MAP and one authoritative experiment current-state index.
-2. 把已有实验补成 cards。
-3. 让 Codex 用 sci-research-manager 做一次 route review。
-4. 把结论写入 DECISION_LOG。
-5. 写论文前用 sci-result-auditor 审计 claim map，再由 academic-manuscript-writing 选择阶段。
-```
-
-这就足够把一个长期项目从“凭记忆推进”变成“按证据推进”。
+先给一个具体问题和已有入口，不必先补齐历史库。完成当前问题后，仅在有跨会话价值的状态变化时更新既有记录。缺少能力或决定性证据就报告具体缺口，不自动安装工具、扩大团队或把未知写成否定结论。

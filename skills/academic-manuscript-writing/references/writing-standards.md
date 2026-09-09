@@ -2,6 +2,8 @@
 
 These standards govern `initial_draft`, `manuscript_polish`, and the shared prose used during revision. Apply the target venue's official requirements where they are stricter. Scientific truth and author intent take precedence over stylistic neatness.
 
+Whole-manuscript execution checklists and deliverables apply to whole-stage tasks. For a bounded edit, apply the relevant scientific and prose standards to the affected content and dependencies without restarting the full checklist or implying stage completion.
+
 ## Shared scientific prose standard
 
 ### Establish the writing basis
@@ -162,7 +164,7 @@ Do not introduce claims, datasets, or qualifiers absent from the paper body. Do 
 
 ## Figure and table standardization
 
-During `manuscript_polish`, audit every figure and table as part of the argument, not as decoration.
+During whole-manuscript `manuscript_polish`, audit every figure and table as part of the argument, not as decoration. A local edit checks only affected items and dependencies.
 
 - Each item has one purpose, is cited in order, and is understandable with its caption/notes.
 - Use consistent typography, capitalization, abbreviations, colors, line weights, panel labels, dimensions, resolution, units, decimal precision, and metric direction.

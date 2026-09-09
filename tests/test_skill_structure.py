@@ -218,7 +218,9 @@ class SkillStructureTests(unittest.TestCase):
         paper_manager_metadata = (
             SKILLS / "sci-paper-manager/agents/openai.yaml"
         ).read_text(encoding="utf-8")
-        self.assertIn("return it to the manuscript-writing owner", paper_manager_metadata)
+        # This checks the routing surface, not actual model behavior (forward-tested separately).
+        self.assertIn("manuscript-writing owner", paper_manager_metadata)
+        self.assertIn("only when integration is in scope", paper_manager_metadata)
         self.assertNotIn("reconcile this manuscript", paper_manager_metadata)
 
         paper_reader_text = "\n".join(

@@ -6,12 +6,15 @@
 
 该演示包是 `v2.0.0` 的公开历史快照，其中的 public-demo attachment 不是新项目模板；`main` 的新工作流以本教程后文的独立 typed reading handback 为准。
 
+本页适用于明确要求完整精读包的任务。如果只问一个公式、对照或机制，直接读取决定性原文并回答，标明位置和限制；不自动生成 HTML、截图合集或项目记录。给已知论文入库则使用 `sci-literature-manager` 做增量登记，不自动精读。
+
 ## 1. 一句话使用方式
 
 把 PDF 或论文链接给 Codex：
 
 ```text
-Use sci-literature-manager and sci-paper-reader.
+Use sci-paper-reader with the supplied primary source.
+Use sci-literature-manager only if source identity, version, or discovery is missing.
 Read this paper deeply in Chinese.
 First create a Markdown understanding packet, then create a visual HTML packet.
 Include abstract screenshot, abstract interpretation, method route, figure/table proof cards, limitations, relation to other papers, and a separate typed reading handback.
@@ -40,7 +43,7 @@ literature/
 - MD 是源文件；
 - HTML / PPT / Word 是派生展示；
 - 论文主体先讲论文本身；
-- 可迁移启发放进独立 reading handback，交回 `sci-research-manager`，不写进可复用论文主体。
+- 可迁移启发与可复用论文主体分开；有项目集成任务时才交给研究状态负责人，否则直接向当前请求者交付，不额外启动协调流程。
 
 ## 3. 精读包效果预览
 
@@ -159,7 +162,7 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 
 ## 5. 项目启发要作为独立 handback
 
-精读包本体保持项目中立；另行返回：
+精读包本体保持项目中立；有项目相关性时另行返回以下紧凑 handback，否则直接交付阅读产物即可：
 
 ```markdown
 ## Reading Handback
@@ -170,7 +173,7 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 - Candidate relevance (not yet adopted):
 - Candidate hypotheses/diagnostics/controls:
 - Missing verification:
-- Return to: sci-research-manager
+- Return to: current requester; research owner only for requested project integration
 ```
 
 这样做有两个好处：
@@ -187,7 +190,7 @@ python3 ~/.codex/skills/sci-paper-reader/scripts/check_html_assets.py paper_visu
 | 图表只贴不讲 | 每张关键图表写 proof card |
 | 默认读者懂术语、公式和数据集 | 先写 prerequisite ladder 和 concept dictionary |
 | 表格只复述数字 | 解释 baseline、指标方向、差距大小和结论边界 |
-| 读完马上设计实验 | 先把 candidate handback 交给 `sci-research-manager`，由它决定是否形成正式 brief |
+| 读完马上设计实验 | 仅在用户要推进项目时评估候选启发；接受并授权实验后再形成或复用 brief |
 | 用当前项目视角重写整篇论文 | 主体讲论文，项目启发放进独立 handback |
 | 重要句子全翻译成中文失去精度 | 可以短引原句，但解释用中文 |
 

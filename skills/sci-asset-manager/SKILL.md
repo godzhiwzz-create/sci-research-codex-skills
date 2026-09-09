@@ -1,6 +1,6 @@
 ---
 name: sci-asset-manager
-description: Review and maintain research project assets without losing evidence metadata, including cleanup candidates, cold archives, migration manifests, submission keep lists, and deletion risk. Use when deciding what to keep, move, archive, deduplicate, or delete in a research workspace. Default to review manifests; never delete or move protected assets without explicit user authorization.
+description: Review and maintain research project assets without losing evidence metadata, including cleanup candidates, cold archives, migration manifests, submission keep lists, and deletion risk. Use when deciding what to keep, move, archive, deduplicate, or delete in a research workspace. Default to bounded review; create durable manifests only when needed. Never delete or move protected assets without explicit user authorization.
 ---
 
 # SCI Asset Manager
@@ -33,4 +33,4 @@ Before an approved move, snapshot provenance with `sci-research-manager/scripts/
 
 Never delete files unless the user explicitly authorizes the exact scope. First produce `delete_review.md`. Treat unknown ownership as `needs_verification`. A cleanup review is not deletion permission.
 
-Review assets after exploratory probes, phase completion, central-story freeze, draft-core completion, and before submission/release.
+Review assets when requested or when a concrete storage, provenance, or outgoing-package risk requires it. A probe or phase change alone does not trigger an extra audit, manifest, archive, or deletion workflow. A narrow review may return findings in the conversation; create a durable manifest for an authorized migration/deletion or when the project requires one.

@@ -16,7 +16,9 @@ For any request that creates, edits, audits, revises, responds for, or prepares 
 3. provide verified project evidence, canonical paths, and current external decision;
 4. do not invoke another generic writing module in parallel;
 5. receive its stage artifacts and record only durable state changes in the project handoff;
-6. use [final-submission-audit.md](final-submission-audit.md) after the writing skill declares the content handoff complete.
+6. use [final-submission-audit.md](final-submission-audit.md) only when final package/readiness work is in scope and the relevant content is frozen; a finished paragraph or revision subtask does not automatically start final submission audit.
+
+If the writing owner is already active, return the bounded evidence to it without invoking a new owner. A final audit reuses the frozen writing handoff; it does not re-enter prose editing or repeat stage selection unless a material input changed.
 
 The manuscript stages are:
 

@@ -7,6 +7,8 @@ description: Coordinate long-running research state, evidence, project literatur
 
 Be the single owner of research state and evidence transitions. Specialists may return bounded content; they do not become parallel workflow owners.
 
+An owner is a responsibility of the current primary agent, not an additional agent or mandatory skill call. Direct specialist requests may finish with the user without opening this coordinator. Enter lifecycle coordination only for an actual project decision, state transition, evidence promotion, or cross-domain integration; never bounce a finished handback between owners. If a specialist is unavailable, use an available equivalent capability within the same evidence and permission boundaries, or report the specific missing capability. Do not install dependencies or weaken verification implicitly.
+
 ## Respect authority and existing authorization
 
 - Follow the user request and applicable `AGENTS.md`, `CLAUDE.md`, repository rules, schemas, and templates. This skill never weakens a stricter local rule.
