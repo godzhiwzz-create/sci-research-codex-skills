@@ -5,11 +5,26 @@
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2264d1)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9f6e.svg)](LICENSE)
 
-面向长期、证据驱动科研项目的 Codex Skills。当前版本：**2.0.0**。
+8 个面向通用科研项目的 Codex Skills，覆盖文献、实验、证据与阶段化写作。当前版本：**2.0.0**（稳定 Release）。
 
-这套系统让 Codex 不只会“写一段论文”或“跑一个实验”，而是能在跨会话、跨阶段的研究中保存方向、追溯证据、约束 claim、保护工作区，并把专门任务路由给合适的 Skill。
+从一个论文问题开始，也能接续一个长期项目：按任务选择需要的 Skill，让结论有出处、实验有协议、写作有证据。项目自己的规则和目录结构优先，不要求每次提问都启动完整工作流。
 
-> 稳定版：[v2.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0) · 历史基线：[v1.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v1.0.0) · [在线教程](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+> [安装](#安装) · [快速开始](#快速开始) · [在线主页与教程](https://godzhiwzz-create.github.io/sci-research-codex-skills/) · [版本变化](CHANGELOG.md)
+
+## 从你的任务开始
+
+| 现在想做什么 | 入口 | 输出边界 |
+|---|---|---|
+| 接续项目、判断下一步 | [sci-research-manager](skills/sci-research-manager/SKILL.md) | 当前问题、证据、缺口与下一动作 |
+| 查新、给已知论文入库 | [sci-literature-manager](skills/sci-literature-manager/SKILL.md) | 来源验证、去重与必要增量，不重启全领域检索 |
+| 解释论文机制或认真精读 | [sci-paper-reader](skills/sci-paper-reader/SKILL.md) | 有原文位置的回答；完整阅读包按需生成 |
+| 记录已批准的实验 | [sci-experiment-manager](skills/sci-experiment-manager/SKILL.md) | 冻结协议、原始结果、实验卡与索引 |
+| 核对结果与论文主张 | [sci-result-auditor](skills/sci-result-auditor/SKILL.md) | 只读核验、冲突与缺失证据 |
+| 起草、打磨或修订稿件 | [academic-manuscript-writing](skills/academic-manuscript-writing/SKILL.md) | 在当前稿件阶段和已核验证据内写作 |
+
+其余两个 Skill 负责[论文配套清单](skills/sci-paper-manager/SKILL.md)与[资产维护审查](skills/sci-asset-manager/SKILL.md)。不必同时调用全部 8 个。
+
+稳定复现请选择 [v2.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0)；下文按需工作流等最新能力位于 `main`，已通过对应 CI，但尚未形成新 Release。
 
 ## v2 的核心变化
 
@@ -115,6 +130,22 @@ cp -R skills/sci-research-manager ~/.codex/skills/
 安装或升级后重新加载 Codex Skill 列表。
 
 ## 快速开始
+
+讨论一个方向，不启动执行（`main`）：
+
+```text
+Use $sci-research-manager to discuss this research idea.
+Answer the current question without creating records or starting downloads or remote work.
+If novelty or feasibility affects the answer, check the nearest primary sources first.
+```
+
+给已知论文入库（`main`）：
+
+```text
+Use $sci-literature-manager to add the paper identified by the DOI I provide.
+Check existing identities and versions, verify missing metadata, and register only the delta.
+Do not restart a field-wide search or generate a full reading packet.
+```
 
 恢复长期项目：
 
