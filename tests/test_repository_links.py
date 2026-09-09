@@ -16,11 +16,14 @@ class LocalRefParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.refs: list[str] = []
+        self.ids: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         for name, value in attrs:
             if name in {"href", "src", "poster"} and value:
                 self.refs.append(value)
+            if name == "id" and value:
+                self.ids.append(value)
 
 
 def is_external(value: str) -> bool:
@@ -28,6 +31,16 @@ def is_external(value: str) -> bool:
 
 
 class RepositoryLinkTests(unittest.TestCase):
+    def test_homepage_navigation_targets_exist_and_are_unique(self) -> None:
+        parser = LocalRefParser()
+        parser.feed((ROOT / "docs/index.html").read_text(encoding="utf-8"))
+        self.assertEqual(len(parser.ids), len(set(parser.ids)))
+        targets = [unquote(ref[1:]) for ref in parser.refs if ref.startswith("#")]
+        self.assertTrue(targets)
+        for target in targets:
+            with self.subTest(target=target):
+                self.assertIn(target, parser.ids)
+
     def test_repository_markdown_links(self) -> None:
         files = [
             *sorted(ROOT.glob("*.md")),
