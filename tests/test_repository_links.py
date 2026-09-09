@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import unittest
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -31,6 +32,23 @@ def is_external(value: str) -> bool:
 
 
 class RepositoryLinkTests(unittest.TestCase):
+    def test_homepage_exposes_all_skills_and_safe_install_commands(self) -> None:
+        text = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        parser = LocalRefParser()
+        parser.feed(text)
+        skill_links = {ref.rsplit("/", 1)[-1] for ref in parser.refs if "/tree/main/skills/" in ref}
+        expected = {path.parent.name for path in (ROOT / "skills").glob("*/SKILL.md")}
+        self.assertEqual(skill_links, expected)
+        commands = {name: unescape(value) for name, value in re.findall(
+            r'<code id="([^"]+)">([^<]+)</code>', text
+        )}
+        copy_targets = re.findall(r'data-copy="([^"]+)" hidden', text)
+        self.assertEqual(set(copy_targets), set(commands))
+        self.assertNotIn("--apply", commands["preview-command"])
+        self.assertIn("--apply", commands["apply-command"])
+        self.assertIn('role="status" aria-live="polite"', text)
+        self.assertIn('<noscript>', text)
+
     def test_homepage_navigation_targets_exist_and_are_unique(self) -> None:
         parser = LocalRefParser()
         parser.feed((ROOT / "docs/index.html").read_text(encoding="utf-8"))
