@@ -2,6 +2,8 @@
 
 Select one primary owner and the smallest bounded specialist set. `sci-research-manager` owns research state and evidence promotion; `academic-manuscript-writing` owns manuscript stage, mainline, prose, and integration. Every other skill is a specialist for the current task.
 
+Ownership is a role of the current primary agent, not a required extra agent or coordinator invocation. A direct literature, reading, audit, inventory, or asset-review request may finish with the user. Cross to another owner only when its decision or state actually enters scope; reuse the existing handback and verified context instead of starting the completed workflow again. Optional specialists are capabilities, not installation prerequisites; use an available equivalent or name the unresolved capability without lowering evidence standards.
+
 Before delegation, define the input artifacts or IDs, allowed operation, prohibited state changes, required output type, and return destination. A specialist must return source paths, verified scope, limitations, and any proposed state change rather than applying that change to a canonical registry or manuscript on its own.
 
 ## Literature and paper understanding

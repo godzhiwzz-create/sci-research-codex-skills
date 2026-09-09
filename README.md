@@ -69,8 +69,8 @@
 3. **先问题，后投入**：先检查最近先例与竞争解释，再选最小有效验证；不盲目调参，也不要求完整因果证明才允许有价值的小实验。
 4. **claim 必须可追溯**：每个论文主张都要对应兼容协议下的证据。
 5. **维护默认只读**：整理不自动删除、移动、提交、推送或重写原始资产时间。
-6. **低上下文检索**：先 HANDOFF、QUERY_MAP、索引，再读卡片和原始文件。
-7. **一个事实一个 owner**：研究状态与证据由生命周期中枢集成，稿件阶段与主线由写作入口集成，专门 Skill 只返回有界产物。
+6. **低上下文检索**：入口和索引用于定位；复用未变上下文，窄问题直接查决定性证据，不固定重读顺序。
+7. **一个事实一个 owner**：研究状态与证据由生命周期中枢集成，稿件阶段与主线由写作入口集成。owner 是职责，不要求额外代理；窄任务可从专门 Skill 直接完成。
 
 ## 系统结构
 
@@ -87,6 +87,8 @@ flowchart LR
 ```
 
 `sci-research-manager` 负责研究状态、方向、证据边界、跨库交接和最终提交门；`academic-manuscript-writing` 负责稿件阶段、主线、正文、修订与回复。其余 6 个 Skill 返回有界产物。项目自己的 `AGENTS.md`、schema 和事实来源始终优先。
+
+图中箭头表示需要集成时的数据流，不是每次必走的执行链。局部编辑不自动触发全稿审核，文件清单不等于提交就绪；可选模块不可用时保留验证与权限边界，说明具体缺口。
 
 ## 8 个原有 Skill
 
@@ -110,22 +112,27 @@ git clone https://github.com/godzhiwzz-create/sci-research-codex-skills.git
 cd sci-research-codex-skills
 ```
 
-需要可复现稳定版时执行 `git switch --detach v2.0.0`；需要已通过主分支 CI、但尚未形成新 Release 的最新能力时保持在 `main`。
+下面的安全安装器位于 `main`，需要 Python 3.10+，无第三方依赖，也不联网。需要可复现的旧稳定版时执行 `git switch --detach v2.0.0`，并参考[该版本安装说明](https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/v2.0.0#安装)；旧标签不包含新安装器，升级前应自行备份。
 
-安装全部 Skill：
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/* ~/.codex/skills/
-```
-
-只安装生命周期中枢：
+先预览，再安装选定 Skill：
 
 ```bash
-cp -R skills/sci-research-manager ~/.codex/skills/
+python3 scripts/install_skills.py --skill sci-research-manager
+python3 scripts/install_skills.py --skill sci-research-manager --apply
 ```
 
-升级已有安装前先备份本地自定义内容，再用同名目录覆盖；v2 沿用全部原名称，不要求迁移触发词。
+也可以选择全部，或显式升级：
+
+```bash
+python3 scripts/install_skills.py --all
+python3 scripts/install_skills.py --all --apply
+python3 scripts/install_skills.py --skill sci-research-manager --upgrade
+python3 scripts/install_skills.py --skill sci-research-manager --upgrade --apply
+```
+
+不加 `--apply` 不写文件。默认目标为 `$CODEX_HOME/skills`（未配置则使用 `~/.codex/skills`）；可用 `--destination PATH` 指定其他专用目录。相同内容跳过；已有不同内容默认拒绝，只有显式 `--upgrade` 才替换，并将整个旧目录移入同级 `skill-backups/唯一批次/`，保留自定义文件与原文件时间。备份不会被当作 Skill 加载；可用 `--backup-dir PATH` 指定同文件系统、安装目录外的备份根。
+
+升级是有备份的替换，不自动合并本地定制。安装器先检查全部选项，再暂存并切换；普通切换失败会尝试回滚，备份不自动删除。请在没有其他编辑/安装进程时使用；锁和状态复核不能防御任意外部并发修改或系统中断。中断后先检查输出的备份/暂存位置再恢复，不盲目删除锁。软链接和特殊文件会被拒绝。
 
 安装或升级后重新加载 Codex Skill 列表。
 
@@ -206,6 +213,7 @@ literature/
 
 | 工具 | 作用 | 默认安全边界 |
 |---|---|---|
+| `scripts/install_skills.py`（仓库根） | 选择安装或有备份升级 | 默认预览，显式 `--apply` 才写入 |
 | `sci-research-manager/scripts/audit_workspace.py` | 检查入口、Markdown 本地链接、软链接和嵌套 Git 状态 | 只读 |
 | `sci-research-manager/scripts/provenance_guard.py` | 记录/核验 size、mtime、symlink target、可选 SHA-256 | 不改原资产 |
 | `sci-research-manager/scripts/audit_research_libraries.py` | 检查 Source ID、LiteratureClaim、实验五轴索引和 canonical registry | 只读；路径按 workspace 相对输出，支持显式目录、vocabulary 扩展和 canonical 语义映射 |

@@ -124,7 +124,7 @@ Record:
 - What is transferable and what is not.
 - Recommended lifecycle stage.
 
-Create an experiment ID only after this brief yields a concrete validation requirement.
+Reuse a compact section of the existing brief/card. Allocate an experiment ID only for an accepted, authorized experiment with a concrete validation requirement; ordinary discussion stays in the response. New-method or investment decisions also need a traceable nearest-prior comparison, not an extra parallel registry.
 
 ## Migration/archive manifest minimum
 

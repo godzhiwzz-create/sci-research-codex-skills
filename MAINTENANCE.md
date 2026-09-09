@@ -138,7 +138,7 @@ git status -sb
 
 ## 自动巡检
 
-- 每次 push 和 Pull Request：运行维护一致性检查与完整单元测试矩阵。
+- 每次 Pull Request、`main` push、版本标签 push 或手动触发：运行维护一致性检查与完整三版本 Python 测试矩阵；任务分支不再同时重复运行 push 矩阵。同一 PR 的新提交可取消旧检查，主分支和标签运行不自动取消。
 - 每月 1 日：定期工作流重新检查仓库一致性、测试和当前稳定标签。
 - 每月：Dependabot 检查 GitHub Actions 更新，并以独立 PR 提交。
 - 每季度人工检查：仓库 About/Topics、Pages、Releases、私密漏洞报告、未处理 Issue/PR、失效外链和废弃 Action 警告。

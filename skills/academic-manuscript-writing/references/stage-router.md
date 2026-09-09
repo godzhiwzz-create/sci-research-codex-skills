@@ -103,6 +103,8 @@ Every delegated result returns to the main agent as evidence, an issue list, or 
 
 ## Transition conditions
 
+These gates govern completion or advancement of an entire stage, not every local edit within it. Close a narrow authorized task after verifying its affected text/evidence and scope; leave the manuscript stage unchanged and report any broader unchecked work. Reuse an existing author-approved repair selection rather than asking for the same permission again.
+
 ### `initial_draft` → `manuscript_polish`
 
 Require:
@@ -126,7 +128,7 @@ Require:
 
 ### `pre_submission_audit` → repair stage
 
-The audit itself never edits. The author selects issues, then:
+The audit itself never edits. Use the author's issue selection or still-applicable repair authorization, then:
 
 - language/layout/citation fixes return to `manuscript_polish`;
 - a material missing argument or reopened science returns to `initial_draft` or the applicable experiment/evidence stage;

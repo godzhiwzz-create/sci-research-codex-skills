@@ -4,7 +4,7 @@ The objective is to satisfy the editor and reviewers completely and politely whi
 
 ## Freeze the revision basis
 
-Before experiments or prose changes, record:
+For a full revision or when establishing/replacing its basis, record:
 
 - exact decision letter and original reviewer comments;
 - stable comment IDs;
@@ -15,6 +15,8 @@ Before experiments or prose changes, record:
 - comment–evidence–action matrix.
 
 The matrix must include comment ID, request, Chinese working interpretation when needed, evidence, decision, experiment/data/code action, manuscript action, supplement action, response status, final location, and blocker.
+
+For a bounded authorized edit, reuse the relevant submitted base, current source, stage and author/comment scope. A spelling-only correction does not require creating a complete decision letter, mainline card, comment matrix, preservation report or response package. Verify the exact text change and scientific meaning; leave the stage unchanged. A substantive change still needs its supporting evidence and affected dependencies.
 
 Classify the response need without labeling the reviewer: `blocking_scientific / reproducibility_or_protocol / interpretation_or_scope / literature_or_novelty / presentation_or_minor / compliance`. Also record whether the issue is shared by several reviewers. This controls priority and duplication; it does not change the obligation to answer every subpart.
 
@@ -104,6 +106,8 @@ Treat the accepted or nearly accepted scientific structure as frozen.
 
 ## Revision execution order
 
+This is the full revision sequence. A local task performs only its applicable steps; completion of that task does not trigger final packaging or stage advancement.
+
 1. Parse and number the comments without losing qualifiers or subparts.
 2. Audit existing evidence and manuscript locations.
 3. Decide experiments/data/code/citation/protocol actions and obtain required author decisions.
@@ -174,7 +178,7 @@ When a figure or table is needed to understand the answer, include the complete 
 
 ## Completion gates
 
-Revision is complete only when:
+The entire revision stage is complete only when:
 
 - all comment IDs are answered and their subparts closed or transparently declined;
 - every reported number/protocol/citation resolves to verified evidence;

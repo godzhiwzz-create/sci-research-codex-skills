@@ -78,4 +78,4 @@ For intake or a narrow lookup, return only the source ID/location, verified fiel
 
 Include the nearest substantive overlap, remaining testable difference, decisive source locations actually read, and search coverage. A close precedent may make a method a reproduction or baseline; it does not automatically invalidate the whole direction. Do not invent novelty from a new name, benchmark, or untested condition. The research owner integrates the decision before proposal-specific asset preparation or costly execution.
 
-Return this packet to `sci-research-manager`, which owns project adoption, tags, LiteratureClaim verification, experiment allocation, and downstream state. Literature-only items never enter the experiment index or claim map as project evidence.
+Return to the current requester. Use `sci-research-manager` only when project adoption, tags, LiteratureClaim verification, experiment allocation, or downstream state actually enters scope; a direct lookup or intake can finish without a coordinator call. Literature-only items never enter the experiment index or claim map as project evidence.

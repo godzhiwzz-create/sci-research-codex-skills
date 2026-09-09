@@ -18,16 +18,18 @@ Write and revise manuscripts according to their actual lifecycle stage. Own the 
 
 ## Select the manuscript stage first
 
-Read [stage-router.md](references/stage-router.md) for every invocation. Assign exactly one stage:
+Use [stage-router.md](references/stage-router.md) to identify the current stage, reusing an unchanged router and established stage contract already in context. Assign exactly one stage:
 
 `initial_draft / manuscript_polish / pre_submission_audit / major_revision_preserving / minor_revision_local / final_submission_audit / proof_correction`
 
 State the detected stage and mutation scope briefly before substantive work. If the evidence supports multiple stages, use the least mutating safe stage and follow the transition gates; do not combine drafting, auditing, revision, and final submission into one uncontrolled pass.
 
+Separate completion of the requested task from completion of the entire manuscript stage. A bounded paragraph edit, local response draft, or formatting question does not require a full manuscript audit, new mainline card, or all stage deliverables. Reuse relevant existing records, preserve scientific meaning, and verify changed claims when needed. Apply full stage-completion gates only when completing or advancing that stage; do not label a local edit as stage completion.
+
 ## Load only the relevant writing rules
 
 - For `initial_draft`, `manuscript_polish`, or `pre_submission_audit`, read [writing-standards.md](references/writing-standards.md).
-- For `major_revision_preserving` or `minor_revision_local`, read [revision-and-response.md](references/revision-and-response.md) and the shared portions of [writing-standards.md](references/writing-standards.md).
+- For `major_revision_preserving` or `minor_revision_local`, read [revision-and-response.md](references/revision-and-response.md). Also read [writing-standards.md](references/writing-standards.md) when changing scientific exposition, argument, citations or figure/table discussion; a spelling-only correction does not need that additional reference.
 - For `final_submission_audit`, read [submission-handoff.md](references/submission-handoff.md), then use the `sci-research-manager` final-submission audit.
 - For `proof_correction`, read the proof section in [submission-handoff.md](references/submission-handoff.md).
 
@@ -50,7 +52,7 @@ Specialist skills remain appropriate for bounded work:
 - read-only reviewer simulation;
 - browser or portal operation after separate authorization.
 
-Read [stage-router.md](references/stage-router.md) before invoking specialists or subagents; use only the smallest set that changes the outcome.
+Use the selected stage's specialist boundaries; do not reread the unchanged router before each handoff. Invoke only the smallest set that changes the outcome. A typed handback returns to the current primary agent, not another automatically spawned owner.
 
 Use a two-tier contract: this skill is the sole manuscript owner, while each specialist receives a bounded input and returns one typed artifact such as a verified source packet, statistical result, quantitative plot, method diagram, compiled document, or mock-referee report. Specialists must not rewrite surrounding prose, change the selected manuscript stage, expand the revision scope, promote evidence, or integrate directly into the canonical manuscript. The main agent checks the handback and performs the final integration.
 
@@ -58,7 +60,7 @@ For path compatibility, existing projects may still link [workflow.md](reference
 
 ## Required stage artifacts
 
-Maintain only artifacts that the current stage needs:
+For a whole-stage task, maintain the applicable artifacts below; for a bounded subtask, update only the affected existing records:
 
 - canonical source/render identity;
 - mainline card after the initial-draft stage;

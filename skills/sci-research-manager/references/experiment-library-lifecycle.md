@@ -66,7 +66,7 @@ Historical cards remain immutable scientific/human records. `EXPERIMENTS.tsv` ow
 
 ### 1. Question to designed experiment
 
-Create an ID/card only when there is a falsifiable requirement. Before execution, freeze:
+Create an ID/card only when an experiment is accepted within the authorized workflow and there is a falsifiable requirement. A speculative idea alone does not allocate a record. Before execution, freeze:
 
 - hypothesis and competing explanation;
 - dataset/version, split, access boundary, and exclusions;
@@ -76,7 +76,7 @@ Create an ID/card only when there is a falsifiable requirement. Before execution
 - config, code revision, command and expected result path;
 - promotion gate, stop gate, and `do-not-do-next`.
 
-If literature triggered the experiment, link the literature-to-experiment brief. Literature is motivation or external evidence, not an experimental result.
+For a new method, changed information role, or costly expansion, link the existing nearest-prior comparison in the brief/card even when the idea came from discussion. Reuse a still-applicable comparison; ordinary approved execution does not repeat it. Literature is motivation or external evidence, not an experimental result.
 
 ### 2. Designed to running
 
@@ -117,7 +117,7 @@ The machine registry is `shared/experiments/RESULTS_REGISTRY.tsv`. It stores pro
 
 ### 7. Supersession
 
-Never renumber or rewrite historical experiments to match the new route. Mark the old card `superseded`, name the replacement and reason, preserve raw provenance, update active query routes, and update the shared registry only if its canonical target or warning changed.
+Never renumber or rewrite historical experiments to match the new route. Set `superseded` in the authoritative current-state index and append or link a correction/replacement note when needed; preserve the old card body and raw provenance. Update active query routes and the shared registry only if its canonical target or warning changed.
 
 ## Selection and comparison safeguards
 
@@ -150,7 +150,7 @@ The writing skill owns prose. It cannot promote evidence, broaden a claim, choos
 | Run completes | Raw artifacts + card + project `EXPERIMENTS.tsv`/query index | Registry/claim map only after analysis and promotion |
 | Evidence verified | Card interpretation/status | Registry if canonical; claim map if paper-facing |
 | Evidence superseded | Old/new card links + active query route | Registry/handoff when canonical route changes |
-| Routine audit | Findings or repaired current navigation | No history rewrite or cosmetic mass update |
+| Routine audit | Bounded findings; repair only when separately authorized | No history rewrite or cosmetic mass update |
 
 ## Completion gates
 
