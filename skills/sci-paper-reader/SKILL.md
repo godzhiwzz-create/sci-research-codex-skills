@@ -1,11 +1,18 @@
 ---
 name: sci-paper-reader
-description: Deep-read academic papers into source-grounded Chinese or bilingual understanding packets that explain the problem, prerequisites, method, evidence spine, figures/tables, limitations, and relation to other work. Use when the user wants to understand, translate, teach, compare, or turn a paper into Markdown, HTML, Word, Obsidian, or presentation-ready material. Keep the reusable packet project-neutral; return candidate project relevance as a separate typed reading handback to sci-research-manager, never as project evidence or an experiment allocation.
+description: Read academic papers from primary sources to answer targeted mechanism or evidence questions, compare prior work, or produce deep Chinese/bilingual understanding packets and requested derivatives. Use when the user wants to understand, translate, teach, compare, or turn a paper into Markdown, HTML, Word, Obsidian, or presentation-ready material. Match reading depth to the question; keep reusable packets project-neutral and return candidate project relevance as a typed reading handback to sci-research-manager, never as project evidence or an experiment allocation.
 ---
 
 # SCI Paper Reader
 
-Create a reusable understanding artifact, not an abstract paraphrase or bullet dump. Assume the reader is intelligent but may be new to the topic. Teach the minimum prerequisites needed to understand the method and proof.
+Explain the method and evidence at the depth requested. Assume the reader is intelligent but may be new to the topic; teach the necessary prerequisites without substituting an abstract paraphrase for primary-source reading.
+
+## Choose reading depth before producing artifacts
+
+- For one mechanism, result, or comparison question, read the decisive source sections and return an anchored answer with checked and unchecked scope. Do not automatically build a full packet, register a paper, launch remote work, or create an experiment.
+- For a requested deep read or reusable teaching packet, apply the complete understanding workflow below. Produce visual or document derivatives only when requested.
+- Reuse unchanged sources, identity checks, manifests, and instructions already loaded in this task. Ask tools for exact sections, figures/tables, or selected metadata; keep full text available without repeatedly loading it into context. Truncated or inaccessible sections remain explicitly unverified.
+- When evidence conflicts, reopen the decisive source and protocol even if this costs more context. Never drop controls, contrary findings, or source verification to save tokens.
 
 ## Ground the source first
 
@@ -19,7 +26,7 @@ Use `sci-literature-manager` for discovery/indexing and `sci-research-manager` w
 
 ## Build Markdown first
 
-Default to a Chinese `paper_understanding.md` unless the user specifies another language or format. Produce Markdown before HTML/PPT/Word/Obsidian so every derivative follows the same argument and evidence spine.
+For a full packet, default to a Chinese `paper_understanding.md` unless the user specifies another language or format. Produce Markdown before requested HTML/PPT/Word/Obsidian derivatives so they follow the same evidence spine. A targeted answer does not require a durable packet.
 
 For a durable library, prefer:
 
@@ -50,6 +57,8 @@ Build this before writing derivatives:
 
 If this chain is unclear, do not design slides or experiments yet.
 
+For a mechanism or nearest-prior comparison, identify the prediction/action/objective, training and deployment inputs, supervision, controls, selection rule, evaluation unit, and limits. Separate observed results from the authors' interpretation; inspect whether a simple or competing explanation remains. An information-access difference matters only if it changes feasible inputs or the estimand under fair controls. Similarity, a failed proxy, or one negative run limits the tested formulation, not every possible intervention; do not require a complete causal proof before proposing a small informative test.
+
 ## Produce the understanding packet
 
 Cover:
@@ -64,7 +73,7 @@ Cover:
 8. Relation to predecessor, competitor, and follow-up papers.
 9. Durable takeaways, common misunderstandings, and evidence boundaries.
 
-When project relevance is requested, add a separate typed reading handback after producing the reusable artifact; do not append the handback to the paper authority or its derivatives.
+When project relevance is requested, return a separate typed reading handback; a targeted question does not first require a reusable artifact. Do not append project state to the paper authority or its derivatives.
 
 For full structure and field details, follow `references/packet_schema.md` rather than expanding this coordinator.
 
@@ -94,6 +103,7 @@ When project relevance is in scope, return this separate handback to `sci-resear
 - Candidate hypotheses/diagnostics:
 - Required controls and evidence boundary:
 - Missing verification:
+- Decisive sections actually read and material unchecked scope:
 - Return to: `sci-research-manager`
 ```
 
@@ -103,7 +113,7 @@ This handback may inspire a hypothesis but cannot create a project tag, Literatu
 
 Do not send the reusable paper packet or candidate implications directly to `sci-experiment-manager`. Return a typed reading handback to `sci-research-manager`, which decides project adoption, verifies any project LiteratureClaim, and—only when a falsifiable requirement exists—creates the official literature-to-experiment brief before delegating card implementation.
 
-The candidate portion of the handback may include:
+Only when an experiment candidate is requested, the same handback may include the relevant fields below; do not create another document by default:
 
 ```markdown
 ## Candidate Experiment Implications

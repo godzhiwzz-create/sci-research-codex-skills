@@ -1,4 +1,4 @@
 interface:
   display_name: "SCI Research Lifecycle Manager"
   short_description: "Coordinate project literature, experiments, claims, and audits"
-  default_prompt: "Use $sci-research-manager as the sole research-state owner, route only bounded specialist work with a typed handback, and produce the required verified state transition."
+  default_prompt: "Use $sci-research-manager to handle this research question at the lightest justified intensity, verify decisive evidence, and update state only when it changes."

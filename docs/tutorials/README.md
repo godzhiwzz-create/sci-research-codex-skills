@@ -2,7 +2,7 @@
 
 这页是 `sci-research-codex-skills` v2 的使用入口。它不是 API 文档，而是告诉你：什么时候该用哪一个 Skill，输出应该长什么样，如何避免把研究项目越做越乱。仓库继续沿用全部 8 个公开名称：`sci-research-manager` 统一研究状态和证据边界，`academic-manuscript-writing` 统一稿件阶段和主线，其余 Skill 返回有界产物。
 
-> 当前稳定 Release 是 `v2.0.0`；本页同时覆盖 `main` 分支 Changelog `Unreleased` 中的阶段化写作和两库接口升级。
+> 当前稳定 Release 是 `v2.0.0`；本页同时覆盖 `main` 分支 Changelog `Unreleased` 中的阶段化写作、两库接口和按需工作流升级。
 
 在线渲染版入口：
 
@@ -23,6 +23,8 @@
 | 要判断最终投稿包是否可提交 | `sci-research-manager` + `academic-manuscript-writing` | 先冻结内容，再走最终提交六门审核 |
 
 ## 推荐路线
+
+下面是获准推进整个项目时的路线，不是每次提问都要走一遍的清单：概念讨论只回答问题；已知论文只增量入库；需要判断新颖性或是否值得投入时先核验最近先例。完整阅读包、实验和投稿审计分别在进入相应任务时开启。
 
 ```mermaid
 flowchart TD

@@ -27,7 +27,7 @@ Historical global indexes are snapshots. Do not keep their counts, statuses, or 
 | Add/tag/query/verify a paper inside a project | `project-literature-interface.md` |
 | Search, identify, deduplicate, version, or export bibliography globally | `sci-literature-manager` or a narrower installed literature specialist |
 | Design/register/run/analyze/promote/supersede an experiment | `experiment-library-lifecycle.md` |
-| Literature produces a testable project hypothesis | Both references plus the literature-to-experiment brief |
+| An experiment proposal is accepted for execution | Both references plus the existing literature-to-experiment brief/card |
 | Evidence enters or changes a manuscript claim | Experiment reference plus claim-evidence map; project literature reference when an external claim is involved |
 | Structural maintenance/audit | Both references, but inspect only the flagged owner and downstream consumers |
 
@@ -47,7 +47,9 @@ Create or update a `LITERATURE_CLAIMS.tsv` row plus project note with Source ID,
 
 ### Bridge literature to an experiment
 
-Use a literature-to-experiment brief before allocating an experiment ID. The brief must separate the paper's evidence from the project's hypothesis and state variables, controls, confounds, success/failure criteria, transferable elements, non-transferable protocol differences, and the cheapest validation stage. Allocate an experiment ID only when the brief yields a concrete falsifiable requirement.
+Apply [literature-decision-check.md](literature-decision-check.md) for novelty, feasibility, or investment decisions before proposal-specific preparation. Reuse a still-applicable comparison. During discussion, keep the bounded comparison in the answer; do not automatically create a brief or experiment ID.
+
+For an accepted experiment, use a compact section of the existing brief/card before allocating an ID. Separate the paper's evidence from the project's hypothesis and state variables, controls, confounds, success/failure criteria, transferable elements, consequential protocol differences, and the cheapest informative validation. A decision is accepted only through user selection or a pre-authorized workflow's gate, not specialist preference.
 
 ### Design or run an experiment
 
@@ -82,12 +84,12 @@ Run structural checks first, then inspect only flagged items. Check physical inv
 |---|---|---|
 | New PDF/source | External literature specialist intake/metadata/dedup/global catalog | Project Source-ID row only if the project adopts it; note only beyond screening |
 | Claim verification | LiteratureClaim row + exact note | Claim map/BibTeX if entering a manuscript |
-| Literature suggests an experiment | Literature-to-experiment brief | Experiment card after a falsifiable gate exists |
+| Experiment proposal accepted | Existing brief/card gains the bounded comparison and falsifiable requirement | Experiment ID/card when execution enters scope |
 | Experiment designed | Experiment card + project `EXPERIMENTS.tsv`/query route | Handoff if it becomes the active project action |
 | Run completes | Raw artifact + card + project `EXPERIMENTS.tsv` | Registry/claim map only after promotion |
 | Evidence is superseded | Card/index replacement link | Registry and handoff if the canonical route changes |
 | Manuscript consumes evidence | Claim-evidence map/evidence packet | No library mutation when prose merely restates verified evidence |
-| Routine audit | Audit report or repaired navigation | Handoff only for a real blocker or route change |
+| Routine audit | Bounded findings in the response; repair only when authorized | Durable report when requested/required; handoff only for a real blocker or route change |
 
 ## Completion gates
 
