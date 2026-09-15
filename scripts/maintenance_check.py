@@ -128,16 +128,13 @@ def check_repository(root: Path) -> Report:
     if parse_version(version) is not None:
         readme = read_text(root, "README.md")
         changelog = read_text(root, "CHANGELOG.md")
-        docs = read_text(root, "docs/index.html")
-        report.require(f"当前版本：**{version}**" in readme, "README current version differs from VERSION")
-        report.require(f"/tag/v{version}" in readme, "README stable Release link differs from VERSION")
         report.require("(MAINTENANCE.md)" in readme, "README does not link MAINTENANCE.md")
+        report.require("(CHANGELOG.md)" in readme, "README does not link CHANGELOG.md")
         report.require(changelog_has_release(changelog, version), "CHANGELOG lacks a dated entry for VERSION")
         report.require(
             f"compare/v{version}...HEAD" in changelog,
             "CHANGELOG Unreleased comparison link differs from VERSION",
         )
-        report.require(f"v{version}" in docs, "docs/index.html version differs from VERSION")
 
     maintenance = read_text(root, "MAINTENANCE.md")
     for command in (
@@ -289,12 +286,14 @@ def verify_tag(root: Path, tag: str) -> Report:
     readme = git_show(root, f"{tag}:README.md")
     changelog = git_show(root, f"{tag}:CHANGELOG.md")
     docs = git_show(root, f"{tag}:docs/index.html")
-    report.require(readme.returncode == 0 and f"当前版本：**{version}**" in readme.stdout, "tag README version mismatch")
+    # Landing pages describe use cases; VERSION and CHANGELOG own release identity.
+    # Existence checks also keep historical snapshots with version badges valid.
+    report.require(readme.returncode == 0 and bool(readme.stdout.strip()), "tag snapshot has no README")
     report.require(
         changelog.returncode == 0 and changelog_has_release(changelog.stdout, version),
         "tag CHANGELOG lacks a dated version entry",
     )
-    report.require(docs.returncode == 0 and f"v{version}" in docs.stdout, "tag Pages version mismatch")
+    report.require(docs.returncode == 0 and bool(docs.stdout.strip()), "tag snapshot has no Pages homepage")
 
     return report
 

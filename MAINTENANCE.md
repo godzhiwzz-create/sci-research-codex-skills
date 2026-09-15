@@ -10,13 +10,13 @@
 - 凭据、个人绝对路径、未公开数据、缓存和本地生成物不得进入提交。
 - commit/tag 的 author、committer、tagger 元数据也属于公开内容；维护前确认使用仓库本地 GitHub noreply 身份，不沿用个人邮箱。
 - 所有公开变化经分支、Pull Request、CI 和 `main` 合并；不直接在 `main` 上试错。
-- `VERSION`、Changelog、README、Pages、标签和 Release 的版本声明必须一致。
+- `VERSION`、Changelog、标签和 Release 的版本声明必须一致。README 与 Pages 面向科研需求和产出，不放版本号或更新列表；只提供必要的维护文档入口。
 
 ## 维护事实源
 
 | 内容 | 唯一事实源 | 同步对象 |
 |---|---|---|
-| 当前稳定版本 | `VERSION` | README、Pages、Changelog、Git 标签、GitHub Release |
+| 当前稳定版本 | `VERSION` | Changelog、Git 标签、GitHub Release |
 | 未发布变化 | `CHANGELOG.md` 的 `Unreleased` | PR 描述与后续 Release notes |
 | Agent/Skill 边界 | `AGENTS.md` 和各 Skill 的 `SKILL.md` | 贡献指南、模板、测试 |
 | 自动验证 | `scripts/maintenance_check.py` 和 `tests/` | PR CI、月度巡检 |
@@ -30,7 +30,7 @@
 | 类型 | 版本处理 | 必须更新 |
 |---|---|---|
 | 拼写、链接、社区配置、内部维护 | 保持当前版本，记入 `Unreleased` | 相关文档、测试或配置 |
-| 向后兼容的错误修复 | 下一个 patch | VERSION、Changelog、README、Pages、Release |
+| 向后兼容的错误修复 | 下一个 patch | VERSION、Changelog、Release；使用方式改变时同步相关文档 |
 | 向后兼容的新能力 | 下一个 minor | 同上，并补测试与使用说明 |
 | 改名、删除、状态语义或行为破坏 | 下一个 major，需明确批准 | 迁移说明、兼容策略、完整前向测试 |
 | 安全问题 | 先私密处理，再决定 patch/minor | SECURITY、修复测试、发布说明 |
@@ -96,7 +96,7 @@ done
 
 1. 按语义化版本确定 `X.Y.Z`。
 2. 将 `Unreleased` 内容整理为 `## [X.Y.Z] - YYYY-MM-DD`，保留旧版本日期不动。
-3. 更新 `VERSION`、README 的当前版本与 Release 链接、Pages 版本入口和 Changelog 比较链接。
+3. 更新 `VERSION` 和 Changelog 比较链接；README 与 Pages 保持需求导向，仅在使用方式改变时更新，不添加版本展示区。
 4. 运行日常最低验证集；若涉及 Skill，再运行全部 Skill 快速校验和必要前向测试。
 5. 通过独立发布 PR 合并到 `main`。
 
