@@ -65,9 +65,8 @@ class MaintenanceCheckTests(unittest.TestCase):
             self.assertEqual(result.returncode, 1)
             report = json.loads(result.stdout)
             self.assertEqual(report["status"], "error")
-            self.assertIn("README current version differs from VERSION", report["errors"])
             self.assertIn("CHANGELOG lacks a dated entry for VERSION", report["errors"])
-            self.assertIn("docs/index.html version differs from VERSION", report["errors"])
+            self.assertIn("CHANGELOG Unreleased comparison link differs from VERSION", report["errors"])
 
     def test_current_stable_tag_is_annotated_and_consistent(self) -> None:
         version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
@@ -95,9 +94,6 @@ class MaintenanceCheckTests(unittest.TestCase):
                 self.assertEqual(completed.returncode, 0, completed.stderr + completed.stdout)
 
             (copy / "VERSION").write_text("2.0.1\n", encoding="utf-8")
-            for relative in ("README.md", "docs/index.html"):
-                path = copy / relative
-                path.write_text(path.read_text(encoding="utf-8").replace("2.0.0", "2.0.1"), encoding="utf-8")
             changelog = copy / "CHANGELOG.md"
             text = changelog.read_text(encoding="utf-8")
             text = text.replace(
@@ -159,6 +155,16 @@ class MaintenanceCheckTests(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
             self.assertEqual(json.loads(result.stdout)["status"], "ok")
+
+            # A version-free landing page must not weaken tag/VERSION integrity.
+            wrong_tag = run_git(copy, "tag", "-a", "v9.9.9", "-m", "mismatched version fixture")
+            self.assertEqual(wrong_tag.returncode, 0, wrong_tag.stderr)
+            mismatch = run_check(
+                "verify-tag", "v9.9.9", "--root", str(copy), "--json",
+                script=copy / "scripts" / "maintenance_check.py", cwd=copy,
+            )
+            self.assertEqual(mismatch.returncode, 1)
+            self.assertIn("tag name and VERSION disagree: v9.9.9", json.loads(mismatch.stdout)["errors"])
 
 
 if __name__ == "__main__":

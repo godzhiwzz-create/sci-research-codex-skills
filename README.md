@@ -1,75 +1,47 @@
 # SCI Research Codex Skills
 
-[![SCI Research：8 个按需选择的 Skill，研究状态与稿件写作各有清晰职责](docs/assets/research-overview.svg)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+[![SCI Research：读懂论文，推进自己的研究](docs/assets/research-overview.svg)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 
-[![Release](https://img.shields.io/github/v/release/godzhiwzz-create/sci-research-codex-skills?display_name=tag&sort=semver)](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)
-[![Tests](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/godzhiwzz-create/sci-research-codex-skills/actions/workflows/tests.yml)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-2264d1)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9f6e.svg)](LICENSE)
 
-8 个面向通用科研项目的 Codex Skills，覆盖文献、实验、证据与阶段化写作。当前版本：**2.0.0**（稳定 Release）。
+**读论文、选方向、做实验、写论文——让每一步都能接上已有的证据。**
 
-从一个论文问题开始，也能接续一个长期项目：按任务选择需要的 Skill，让结论有出处、实验有协议、写作有证据。项目自己的规则和目录结构优先，不要求每次提问都启动完整工作流。
+面向研究生、博士后与科研团队的开源 Codex Skills。帮你把难读的论文变成讲得清的理解包，把零散结果连接到实验协议，把研究证据组织成有主线的稿件。既能回答一个小问题，也能接续一个长期课题。
 
-> **[浏览项目主页 ↗](https://godzhiwzz-create.github.io/sci-research-codex-skills/)** · [安装](#安装) · [快速开始](#快速开始) · [中文教程](docs/tutorials/README.md) · [版本变化](CHANGELOG.md)
+沿用已有的项目、目录和资料，不要求搬迁知识库，也不需要同时调用全部 8 个 Skill。
+
+> **[浏览项目主页 ↗](https://godzhiwzz-create.github.io/sci-research-codex-skills/)** · [查看精读成品](docs/tutorials/examples/attention-is-all-you-need/README.md) · [安装](#安装) · [快速开始](#快速开始) · [中文教程](docs/tutorials/README.md)
 
 ## 从你的任务开始
 
-| 现在想做什么 | 入口 | 输出边界 |
+| 你正在遇到的问题 | 使用入口 | 你会得到什么 |
 |---|---|---|
-| 接续项目、判断下一步 | [sci-research-manager](skills/sci-research-manager/SKILL.md) | 当前问题、证据、缺口与下一动作 |
-| 查新、给已知论文入库 | [sci-literature-manager](skills/sci-literature-manager/SKILL.md) | 来源验证、去重与必要增量，不重启全领域检索 |
-| 解释论文机制或认真精读 | [sci-paper-reader](skills/sci-paper-reader/SKILL.md) | 有原文位置的回答；完整阅读包按需生成 |
-| 记录已批准的实验 | [sci-experiment-manager](skills/sci-experiment-manager/SKILL.md) | 冻结协议、原始结果、实验卡与索引 |
-| 核对结果与论文主张 | [sci-result-auditor](skills/sci-result-auditor/SKILL.md) | 只读核验、冲突与缺失证据 |
-| 起草、打磨或修订稿件 | [academic-manuscript-writing](skills/academic-manuscript-writing/SKILL.md) | 在当前稿件阶段和已核验证据内写作 |
+| 这个想法值得做吗？项目下一步做什么？ | [sci-research-manager](skills/sci-research-manager/SKILL.md) | 最近先例、竞争解释、证据缺口与下一步建议 |
+| 有没有相关工作？这篇论文是否已入库？ | [sci-literature-manager](skills/sci-literature-manager/SKILL.md) | 来源清单、身份核验、去重与引用信息 |
+| 这篇论文的方法和关键图表怎么理解？ | [sci-paper-reader](skills/sci-paper-reader/SKILL.md) | 有原文定位的解释；完整图文理解包按需生成 |
+| 这次实验回答什么，结果保存在哪里？ | [sci-experiment-manager](skills/sci-experiment-manager/SKILL.md) | 假设、固定协议、实验卡与原始结果入口 |
+| 这个数字和结论能写进论文吗？ | [sci-result-auditor](skills/sci-result-auditor/SKILL.md) | 协议与证据核对、冲突项及结论边界 |
+| 怎样组织论文主线、改稿和回复审稿人？ | [academic-manuscript-writing](skills/academic-manuscript-writing/SKILL.md) | 对应稿件阶段的正文、修订稿或逐条回复 |
 
 其余两个 Skill 负责[论文配套清单](skills/sci-paper-manager/SKILL.md)与[资产维护审查](skills/sci-asset-manager/SKILL.md)。不必同时调用全部 8 个。
 
-稳定复现请选择 [v2.0.0](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases/tag/v2.0.0)；下文按需工作流等最新能力位于 `main`，已通过对应 CI，但尚未形成新 Release。
+## 先看一份真实成品
 
-## v2 的核心变化
+[Attention Is All You Need 中文精读示例](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/) 展示问题拆解、方法路线图、关键图表和证据边界。你可以用这种理解包复习论文、准备讨论或组会；只问一个具体问题时，不必生成完整产物。
+
+## 如何配合你的研究
+
+- **讨论时**：围绕当前问题查证与比较，不自动启动下载或实验。
+- **实验时**：在授权范围内连接假设、协议、原始结果和后续判断。
+- **写作时**：围绕已有证据起草、打磨或修订，保持主线和结论范围。
+- **接续项目时**：通过现有文件找回问题、证据和下一步，不依赖聊天记忆。
+
+这是在 Codex 中使用的工作流工具，不是自动保证创新、实验成功或论文录用的服务。科研判断仍要核对原始证据，重要取舍与对外提交由你决定。
 
 <details>
-<summary>查看 v2 架构升级与兼容变化</summary>
+<summary>了解模块分工与证据保障</summary>
 
-- 保留仓库名和全部 8 个原有 Skill 名称。
-- 将 `sci-research-manager` 升级为统一科研生命周期中枢。
-- 收敛阶段、实验状态、证据状态、claim 强度和方向决策，避免状态词漂移。
-- 去除写死的 `research_workspace/`、teacher/student、特定数据集和特定研究方向假设。
-- 新增工作区只读审计、文件时间/provenance 保护、E/F 实验卡生成、双格式索引和通用一致性审计。
-- 为全部 Skill 补齐 `agents/openai.yaml`。
-- 新增零第三方依赖的自动化测试和 GitHub Actions。
-
-</details>
-
-## main 分支的 Unreleased 升级
-
-- 保留 8 个公开 Skill ID，把 `sci-research-manager` 和 `academic-manuscript-writing` 分别强化为研究状态 owner 与稿件生命周期 owner。
-- 新增项目文献 Source-ID/LiteratureClaim 接口、实验五轴当前状态、证据晋升/替代门，以及 literature-to-experiment 和 evidence-to-manuscript 两个交接门。
-- 新增 7 个稿件阶段，区分初稿、成稿打磨、提交前只读审核、大修、小修、最终提交审核和校样纠正。
-- 专门 Skill 改为接收有界输入并返回 typed handback，不直接扩大研究状态、claim 或稿件主线。
-- 新增可配置的研究库结构审计和对外材料披露候选扫描；扫描不完整会明确阻断，干净扫描也不等于作者批准。
-- 按讨论、定向查新、最小探索、正式实验和投稿审计选择流程强度；复用未变上下文，已知论文增量入库，最近先例先于为提案投入准备工作。
-- 通过 SSH 连接用户自行配置的服务器；一个任务一个监控负责人，区分本地连接退出与远端任务结束。公开内容不包含服务器配置、个人路径或研究项目记录。
-
-这些规则旨在减少重复读取、无效等待和重复建档，不减少决定性证据核验。尚未通过可比真实任务量化 token 或额度节省。
-
-这些变化已记入 [CHANGELOG 的 Unreleased](CHANGELOG.md)。当前稳定 Release 仍是 `v2.0.0`；后续发布将通过独立版本 PR 完成。
-
-## 版本与维护
-
-- [MAINTENANCE](MAINTENANCE.md)：日常更新、版本发布、定期巡检、回滚与交接的唯一流程入口。
-- [Releases](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)：下载稳定快照并查看发布说明。
-- [CHANGELOG](CHANGELOG.md)：查看版本间的行为、兼容性和维护变化。
-- [CONTRIBUTING](CONTRIBUTING.md)：提交问题、改进 Skill 或脚本前先阅读。
-- [CODE OF CONDUCT](CODE_OF_CONDUCT.md)：参与 Issue、Pull Request 和评审时遵守科研协作与数据保护边界。
-- [SECURITY](SECURITY.md)：涉及路径越界、覆盖、凭据泄露或未授权远程执行时使用私密报告渠道。
-- [Issues](https://github.com/godzhiwzz-create/sci-research-codex-skills/issues)：报告可公开复现的问题或提出功能请求。
-
-`v1.0.0` 是 v2 合并前的不可移动历史标签；`v2.0.0` 是当前稳定快照，`main` 还包含 Changelog 中的 Unreleased 变化。仓库遵循语义化版本，已发布标签不重写、不复用。
-
-## 设计原则
+### 设计原则
 
 1. **事实高于会话记忆**：原始结果、配置、commit 和冻结协议优先于实验卡、HANDOFF 和聊天摘要。
 2. **文献不是项目证据**：论文可以产生假设，不能替代项目实验。
@@ -79,7 +51,7 @@
 6. **低上下文检索**：入口和索引用于定位；复用未变上下文，窄问题直接查决定性证据，不固定重读顺序。
 7. **一个事实一个 owner**：研究状态与证据由生命周期中枢集成，稿件阶段与主线由写作入口集成。owner 是职责，不要求额外代理；窄任务可从专门 Skill 直接完成。
 
-## 系统结构
+### 系统结构
 
 ```mermaid
 flowchart LR
@@ -97,7 +69,7 @@ flowchart LR
 
 图中箭头表示需要集成时的数据流，不是每次必走的执行链。局部编辑不自动触发全稿审核，文件清单不等于提交就绪；可选模块不可用时保留验证与权限边界，说明具体缺口。
 
-## 8 个原有 Skill
+### 8 个 Skill 的职责
 
 | Skill | 负责 | 不负责 |
 |---|---|---|
@@ -110,6 +82,8 @@ flowchart LR
 | `sci-paper-manager` | claim map、paper status、图表计划、要求缓存、投稿清单 | 改写稿件主线或决定最终 readiness |
 | `sci-asset-manager` | 迁移/归档/删除风险审查与 manifest | 未授权删除或移动 |
 
+</details>
+
 ## 安装
 
 克隆仓库：
@@ -119,7 +93,7 @@ git clone https://github.com/godzhiwzz-create/sci-research-codex-skills.git
 cd sci-research-codex-skills
 ```
 
-下面的安全安装器位于 `main`，需要 Python 3.10+，无第三方依赖，也不联网。需要可复现的旧稳定版时执行 `git switch --detach v2.0.0`，并参考[该版本安装说明](https://github.com/godzhiwzz-create/sci-research-codex-skills/tree/v2.0.0#安装)；旧标签不包含新安装器，升级前应自行备份。
+下面的安全安装器需要 Python 3.10+，无第三方依赖，也不联网。以下命令使用仓库默认分支；需要固定快照时，按[发布记录](https://github.com/godzhiwzz-create/sci-research-codex-skills/releases)选择，并使用该快照自带的安装说明。
 
 先预览，再安装选定 Skill：
 
@@ -127,6 +101,11 @@ cd sci-research-codex-skills
 python3 scripts/install_skills.py --skill sci-research-manager
 python3 scripts/install_skills.py --skill sci-research-manager --apply
 ```
+
+安装或升级后重新加载 Codex Skill 列表，然后用下面的中文示例开始。
+
+<details>
+<summary>更多安装选项：全部安装、升级、备份与恢复</summary>
 
 也可以选择全部，或显式升级：
 
@@ -141,54 +120,54 @@ python3 scripts/install_skills.py --skill sci-research-manager --upgrade --apply
 
 升级是有备份的替换，不自动合并本地定制。安装器先检查全部选项，再暂存并切换；普通切换失败会尝试回滚，备份不自动删除。请在没有其他编辑/安装进程时使用；锁和状态复核不能防御任意外部并发修改或系统中断。中断后先检查输出的备份/暂存位置再恢复，不盲目删除锁。软链接和特殊文件会被拒绝。
 
-安装或升级后重新加载 Codex Skill 列表。
+</details>
 
 ## 快速开始
 
-讨论一个方向，不启动执行（`main`）：
+讨论一个方向，不启动执行：
 
 ```text
-Use $sci-research-manager to discuss this research idea.
-Answer the current question without creating records or starting downloads or remote work.
-If novelty or feasibility affects the answer, check the nearest primary sources first.
+用 $sci-research-manager 讨论我接下来描述的研究想法。
+先回答问题，不建档、不启动下载或远端任务。
+如果新颖性或可行性会影响判断，先核对最接近的原始论文。
 ```
 
-给已知论文入库（`main`）：
+给已知论文入库：
 
 ```text
-Use $sci-literature-manager to add the paper identified by the DOI I provide.
-Check existing identities and versions, verify missing metadata, and register only the delta.
-Do not restart a field-wide search or generate a full reading packet.
+用 $sci-literature-manager 将我提供 DOI 的论文入库。
+先查重和核对版本，只补充缺失信息；不重做全领域检索或完整精读。
 ```
 
 恢复长期项目：
 
 ```text
-Use $sci-research-manager to resume this project.
-Read the lightest authoritative context, separate verified evidence from session-only memory,
-and tell me the blocker and safest next action.
+用 $sci-research-manager 接续这个项目。
+从现有入口找到当前问题和必要证据，区分已核验事实与会话记忆，
+告诉我卡在哪里，以及最值得做的下一步。
 ```
 
 建立实验记录：
 
 ```text
-Use $sci-experiment-manager to create F120-D01.
-Freeze the protocol, controls, promotion gate, stop gate, paths, and claim boundary before execution.
+用 $sci-experiment-manager 为我确认的实验建立记录。
+写清假设、固定协议、对照、成功与停止条件、结果路径和结论边界。
+这次只建立记录，不启动实验。
 ```
 
 投稿前审计：
 
 ```text
-Use $sci-result-auditor to audit the manuscript, result registry, claim map,
-public code, and protocol consistency without modifying source evidence.
+用 $sci-result-auditor 核对稿件、结果登记、主张与证据映射、
+公开代码和协议的一致性。只报告发现，不修改原始证据。
 ```
 
 阶段化写作或修订：
 
 ```text
-Use $academic-manuscript-writing to identify the manuscript stage first.
-Preserve the canonical mainline and evidence scope, then return the stage artifacts,
-checks, unresolved blockers, and only valid next stages.
+用 $academic-manuscript-writing 处理我提供的稿件。
+先确定当前是起草、打磨还是审稿修订；保留主线与证据边界，
+完成当前任务，并指出仍需我处理的问题。
 ```
 
 ## 推荐项目入口
@@ -244,7 +223,7 @@ python -m unittest discover -s tests -v
 
 测试覆盖：
 
-- VERSION、Changelog、README、Pages、CI、社区文件和公开 Skill 的维护一致性；
+- VERSION、Changelog、标签的发布一致性，以及 README、Pages、CI、社区文件和公开 Skill 的维护检查；
 - 8 个 Skill 的 frontmatter、名称、长度、引用和 UI 元数据；
 - Markdown/HTML 本地链接；
 - 工作区审计的正常与故障路径；
@@ -279,3 +258,7 @@ GitHub Actions 在 Python 3.10、3.11 和 3.13 上运行同一测试集。
 ## License
 
 MIT，见 [LICENSE](LICENSE)。
+
+## 参与与维护
+
+[贡献指南](CONTRIBUTING.md) · [报告问题](https://github.com/godzhiwzz-create/sci-research-codex-skills/issues) · [行为准则](CODE_OF_CONDUCT.md) · [安全反馈](SECURITY.md) · [维护文档](MAINTENANCE.md) · [Changelog](CHANGELOG.md)

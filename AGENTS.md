@@ -30,10 +30,10 @@ Scope: the entire `sci-research-codex-skills` repository.
 ## Releases and repository front
 
 - Follow `MAINTENANCE.md` as the canonical update, release, rollback, and handoff workflow.
-- Treat `VERSION` as the canonical release number and keep it aligned with `README.md`, `CHANGELOG.md`, Pages, tags, and GitHub Releases.
+- Treat `VERSION` as the canonical release number and keep it aligned with `CHANGELOG.md`, tags, and GitHub Releases. README and Pages explain researcher needs and outcomes; keep project version numbers and update history in the dedicated release documents, not on either homepage.
 - Use semantic version tags on commits reachable from `main`; create annotated tags and never move or reuse a published tag.
 - Keep `v1.0.0` immutable as the pre-v2 compatibility baseline.
-- Update public-facing version claims, maintenance links, and release notes in the same release change.
+- Update release documents and maintenance links in the same release change; do not reintroduce homepage version badges or update blocks.
 - Keep repository description, homepage, topics, issue forms, pull request template, contribution guide, and security policy current.
 - Publish a release only after the corresponding commit has passed repository tests and GitHub Actions.
 

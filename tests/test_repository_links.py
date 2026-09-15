@@ -32,6 +32,17 @@ def is_external(value: str) -> bool:
 
 
 class RepositoryLinkTests(unittest.TestCase):
+    def test_homepages_keep_release_history_in_dedicated_documents(self) -> None:
+        for relative in ("README.md", "docs/index.html"):
+            with self.subTest(page=relative):
+                text = (ROOT / relative).read_text(encoding="utf-8")
+                self.assertNotRegex(text, r"\bv\d+\.\d+\.\d+\b")
+                self.assertNotIn("shields.io/github/v/release", text)
+                self.assertNotIn("Unreleased", text)
+                self.assertNotIn("release-strip", text)
+                self.assertNotIn("当前版本", text)
+        self.assertIn("(CHANGELOG.md)", (ROOT / "README.md").read_text(encoding="utf-8"))
+
     def test_homepage_exposes_all_skills_and_safe_install_commands(self) -> None:
         text = (ROOT / "docs/index.html").read_text(encoding="utf-8")
         parser = LocalRefParser()
