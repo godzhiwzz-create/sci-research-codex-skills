@@ -1,22 +1,34 @@
 # SCI Research Codex Skills
 
-[![SCI Research：读懂论文，推进自己的研究](docs/assets/research-overview.svg)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
+[![SCI Research：围绕目标，把研究接着推进](docs/assets/research-overview.svg)](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f9f6e.svg)](LICENSE)
 
-**读论文、选方向、做实验、写论文——让每一步都能接上已有的证据。**
+**围绕一个目标，把研究接着推进。**
 
-面向研究生、博士后与科研团队的开源 Codex Skills。帮你把难读的论文变成讲得清的理解包，把零散结果连接到实验协议，把研究证据组织成有主线的稿件。既能回答一个小问题，也能接续一个长期课题。
+从个人科研实践中整理的开源 Codex Skills。核心是让 Codex 接续一个研究项目：理解目标、比较假设与路线、设计和推进实验、核对结果，再根据证据选择下一步。文献检索、论文精读、实验记录与写作，是支撑这条研究主线的不同能力。
+
+你决定目标、重大取舍与授权范围；研究负责人在这个范围内承担具体研究判断与推进。持续执行还需要可用的运行环境，安装 Skill 不会自动开启后台任务。
 
 沿用已有的项目、目录和资料，不要求搬迁知识库，也不需要同时调用全部 8 个 Skill。
 
-> **[浏览项目主页 ↗](https://godzhiwzz-create.github.io/sci-research-codex-skills/)** · [查看精读成品](docs/tutorials/examples/attention-is-all-you-need/README.md) · [安装](#安装) · [快速开始](#快速开始) · [中文教程](docs/tutorials/README.md)
+> **[浏览项目主页 ↗](https://godzhiwzz-create.github.io/sci-research-codex-skills/)** · [研究怎样接着推进](#研究怎样接着推进) · [安装](#安装) · [快速开始](#快速开始) · [中文教程](docs/tutorials/README.md)
+
+## 研究怎样接着推进
+
+1. **接续课题**：从已有项目找回研究目标、当前假设、证据与卡点。
+2. **比较路线**：结合最近先例和竞争解释，给出有理由的方法选择。
+3. **推进实验**：明确实验要改变哪项判断，固定协议与对照，在授权内执行和跟踪。
+4. **根据结果决策**：核对原始证据，区分科学结果和工程故障，决定继续、复用、转向或停止。
+5. **接续状态与写作**：只更新变化的记录，把可用证据交给稿件流程，下一次继续当前问题。
+
+这是随证据迭代的研究过程，不是每次必须从头执行的清单。[项目接续与决策说明](docs/tutorials/project-management.md)介绍了具体用法。
 
 ## 从你的任务开始
 
 | 你正在遇到的问题 | 使用入口 | 你会得到什么 |
 |---|---|---|
-| 这个想法值得做吗？项目下一步做什么？ | [sci-research-manager](skills/sci-research-manager/SKILL.md) | 最近先例、竞争解释、证据缺口与下一步建议 |
+| 围绕这个目标，把研究接着推进 | [sci-research-manager](skills/sci-research-manager/SKILL.md) | 研究判断、已授权工作推进、结果决策与项目接续 |
 | 有没有相关工作？这篇论文是否已入库？ | [sci-literature-manager](skills/sci-literature-manager/SKILL.md) | 来源清单、身份核验、去重与引用信息 |
 | 这篇论文的方法和关键图表怎么理解？ | [sci-paper-reader](skills/sci-paper-reader/SKILL.md) | 有原文定位的解释；完整图文理解包按需生成 |
 | 这次实验回答什么，结果保存在哪里？ | [sci-experiment-manager](skills/sci-experiment-manager/SKILL.md) | 假设、固定协议、实验卡与原始结果入口 |
@@ -25,10 +37,6 @@
 
 其余两个 Skill 负责[论文配套清单](skills/sci-paper-manager/SKILL.md)与[资产维护审查](skills/sci-asset-manager/SKILL.md)。不必同时调用全部 8 个。
 
-## 先看一份真实成品
-
-[Attention Is All You Need 中文精读示例](https://godzhiwzz-create.github.io/sci-research-codex-skills/tutorials/examples/attention-is-all-you-need/) 展示问题拆解、方法路线图、关键图表和证据边界。你可以用这种理解包复习论文、准备讨论或组会；只问一个具体问题时，不必生成完整产物。
-
 ## 如何配合你的研究
 
 - **讨论时**：围绕当前问题查证与比较，不自动启动下载或实验。
@@ -36,7 +44,7 @@
 - **写作时**：围绕已有证据起草、打磨或修订，保持主线和结论范围。
 - **接续项目时**：通过现有文件找回问题、证据和下一步，不依赖聊天记忆。
 
-这是在 Codex 中使用的工作流工具，不是自动保证创新、实验成功或论文录用的服务。科研判断仍要核对原始证据，重要取舍与对外提交由你决定。
+关键研究判断仍需核对原始证据，不能保证创新、实验成功或论文录用。重要取舍与对外提交由你决定。
 
 <details>
 <summary>了解模块分工与证据保障</summary>
@@ -123,6 +131,14 @@ python3 scripts/install_skills.py --skill sci-research-manager --upgrade --apply
 </details>
 
 ## 快速开始
+
+接续项目，并推进已有授权内的研究：
+
+```text
+用 $sci-research-manager 接续这个项目。
+根据当前研究目标与已有证据，比较可行路线，在已有授权内推进下一步，
+并根据结果更新判断。超出授权时带着具体方案找我。
+```
 
 讨论一个方向，不启动执行：
 
@@ -242,7 +258,7 @@ GitHub Actions 在 Python 3.10、3.11 和 3.13 上运行同一测试集。
 - [教程导航](docs/tutorials/README.md)
 - [项目管理教程](docs/tutorials/project-management.md)
 - [论文精读教程](docs/tutorials/paper-deepread.md)
-- [Attention Is All You Need 精读演示](docs/tutorials/examples/attention-is-all-you-need/README.md)
+- [论文精读子模块示例：Attention Is All You Need](docs/tutorials/examples/attention-is-all-you-need/README.md)——仅展示阅读任务，不代表完整科研推进流程。
 - [GitHub Pages](https://godzhiwzz-create.github.io/sci-research-codex-skills/)
 
 ## 兼容策略

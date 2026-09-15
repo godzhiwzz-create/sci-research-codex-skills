@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
   <title id="title">SCI Research Codex Skills</title>
-  <desc id="desc">面向科研人的 Codex Skills：读论文获得方法理解与原文定位，选方向获得先例比较与下一步，做实验连接协议、结果与证据，写论文形成主线、稿件与修订。</desc>
+  <desc id="desc">围绕研究目标接续项目：比较路线，推进已授权的实验，核对结果，再根据证据决定下一步。文献与写作服务于同一条研究主线。</desc>
   <rect width="1200" height="420" rx="16" fill="#101914"/>
   <path d="M64 56H1136M64 365H1136M712 84V335" fill="none" stroke="#33433a"/>
   <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-    <text x="64" y="104" fill="#ccf79b" font-family="monospace" font-size="14" letter-spacing="2">FOR RESEARCHERS / CODEX SKILLS</text>
+    <text x="64" y="104" fill="#ccf79b" font-family="monospace" font-size="14" letter-spacing="2">RESEARCH IN PROGRESS / CODEX SKILLS</text>
     <text x="59" y="184" fill="#eff3ed" font-size="64" font-weight="700" letter-spacing="-2">SCI RESEARCH</text>
-    <text x="64" y="244" fill="#ccf79b" font-size="36" font-weight="600">读懂论文，推进自己的研究。</text>
-    <text x="64" y="302" fill="#adbdac" font-size="20">从眼前的问题开始，沿用已有项目和资料。</text>
-    <text x="64" y="336" fill="#adbdac" font-size="17">让结论有出处，实验有协议，写作有证据。</text>
+    <text x="64" y="244" fill="#ccf79b" font-size="36" font-weight="600">围绕目标，把研究接着推进。</text>
+    <text x="64" y="302" fill="#adbdac" font-size="20">接续课题，比较路线，推进实验，分析结果。</text>
+    <text x="64" y="336" fill="#adbdac" font-size="17">在授权范围内推进，用证据决定下一步。</text>
     <text x="754" y="105" fill="#ccf79b" font-family="monospace" font-size="13" letter-spacing="1">FROM QUESTION TO NEXT STEP</text>
     <g fill="#1e2d23">
       <rect x="752" y="128" width="384" height="45" rx="4"/>
@@ -17,12 +17,12 @@
       <rect x="752" y="290" width="384" height="45" rx="4"/>
     </g>
     <g fill="#ccf79b" font-size="19" font-weight="600">
-      <text x="772" y="157">读论文</text><text x="772" y="211">选方向</text>
-      <text x="772" y="265">做实验</text><text x="772" y="319">写论文</text>
+      <text x="772" y="157">目标</text><text x="772" y="211">行动</text>
+      <text x="772" y="265">证据</text><text x="772" y="319">决策</text>
     </g>
     <g fill="#eff3ed" font-size="18">
-      <text x="876" y="157">方法理解与原文定位</text><text x="876" y="211">先例比较与下一步</text>
-      <text x="876" y="265">协议、结果与证据</text><text x="876" y="319">主线、稿件与修订</text>
+      <text x="876" y="157">当前最重要的问题</text><text x="876" y="211">有理由的下一项实验</text>
+      <text x="876" y="265">原始结果与固定协议</text><text x="876" y="319">继续、复用或转向</text>
     </g>
   </g>
 </svg>

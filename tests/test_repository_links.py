@@ -32,6 +32,17 @@ def is_external(value: str) -> bool:
 
 
 class RepositoryLinkTests(unittest.TestCase):
+    def test_homepage_leads_with_research_coordination(self) -> None:
+        text = (ROOT / "docs/index.html").read_text(encoding="utf-8")
+        first_screen = text.split('<main ', 1)[0]
+        parser = LocalRefParser()
+        parser.feed(first_screen)
+        self.assertIn("#workflow", parser.refs)
+        self.assertIn("#install", parser.refs)
+        self.assertFalse(any("attention-is-all-you-need" in ref or ref == "#learn" for ref in parser.refs))
+        self.assertLess(text.index('id="workflow"'), text.index('id="choose"'))
+        self.assertLess(text.index('id="choose"'), text.index('id="learn"'))
+
     def test_homepages_keep_release_history_in_dedicated_documents(self) -> None:
         for relative in ("README.md", "docs/index.html"):
             with self.subTest(page=relative):
